@@ -6,6 +6,11 @@ const MainTheme = {
    fontPrimary: '#FFFFFF',
    fontSecondary: '#C4C4C4',
    selectionColor: '#FF7A00',
+   transparent: {
+      white: {
+         soft: 'rgba(255, 255, 255, 0.2)',
+      },
+   },
    gradient: {
       accent: 'linear-gradient(125.64deg, #FF7A00 22.46%, #FF005C 77.9%)',
       preload:
@@ -29,6 +34,14 @@ const MainTheme = {
    },
    radiusMain: '20px',
    lineMain: '1.5em',
+   // Material UI
+   palette: {
+      primary: {
+         light: '#FFFFFF',
+         main: '#FFFFFF',
+         dark: '#FFFFFF',
+      },
+   },
 }
 
 export default MainTheme

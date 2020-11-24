@@ -1,9 +1,10 @@
+import Button from 'components/molecules/Button/Button'
 import React from 'react'
 import MainTemplate from 'templates/MainTemplate'
 
 const Root = () => (
    <MainTemplate>
-      <div>Test</div>
+      <Button icon="star">Test przycisku</Button>
    </MainTemplate>
 )
 
