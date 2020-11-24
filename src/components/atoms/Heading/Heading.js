@@ -21,8 +21,8 @@ const StyledHeading = styled.h1`
    text-align: center;
 `
 
-const Heading = ({ children, size, className }) => (
-   <StyledHeading as={size} size={size} className={className}>
+const Heading = ({ children, size, ...props }) => (
+   <StyledHeading as={size} size={size} {...props}>
       {children}
    </StyledHeading>
 )
@@ -30,13 +30,11 @@ const Heading = ({ children, size, className }) => (
 Heading.propTypes = {
    children: PropTypes.string,
    size: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4']),
-   className: PropTypes.string,
 }
 
 Heading.defaultProps = {
    children: '',
    size: 'h1',
-   className: null,
 }
 
 export default Heading
