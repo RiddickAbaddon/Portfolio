@@ -8,7 +8,8 @@ const MainTheme = {
    selectionColor: '#FF7A00',
    transparent: {
       white: {
-         soft: 'rgba(255, 255, 255, 0.2)',
+         soft: 'rgba(255, 255, 255, 0.1)',
+         mid: 'rgba(255, 255, 255, 0.2)',
       },
    },
    gradient: {
@@ -33,15 +34,8 @@ const MainTheme = {
       hard: '0px 5px 25px -5px #000000',
    },
    radiusMain: '20px',
+   radiusSecondary: '10px',
    lineMain: '1.5em',
-   // Material UI
-   palette: {
-      primary: {
-         light: '#FFFFFF',
-         main: '#FFFFFF',
-         dark: '#FFFFFF',
-      },
-   },
 }
 
 export default MainTheme

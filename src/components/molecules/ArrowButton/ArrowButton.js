@@ -24,7 +24,7 @@ const StyledButton = styled.button`
       width: 100%;
       height: 100%;
       border-radius: 50%;
-      background-color: ${({ theme }) => theme.transparent.white.soft};
+      background-color: ${({ theme }) => theme.transparent.white.mid};
       will-change: transform;
       opacity: 0;
       top: 0;
