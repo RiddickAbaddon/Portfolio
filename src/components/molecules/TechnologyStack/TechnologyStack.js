@@ -2,7 +2,20 @@ import Heading from 'components/atoms/Heading/Heading'
 import Icon from 'components/atoms/Icon/Icon'
 import PropTypes from 'prop-types'
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const Show = keyframes`
+   from {
+      opacity: 0;
+   }
+   to {
+      opacity: 1;
+   }
+`
+
+const Wrapper = styled.section`
+   animation: ${Show} 0.5s ease-out;
+`
 
 const IconsWrapper = styled.div`
    display: flex;
@@ -36,7 +49,7 @@ const IconWrapper = styled.div`
 `
 
 const TechnologyStack = ({ technologies, ...props }) => (
-   <section {...props}>
+   <Wrapper {...props}>
       <Heading size="h2">Technologie na których pracuje</Heading>
       <IconsWrapper>
          {technologies &&
@@ -47,7 +60,7 @@ const TechnologyStack = ({ technologies, ...props }) => (
                </IconWrapper>
             ))}
       </IconsWrapper>
-   </section>
+   </Wrapper>
 )
 
 TechnologyStack.propTypes = {

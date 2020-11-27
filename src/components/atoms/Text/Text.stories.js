@@ -4,7 +4,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-   max-width: 500px;
+   max-width: 700px;
 `
 
 export default {
@@ -22,8 +22,7 @@ export const Basic = ({ small }) => (
       <Text small={small}>
          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis felis lectus, consequat ac
          elementum non, placerat sodales quam. Nullam malesuada tristique velit vel volutpat.
-         Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-         egestas. Fusce sit amet odio malesuada,
+         Pellentesque habitant morbi tristique
       </Text>
    </Wrapper>
 )
