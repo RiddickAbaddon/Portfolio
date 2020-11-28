@@ -19,7 +19,7 @@ export const sort = [
    },
 ]
 
-export const filter = [
+export const category = [
    {
       _id: '1',
       value: 'all',
@@ -49,5 +49,32 @@ export const filter = [
       value: 'libraries',
       display: 'biblioteki',
       displayList: 'Biblioteki',
+   },
+]
+
+export const technologies = [
+   {
+      _id: '1',
+      value: 'all',
+      display: 'wszystko',
+      displayList: 'Wszystko',
+   },
+   {
+      _id: '2',
+      value: 'react',
+      display: 'react',
+      displayList: 'React',
+   },
+   {
+      _id: '3',
+      value: 'js',
+      display: 'vanilla js',
+      displayList: 'Vanilla js',
+   },
+   {
+      _id: '4',
+      value: 'php',
+      display: 'php',
+      displayList: 'czysty PHP',
    },
 ]

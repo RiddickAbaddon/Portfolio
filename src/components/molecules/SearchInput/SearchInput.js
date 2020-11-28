@@ -8,6 +8,7 @@ const Wrapper = styled.div`
    position: relative;
    overflow: hidden;
    border-radius: 24px;
+   display: inline-block;
 `
 
 const Input = styled.input`
@@ -53,11 +54,11 @@ const StyledIcon = styled(SearchIcon)`
    color: ${({ theme }) => theme.fontPrimary} !important;
 `
 
-const SearchInput = () => {
+const SearchInput = ({ ...props }) => {
    const [value, setValue] = useState('')
 
    return (
-      <Wrapper>
+      <Wrapper {...props}>
          <Input
             type="search"
             active={value !== ''}

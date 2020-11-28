@@ -180,7 +180,7 @@ class Dropdown extends React.Component {
    }
 
    render() {
-      const { options, label, sort, defaultvalue } = this.props
+      const { options, label, sort, defaultvalue, ...props } = this.props
       const { value, isOpen, sortDirection } = this.state
 
       return (
@@ -188,6 +188,7 @@ class Dropdown extends React.Component {
             tabIndex="0"
             onBlur={(e) => this.handleBlurDropdown.call(this, e)}
             onFocus={(e) => this.handleFocusDropdown.call(this, e)}
+            {...props}
          >
             <Select ref={this.Select} defaultValue={defaultvalue}>
                {options &&
