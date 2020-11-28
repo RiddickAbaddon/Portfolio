@@ -35,6 +35,7 @@ const MainTheme = {
    radiusMain: '20px',
    radiusSecondary: '10px',
    lineMain: '1.5em',
+   lineMainNumber: 1.5,
 }
 
 export default MainTheme

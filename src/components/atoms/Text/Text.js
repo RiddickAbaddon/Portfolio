@@ -19,6 +19,15 @@ const Text = styled.p`
       css`
          animation: ${Show} 0.5s ease-out;
       `}
+   ${({ lineclamp, theme }) =>
+      lineclamp &&
+      css`
+         display: -webkit-box;
+         -webkit-line-clamp: ${lineclamp};
+         -webkit-box-orient: vertical;
+         overflow: hidden;
+         height: ${theme.lineMainNumber * lineclamp}em;
+      `}
 `
 
 export default Text

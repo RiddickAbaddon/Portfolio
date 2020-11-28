@@ -10,6 +10,7 @@ const Wrapper = styled.div`
    border-bottom-left-radius: ${({ theme }) => theme.radiusMain};
    border-bottom-right-radius: ${({ theme }) => theme.radiusMain};
    padding: 16px 8px;
+   height: 64px;
 `
 
 const StyledIcon = styled(Icon)`
