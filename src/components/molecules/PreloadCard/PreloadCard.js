@@ -38,16 +38,16 @@ const CardFooter = styled.div`
    margin-top: auto;
    height: 64px;
    padding: 16px;
-   border-bottom-left-radius: ${({ theme }) => theme.radiusMain};
-   border-bottom-right-radius: ${({ theme }) => theme.radiusMain};
+   border-bottom-left-radius: ${({ theme }) => theme.radius.primary};
+   border-bottom-right-radius: ${({ theme }) => theme.radius.primary};
    background: ${({ theme }) => theme.bgSecondary};
    width: 100%;
    display: flex;
 `
 
 const Image = styled(PreloadImage)`
-   border-top-left-radius: ${({ theme }) => theme.radiusMain};
-   border-top-right-radius: ${({ theme }) => theme.radiusMain};
+   border-top-left-radius: ${({ theme }) => theme.radius.primary};
+   border-top-right-radius: ${({ theme }) => theme.radius.primary};
    height: 200px;
    flex-shrink: 0;
    animation-delay: ${({ globaldelay }) => globaldelay}s;

@@ -39,8 +39,8 @@ const StyledTechnologyStack = styled(TechnologyStackSmall)`
 `
 
 const StyledImage = styled(Image)`
-   border-top-left-radius: ${({ theme }) => theme.radiusMain};
-   border-top-right-radius: ${({ theme }) => theme.radiusMain};
+   border-top-left-radius: ${({ theme }) => theme.radius.primary};
+   border-top-right-radius: ${({ theme }) => theme.radius.primary};
    height: 200px;
    margin-bottom: 10px;
    flex-shrink: 0;

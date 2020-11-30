@@ -87,7 +87,7 @@ const Avatar = styled(Image)`
    width: 132px;
    height: 132px;
    border-radius: 50%;
-   border: 2px solid ${({ theme }) => theme.selectionColor};
+   border: 2px solid ${({ theme }) => theme.accentColor};
    box-shadow: ${({ theme }) => theme.shadow.glow};
    position: absolute;
    left: 50%;
@@ -118,7 +118,7 @@ const Line = styled.div`
    border-radius: 1px;
    height: 2px;
    z-index: 4;
-   background: ${({ theme }) => theme.selectionColor};
+   background: ${({ theme }) => theme.accentColor};
    max-width: calc(100% - 50px);
 
    ${({ bottom }) =>
@@ -151,7 +151,7 @@ const Circle = styled.div`
    left: 50%;
    z-index: 3;
    transform: translate(-50%, 50%);
-   background: ${({ theme }) => theme.selectionColor};
+   background: ${({ theme }) => theme.accentColor};
    animation: ${ShowCircle} 0.3s 1.4s ease-out backwards;
    box-shadow: ${({ theme }) => theme.shadow.glow};
 `

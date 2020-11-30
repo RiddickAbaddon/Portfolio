@@ -7,8 +7,8 @@ const Wrapper = styled.div`
    display: flex;
    overflow: hidden;
    background: ${({ theme }) => theme.bgSecondary};
-   border-bottom-left-radius: ${({ theme }) => theme.radiusMain};
-   border-bottom-right-radius: ${({ theme }) => theme.radiusMain};
+   border-bottom-left-radius: ${({ theme }) => theme.radius.primary};
+   border-bottom-right-radius: ${({ theme }) => theme.radius.primary};
    padding: 16px 8px;
    height: 64px;
 `

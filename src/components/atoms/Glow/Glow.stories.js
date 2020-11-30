@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
    background: ${({ theme }) => theme.bgPrimary};
-   border-radius: ${({ theme }) => theme.radiusMain};
+   border-radius: ${({ theme }) => theme.radius.primary};
    box-shadow: ${({ theme }) => theme.shadow.soft};
    width: 1000px;
    height: 450px;

@@ -9,7 +9,7 @@ const GlobalStyle = createGlobalStyle`
 
    html {
       font-size: 10px;
-      font-family: ${({ theme }) => theme.fontFamily};
+      font-family: ${({ theme }) => theme.fontFamily.primary};
    }
 
    body {
@@ -21,12 +21,12 @@ const GlobalStyle = createGlobalStyle`
    }
 
    input, button, textarea {
-      font-family: ${({ theme }) => theme.fontFamily};
+      font-family: ${({ theme }) => theme.fontFamily.primary};
    }
 
 
    ::selection {
-      background: ${({ theme }) => theme.selectionColor};
+      background: ${({ theme }) => theme.accentColor};
    }
 
 `

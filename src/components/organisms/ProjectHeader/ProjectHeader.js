@@ -13,8 +13,8 @@ const StyledImage = styled(Image)`
    width: 100%;
    height: 350px;
    box-shadow: ${({ theme }) => theme.shadow.soft};
-   border-bottom-left-radius: ${({ theme }) => theme.radiusMain};
-   border-bottom-right-radius: ${({ theme }) => theme.radiusMain};
+   border-bottom-left-radius: ${({ theme }) => theme.radius.primary};
+   border-bottom-right-radius: ${({ theme }) => theme.radius.primary};
 `
 
 const HeadingWrapper = styled.div`
