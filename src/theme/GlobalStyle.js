@@ -27,7 +27,6 @@ const GlobalStyle = createGlobalStyle`
 
    ::selection {
       background: ${({ theme }) => theme.selectionColor};
-      color: black;
    }
 
 `
