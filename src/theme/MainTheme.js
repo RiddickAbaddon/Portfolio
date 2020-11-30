@@ -1,23 +1,24 @@
 const MainTheme = {
-   bgMain: '#353232',
-   bgPrimary: '#444141',
-   bgSecondary: '#504B4B',
-   bgBadge: '#3F3B3B',
-   fontPrimary: '#FFFFFF',
-   fontSecondary: '#C4C4C4',
-   accentColor: '#FF8A00',
+   bgMain: 'hsl(0, 3%, 20%)',
+   bgPrimary: 'hsl(0, 3%, 25%)',
+   bgSecondary: 'hsl(0, 3%, 30%)',
+   bgBadge: 'hsl(0, 2%, 22%)',
+   fontPrimary: 'hsl(0, 0%, 100%)',
+   fontSecondary: 'hsl(0, 0%, 77%)',
+   accentColor: 'hsl(32, 100%, 50%)',
 
    transparent: {
       white: {
-         soft: 'rgba(255, 255, 255, 0.1)',
-         mid: 'rgba(255, 255, 255, 0.2)',
+         soft: 'hsla(0, 0%, 100%, 0.1)',
+         mid: 'hsla(0, 0%, 100%, 0.2)',
       },
    },
    gradient: {
-      accent: 'linear-gradient(125.64deg, #FF7A00 22.46%, #FF005C 77.9%)',
-      preload: 'linear-gradient(90deg, #3F3B3B 0%, #646464 30.2%, #646464 43.46%, #3F3B3B 100%)',
+      accent: 'linear-gradient(125.64deg, hsl(29, 100%, 50%) 22.46%, hsl(338, 100%, 50%) 77.9%)',
+      preload:
+         'linear-gradient(90deg, hsl(0, 2%, 22%) 0%, hsl(0, 0%, 35%) 30%, hsl(0, 0%, 35%) 40%, hsl(0, 2%, 22%) 100%)',
       glow:
-         'radial-gradient(50% 100% at 50% 0%, rgba(255, 168, 0, 0.17) 0%, rgba(255, 168, 0, 0) 100%)',
+         'radial-gradient(50% 100% at 50% 0%, hsla(40, 100%, 50%, 0.17) 0%, hsla(40, 100%, 50%, 0) 100%)',
    },
    fontSize: {
       xl: '7.2rem',
@@ -34,9 +35,9 @@ const MainTheme = {
       primary: `'Montserrat', sans-serif`,
    },
    shadow: {
-      soft: '0px 5px 25px -5px rgba(0, 0, 0, 0.25)',
-      hard: '0px 5px 25px -5px #000000',
-      glow: '0px 0px 15px rgba(255, 168, 0, 0.35)',
+      soft: '0px 5px 25px -5px hsla(0, 0%, 0%, 0.25)',
+      hard: '0px 5px 25px -5px hsl(0, 0%, 0%)',
+      glow: '0px 0px 15px hsla(40, 100%, 50%, 0.35)',
    },
    radius: {
       primary: '20px',
