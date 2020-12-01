@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
-const Spacer = styled.div`
+const Divider = styled.div`
    height: ${({ small }) => (small ? 40 : 80)}px;
 `
 
-export default Spacer
+export default Divider

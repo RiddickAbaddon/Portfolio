@@ -5,6 +5,7 @@ import Icon from 'components/atoms/Icon/Icon'
 import ArrowButton from 'components/molecules/ArrowButton/ArrowButton'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 
 const Wrapper = styled.nav`
@@ -15,10 +16,12 @@ const Wrapper = styled.nav`
    padding: 20px;
 `
 
-const BackButton = styled(ArrowButton)`
+const BackButton = styled(Link)`
    will-change: transform;
    transition: transform 0.2s ease-out;
    height: 64px;
+   display: block;
+   border-radius: 50%;
 
    ${({ to }) =>
       to
@@ -50,7 +53,9 @@ const StyledIcon = styled(Icon)`
 
 const Navigation = ({ backlink, language }) => (
    <Wrapper>
-      <BackButton prev to={backlink} />
+      <BackButton to={backlink}>
+         <ArrowButton prev as="span" />
+      </BackButton>
       <NavList up={!backlink}>
          <StyledIcon src={language === 'pl' ? PolishIcon : EnglishIcon} />
          <a href="https://github.com/RiddickAbaddon" target="_blank" rel="noopener noreferrer">

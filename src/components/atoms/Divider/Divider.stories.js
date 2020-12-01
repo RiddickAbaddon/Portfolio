@@ -1,4 +1,4 @@
-import Spacer from 'components/atoms/Spacer/Spacer'
+import Divider from 'components/atoms/Divider/Divider'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -11,8 +11,8 @@ const Box = styled.div`
 `
 
 export default {
-   component: Spacer,
-   title: 'Atoms/Spacer',
+   component: Divider,
+   title: 'Atoms/Divider',
    argTypes: {
       small: {
          control: 'boolean',
@@ -23,7 +23,7 @@ export default {
 export const Basic = ({ small }) => (
    <>
       <Box />
-      <Spacer small={small} />
+      <Divider small={small} />
       <Box />
    </>
 )

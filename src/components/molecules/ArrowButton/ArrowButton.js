@@ -1,10 +1,9 @@
 import ArrowForwardIosRoundedIcon from '@material-ui/icons/ArrowForwardIosRounded'
 import PropTypes from 'prop-types'
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 
-const StyledButton = styled(Link)`
+const StyledButton = styled.button`
    width: 64px;
    height: 64px;
    background: ${({ theme }) => theme.bgPrimary} !important;
@@ -51,20 +50,18 @@ const StyledIcon = styled(ArrowForwardIosRoundedIcon)`
       `}
 `
 
-const ArrowButton = ({ prev, to, ...props }) => (
-   <StyledButton to={to} {...props}>
+const ArrowButton = ({ prev, ...props }) => (
+   <StyledButton {...props}>
       <StyledIcon prev={prev ? 'true' : null} />
    </StyledButton>
 )
 
 ArrowButton.propTypes = {
    prev: PropTypes.bool,
-   to: PropTypes.string,
 }
 
 ArrowButton.defaultProps = {
    prev: false,
-   to: null,
 }
 
 export default ArrowButton
