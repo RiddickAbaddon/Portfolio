@@ -14,6 +14,7 @@ const Wrapper = styled.nav`
    left: 0;
    width: 104px;
    padding: 20px;
+   z-index: 10;
 `
 
 const BackButton = styled(Link)`

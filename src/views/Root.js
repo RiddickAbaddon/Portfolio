@@ -1,11 +1,17 @@
+import Container from 'components/atoms/Container/Container'
 import Button from 'components/molecules/Button/Button'
 import React from 'react'
-import MainTemplate from 'templates/MainTemplate'
+import { BrowserRouter } from 'react-router-dom'
+import MainTemplate from 'templates/MainTemplate/MainTemplate'
 
 const Root = () => (
-   <MainTemplate>
-      <Button icon="star">Test przycisku</Button>
-   </MainTemplate>
+   <BrowserRouter>
+      <MainTemplate>
+         <Container>
+            <Button icon="link">Test przycisku</Button>
+         </Container>
+      </MainTemplate>
+   </BrowserRouter>
 )
 
 export default Root
