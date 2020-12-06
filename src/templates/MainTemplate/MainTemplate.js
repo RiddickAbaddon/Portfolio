@@ -6,6 +6,7 @@ import React from 'react'
 import styled, { ThemeProvider } from 'styled-components'
 import GlobalStyle from 'theme/GlobalStyle'
 import MainTheme from 'theme/MainTheme'
+import SlickSliderStyle from 'theme/SlickSliderStyle'
 
 const Wrapper = styled.div`
    min-height: calc(100vh - 104px);
@@ -14,6 +15,7 @@ const Wrapper = styled.div`
 const MainTemplate = ({ children }) => (
    <ThemeProvider theme={MainTheme}>
       <GlobalStyle />
+      <SlickSliderStyle />
       <Navigation />
       <Wrapper>{children}</Wrapper>
       <Footer>

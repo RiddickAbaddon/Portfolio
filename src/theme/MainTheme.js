@@ -19,6 +19,7 @@ const MainTheme = {
          'linear-gradient(90deg, hsl(0, 2%, 22%) 0%, hsl(0, 0%, 35%) 30%, hsl(0, 0%, 35%) 40%, hsl(0, 2%, 22%) 100%)',
       glow:
          'radial-gradient(50% 100% at 50% 0%, hsla(40, 100%, 50%, 0.17) 0%, hsla(40, 100%, 50%, 0) 100%)',
+      slider: 'linear-gradient(to left, black 0%, transparent 100%)',
    },
    fontSize: {
       xl: '7.2rem',

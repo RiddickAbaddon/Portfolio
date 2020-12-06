@@ -1,4 +1,5 @@
 import Icon from 'components/atoms/Icon/Icon'
+import { API_URL } from 'defines'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -21,8 +22,8 @@ const StyledIcon = styled(Icon)`
 const TechnologyStackSmall = ({ technologies, ...props }) => (
    <Wrapper {...props}>
       {technologies &&
-         technologies.map(({ _id, image, name }) => (
-            <StyledIcon key={_id} src={image.path} alt={name} title={name} small />
+         technologies.map(({ _id, image: { path }, name }) => (
+            <StyledIcon key={_id} src={`${API_URL}${path}`} alt={name} title={name} small />
          ))}
    </Wrapper>
 )

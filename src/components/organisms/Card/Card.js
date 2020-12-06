@@ -4,9 +4,14 @@ import Heading from 'components/atoms/Heading/Heading'
 import Text from 'components/atoms/Text/Text'
 import Image from 'components/molecules/Image/Image'
 import TechnologyStackSmall from 'components/molecules/TechnologyStackSmall/TechnologyStackSmall'
+import { API_URL } from 'defines'
 import PropTypes from 'prop-types'
 import React from 'react'
+import ReactHtmlParser from 'react-html-parser'
 import styled from 'styled-components'
+import { removeHtmlTags } from 'Utils'
+
+const lang = 'pl'
 
 const StyledCardWrapper = styled(CardWrapper)`
    display: flex;
@@ -46,17 +51,17 @@ const StyledImage = styled(Image)`
    flex-shrink: 0;
 `
 
-const Card = ({ title, image, description, tags, technologies }) => (
+const Card = ({ title, image, description, categories, technologies }) => (
    <StyledCardWrapper>
-      <StyledImage src={image} alt={title} />
+      <StyledImage src={`${API_URL}${image}`} alt={title} />
       <StyledHeading size="h3">{title}</StyledHeading>
       <StyledText small lineclamp={4}>
-         {description}
+         {ReactHtmlParser(removeHtmlTags(description))}
       </StyledText>
-      {tags.length ? (
+      {categories && categories.length ? (
          <TagsWrapper>
-            {tags.map((tag) => (
-               <StyledBadge>#{tag}</StyledBadge>
+            {categories.map((category) => (
+               <StyledBadge key={category._id}>#{category[lang]}</StyledBadge>
             ))}
          </TagsWrapper>
       ) : null}
@@ -68,7 +73,14 @@ Card.propTypes = {
    title: PropTypes.string.isRequired,
    image: PropTypes.string.isRequired,
    description: PropTypes.string,
-   tags: PropTypes.arrayOf(PropTypes.string),
+   categories: PropTypes.arrayOf(
+      PropTypes.shape({
+         _id: PropTypes.string,
+         name: PropTypes.string,
+         pl: PropTypes.string,
+         en: PropTypes.string,
+      }),
+   ),
    technologies: PropTypes.arrayOf(
       PropTypes.shape({
          _id: PropTypes.string,
@@ -82,7 +94,7 @@ Card.propTypes = {
 
 Card.defaultProps = {
    description: 'Brak opisu...',
-   tags: [],
+   categories: [],
 }
 
 export default Card

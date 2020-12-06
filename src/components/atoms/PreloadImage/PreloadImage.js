@@ -12,7 +12,6 @@ const Preload = keyframes`
 const PreloadImage = styled.div`
    width: ${({ width }) => width || '100%'};
    height: ${({ height }) => height || 'auto'};
-   max-width: 700px;
    background-color: ${({ theme }) => theme.bgBadge};
    background-image: ${({ theme }) => theme.gradient.preload};
    background-position: 0, 0;
