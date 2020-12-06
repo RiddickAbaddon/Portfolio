@@ -102,8 +102,8 @@ const PreloadCard = ({ delay: globalDelay }) => (
          </TagsWrapper>
       </Container>
       <CardFooter>
-         {delays.map((delay) => (
-            <Icon delay={delay} globaldelay={globalDelay} />
+         {delays.map((delay, i) => (
+            <Icon key={`tech-${i}`} delay={delay} globaldelay={globalDelay} />
          ))}
       </CardFooter>
    </StyledCardWrapper>

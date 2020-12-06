@@ -24,8 +24,8 @@ const BackButton = styled(Link)`
    display: block;
    border-radius: 50%;
 
-   ${({ to }) =>
-      to
+   ${({ show }) =>
+      show !== '/'
          ? css`
               transform: scale(1);
               pointer-events: all;
@@ -54,13 +54,13 @@ const StyledIcon = styled(Icon)`
 
 const Navigation = ({ backlink, language }) => (
    <Wrapper>
-      <BackButton to={backlink}>
+      <BackButton to={backlink || '/'}>
          <ArrowButton prev as="span" />
       </BackButton>
       <NavList up={!backlink}>
          <StyledIcon src={language === 'pl' ? PolishIcon : EnglishIcon} />
          <a href="https://github.com/RiddickAbaddon" target="_blank" rel="noopener noreferrer">
-            <Icon target src={GitHubIcon} />
+            <Icon src={GitHubIcon} />
          </a>
       </NavList>
    </Wrapper>

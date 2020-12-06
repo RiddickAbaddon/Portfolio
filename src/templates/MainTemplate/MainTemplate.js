@@ -16,7 +16,7 @@ const MainTemplate = ({ children }) => (
    <ThemeProvider theme={MainTheme}>
       <GlobalStyle />
       <SlickSliderStyle />
-      <Navigation />
+      <Navigation language="pl" />
       <Wrapper>{children}</Wrapper>
       <Footer>
          <Text>2020 © marcin-kalinowski.pl | Polityka cookies</Text>

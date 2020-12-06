@@ -41,8 +41,8 @@ const PreloadTechnologyStack = () => (
    <div>
       <PreloadTitle />
       <IconsWrapper>
-         {delays.map((delay) => (
-            <PreloadIcon delay={delay} />
+         {delays.map((delay, i) => (
+            <PreloadIcon key={`tech-b-${i}`} delay={delay} />
          ))}
       </IconsWrapper>
    </div>

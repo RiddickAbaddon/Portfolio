@@ -16,6 +16,7 @@ const RealizationsGridTemplate = ({ realizations, categories, technologies }) =>
    <Wrapper>
       {realizations.map((realization) => {
          const {
+            _id,
             thumbnail: { path },
             categories: refCategories,
             technologies: refTechnologies,
@@ -23,6 +24,7 @@ const RealizationsGridTemplate = ({ realizations, categories, technologies }) =>
 
          return (
             <Card
+               key={_id}
                title={realization[`${lang}_title`]}
                image={path}
                description={realization[`${lang}_description`]}
