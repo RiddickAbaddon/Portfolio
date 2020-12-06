@@ -1,6 +1,6 @@
 import TechnologyStackSmall from 'components/molecules/TechnologyStackSmall/TechnologyStackSmall'
 import React from 'react'
-import technologies from 'testData/technologies'
+import { technologies } from 'testData/api'
 
 export default {
    comnponent: TechnologyStackSmall,

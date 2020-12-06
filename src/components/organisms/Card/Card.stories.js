@@ -2,7 +2,9 @@ import Card from 'components/organisms/Card/Card'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
-import technologies from 'testData/technologies'
+import { categories, realizations, technologies } from 'testData/api'
+
+const realization = realizations[0]
 
 const Wrapper = styled.div`
    display: grid;
@@ -14,8 +16,6 @@ const CardWrapper = styled.div`
    width: 310px;
 `
 
-const tags = ['Aplikacje', 'Strony', 'Biblioteki', 'Gry', 'Szablony']
-
 export default {
    component: Card,
    title: 'Organisms/Card',
@@ -26,7 +26,7 @@ export default {
       description: {
          control: 'text',
       },
-      tagsCount: {
+      categoriesCount: {
          control: {
             type: 'range',
             min: 0,
@@ -43,39 +43,39 @@ export default {
    },
 }
 
-export const Basic = ({ title, description, tagsCount, technologiesCount }) => (
+export const Basic = ({ title, description, categoriesCount, technologiesCount }) => (
    <CardWrapper>
       <Card
          title={title}
-         image="https://picsum.photos/400/300"
+         image={realization.thumbnail.path}
          description={description}
-         tags={tags.slice(0, tagsCount)}
+         categories={categories.slice(0, categoriesCount)}
          technologies={technologies.slice(0, technologiesCount)}
       />
    </CardWrapper>
 )
 
-export const Cards = ({ title, description, tagsCount, technologiesCount }) => (
+export const Cards = ({ title, description, categoriesCount, technologiesCount }) => (
    <Wrapper>
       <Card
          title={title}
-         image="https://picsum.photos/400/300"
+         image={realization.thumbnail.path}
          description={description}
-         tags={tags.slice(0, tagsCount)}
+         categories={categories.slice(0, categoriesCount)}
          technologies={technologies.slice(0, technologiesCount)}
       />
       <Card
          title={title}
-         image="https://picsum.photos/400/300"
+         image={realization.thumbnail.path}
          description={description}
-         tags={tags.slice(0, tagsCount)}
+         categories={categories.slice(0, categoriesCount)}
          technologies={technologies.slice(0, technologiesCount)}
       />
       <Card
          title={title}
-         image="https://picsum.photos/400/300"
+         image={realization.thumbnail.path}
          description={description}
-         tags={tags.slice(0, tagsCount)}
+         categories={categories.slice(0, categoriesCount)}
          technologies={technologies.slice(0, technologiesCount)}
       />
    </Wrapper>
@@ -84,7 +84,7 @@ export const Cards = ({ title, description, tagsCount, technologiesCount }) => (
 Basic.propTypes = {
    title: PropTypes.string.isRequired,
    description: PropTypes.string.isRequired,
-   tagsCount: PropTypes.number.isRequired,
+   categoriesCount: PropTypes.number.isRequired,
    technologiesCount: PropTypes.number.isRequired,
 }
 
@@ -92,14 +92,14 @@ Basic.args = {
    title: 'Przykładowy tytuł',
    description:
       'Aplikacja oparta o framework React wykonana przeze mnie za pośrednictwem firmy Intermedial. Aplikacja jest typu SPA (Single Page Autentication) z routingiem po stronie klienta. Jest zgodna z standardem PWA (Progressive Web Application).',
-   tagsCount: 2,
+   categoriesCount: 2,
    technologiesCount: 3,
 }
 
 Cards.propTypes = {
    title: PropTypes.string.isRequired,
    description: PropTypes.string.isRequired,
-   tagsCount: PropTypes.number.isRequired,
+   categoriesCount: PropTypes.number.isRequired,
    technologiesCount: PropTypes.number.isRequired,
 }
 
@@ -107,6 +107,6 @@ Cards.args = {
    title: 'Przykładowy tytuł',
    description:
       'Aplikacja oparta o framework React wykonana przeze mnie za pośrednictwem firmy Intermedial. Aplikacja jest typu SPA (Single Page Autentication) z routingiem po stronie klienta. Jest zgodna z standardem PWA (Progressive Web Application).',
-   tagsCount: 2,
+   categoriesCount: 2,
    technologiesCount: 3,
 }

@@ -19,6 +19,7 @@ const Wrapper = styled.div`
    position: relative;
    display: inline-block;
    user-select: none;
+   z-index: ${({ isFocus }) => (isFocus ? 1 : 0)};
 `
 
 const IconWrapper = styled.button`
@@ -188,6 +189,7 @@ class Dropdown extends React.Component {
             tabIndex="0"
             onBlur={(e) => this.handleBlurDropdown.call(this, e)}
             onFocus={(e) => this.handleFocusDropdown.call(this, e)}
+            isFocus={isOpen}
             {...props}
          >
             <Select ref={this.Select} defaultValue={defaultvalue}>

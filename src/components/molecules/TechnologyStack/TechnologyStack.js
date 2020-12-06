@@ -1,5 +1,6 @@
 import Heading from 'components/atoms/Heading/Heading'
 import Icon from 'components/atoms/Icon/Icon'
+import { API_URL } from 'defines'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
@@ -53,9 +54,9 @@ const TechnologyStack = ({ technologies, ...props }) => (
       <Heading size="h2">Technologie na których pracuje</Heading>
       <IconsWrapper>
          {technologies &&
-            technologies.map(({ _id, image, name }) => (
+            technologies.map(({ _id, image: { path }, name }) => (
                <IconWrapper key={_id}>
-                  <Icon src={image.path} alt={name} />
+                  <Icon src={`${API_URL}${path}`} alt={name} />
                   <IconLabel>{name}</IconLabel>
                </IconWrapper>
             ))}
