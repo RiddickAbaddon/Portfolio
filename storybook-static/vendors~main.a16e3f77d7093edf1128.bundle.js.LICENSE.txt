@@ -5,6 +5,12 @@ object-assign
 */
 
 /*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+
+/*!
  * OverlayScrollbars
  * https://github.com/KingSora/OverlayScrollbars
  *
@@ -21,6 +27,13 @@ object-assign
  * The buffer module from node.js, for the browser.
  *
  * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
+ * @license  MIT
+ */
+
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <http://feross.org>
  * @license  MIT
  */
 
@@ -53,6 +66,10 @@ object-assign
  * Copyright (c) 2014-2017, Jon Schlinkert.
  * Released under the MIT License.
  */
+
+/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
+
+/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /**
  * A better abstraction over CSS.
