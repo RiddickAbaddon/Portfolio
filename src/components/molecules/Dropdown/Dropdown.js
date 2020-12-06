@@ -233,7 +233,7 @@ Dropdown.propTypes = {
          _id: PropTypes.string,
          value: PropTypes.string,
          display: PropTypes.string,
-         displayList: PropTypes,
+         displayList: PropTypes.string,
       }),
    ),
    label: PropTypes.string.isRequired,
