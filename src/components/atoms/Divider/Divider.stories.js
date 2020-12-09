@@ -14,24 +14,27 @@ export default {
    component: Divider,
    title: 'Atoms/Divider',
    argTypes: {
-      small: {
-         control: 'boolean',
+      size: {
+         control: {
+            type: 'inline-radio',
+            options: ['small', 'medium', 'large'],
+         },
       },
    },
 }
 
-export const Basic = ({ small }) => (
+export const Basic = ({ size }) => (
    <>
       <Box />
-      <Divider small={small} />
+      <Divider size={size} />
       <Box />
    </>
 )
 
 Basic.propTypes = {
-   small: PropTypes.bool.isRequired,
+   size: PropTypes.oneOf(['small', 'medium', 'large']).isRequired,
 }
 
 Basic.args = {
-   small: false,
+   size: 'medium',
 }

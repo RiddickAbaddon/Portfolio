@@ -5,7 +5,6 @@ import styled, { css } from 'styled-components'
 
 const BackgroundSection = styled.div`
    position: relative;
-   min-height: 100vh;
 
    ::before {
       content: '';

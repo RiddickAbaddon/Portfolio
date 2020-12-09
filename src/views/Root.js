@@ -1,29 +1,22 @@
-import Container from 'components/atoms/Container/Container'
-import Dropdown from 'components/molecules/Dropdown/Dropdown'
-import PageContext from 'context/PageContext'
 import React from 'react'
-import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import store from 'store'
 import MainTemplate from 'templates/MainTemplate/MainTemplate'
-import { category } from 'testData/dropdown'
+import Home from 'views/Home'
 
-class Root extends React.Component {
-   state = {
-      lang: 'pl',
-   }
-
-   render() {
-      return (
-         <PageContext.Provider value={{ ...this.state }}>
-            <BrowserRouter>
-               <MainTemplate>
-                  <Container>
-                     <Dropdown options={category} label="Filtruj" defaultvalue="all" />
-                  </Container>
-               </MainTemplate>
-            </BrowserRouter>
-         </PageContext.Provider>
-      )
-   }
+const Root = () => {
+   return (
+      <Provider store={store}>
+         <BrowserRouter>
+            <MainTemplate>
+               <Switch>
+                  <Route path="/" component={Home} />
+               </Switch>
+            </MainTemplate>
+         </BrowserRouter>
+      </Provider>
+   )
 }
 
 export default Root

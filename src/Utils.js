@@ -1,9 +1,10 @@
 /* eslint-disable import/prefer-default-export */
 export const getDataByIds = (idsCollection, collection) => {
    const result = []
-   idsCollection.forEach(({ _id }) => {
+   idsCollection.map(({ _id }) => {
       const finded = collection.find((x) => x._id === _id)
       if (finded) result.push(finded)
+      return 0
    })
    return result
 }

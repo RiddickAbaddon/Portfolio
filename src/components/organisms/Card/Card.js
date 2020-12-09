@@ -20,14 +20,19 @@ const StyledCardWrapper = styled(CardWrapper)`
 
 const StyledHeading = styled(Heading)`
    padding: 10px 20px;
+   white-space: nowrap;
+   overflow: hidden;
+   text-overflow: ellipsis;
 `
 
-const TagsWrapper = styled.div`
+const CategoriesWrapper = styled.div`
    display: flex;
    justify-content: center;
    flex-wrap: wrap;
    margin-bottom: 15px;
    margin-top: -5px;
+   height: 30px;
+   overflow: hidden;
 `
 
 const StyledBadge = styled(Badge)`
@@ -59,11 +64,11 @@ const Card = ({ title, image, description, categories, technologies }) => (
          {ReactHtmlParser(removeHtmlTags(description))}
       </StyledText>
       {categories && categories.length ? (
-         <TagsWrapper>
+         <CategoriesWrapper>
             {categories.map((category) => (
                <StyledBadge key={category._id}>#{category[lang]}</StyledBadge>
             ))}
-         </TagsWrapper>
+         </CategoriesWrapper>
       ) : null}
       <StyledTechnologyStack technologies={technologies} />
    </StyledCardWrapper>
