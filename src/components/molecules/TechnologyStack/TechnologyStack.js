@@ -49,9 +49,9 @@ const IconWrapper = styled.div`
    }
 `
 
-const TechnologyStack = ({ technologies, ...props }) => (
+const TechnologyStack = ({ technologies, title, ...props }) => (
    <Wrapper {...props}>
-      <Heading size="h2">Technologie na których pracuje</Heading>
+      <Heading size="h2">{title}</Heading>
       <IconsWrapper>
          {technologies &&
             technologies.map(({ _id, image: { path }, name }) => (
@@ -65,6 +65,7 @@ const TechnologyStack = ({ technologies, ...props }) => (
 )
 
 TechnologyStack.propTypes = {
+   title: PropTypes.string.isRequired,
    technologies: PropTypes.arrayOf(
       PropTypes.shape({
          _id: PropTypes.string,

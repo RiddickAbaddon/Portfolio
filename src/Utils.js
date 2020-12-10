@@ -12,3 +12,11 @@ export const getDataByIds = (idsCollection, collection) => {
 export const removeHtmlTags = (text) => {
    return text.replace(/(<([^>]+)>)/gi, '').trim()
 }
+
+export const getPhrase = (phrases, name, language) => {
+   if (phrases) {
+      const phrase = phrases.find((x) => x.name === name)
+      return phrase ? phrase[language] : name
+   }
+   return '...'
+}

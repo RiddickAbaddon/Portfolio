@@ -66,9 +66,7 @@ const Slide = styled.div`
    padding: 0 10px;
 `
 
-const lang = 'pl'
-
-const RealizationsSliderTemplate = ({ realizations, categories, technologies }) => {
+const RealizationsSliderTemplate = ({ realizations, categories, technologies, language }) => {
    const settings = {
       dots: false,
       infinite: false,
@@ -94,15 +92,16 @@ const RealizationsSliderTemplate = ({ realizations, categories, technologies }) 
                return (
                   <Slide key={_id}>
                      <Card
-                        title={realization[`${lang}_title`]}
+                        title={realization[`${language}_title`]}
                         image={path}
-                        description={realization[`${lang}_description`]}
+                        description={realization[`${language}_description`]}
                         categories={
                            refCategories.length ? getDataByIds(refCategories, categories) : []
                         }
                         technologies={
                            refTechnologies.length ? getDataByIds(refTechnologies, technologies) : []
                         }
+                        language={language}
                      />
                   </Slide>
                )
@@ -151,6 +150,7 @@ RealizationsSliderTemplate.propTypes = {
          }),
       }),
    ).isRequired,
+   language: PropTypes.string.isRequired,
 }
 
 export default RealizationsSliderTemplate

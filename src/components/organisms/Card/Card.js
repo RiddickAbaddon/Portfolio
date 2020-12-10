@@ -11,8 +11,6 @@ import ReactHtmlParser from 'react-html-parser'
 import styled from 'styled-components'
 import { removeHtmlTags } from 'Utils'
 
-const lang = 'pl'
-
 const StyledCardWrapper = styled(CardWrapper)`
    display: flex;
    flex-direction: column;
@@ -56,7 +54,7 @@ const StyledImage = styled(Image)`
    flex-shrink: 0;
 `
 
-const Card = ({ title, image, description, categories, technologies }) => (
+const Card = ({ title, image, description, categories, technologies, language }) => (
    <StyledCardWrapper>
       <StyledImage src={`${API_URL}${image}`} alt={title} />
       <StyledHeading size="h3">{title}</StyledHeading>
@@ -66,7 +64,7 @@ const Card = ({ title, image, description, categories, technologies }) => (
       {categories && categories.length ? (
          <CategoriesWrapper>
             {categories.map((category) => (
-               <StyledBadge key={category._id}>#{category[lang]}</StyledBadge>
+               <StyledBadge key={category._id}>#{category[language]}</StyledBadge>
             ))}
          </CategoriesWrapper>
       ) : null}
@@ -95,6 +93,7 @@ Card.propTypes = {
          }),
       }),
    ).isRequired,
+   language: PropTypes.string.isRequired,
 }
 
 Card.defaultProps = {

@@ -1,3 +1,4 @@
+import { LANGUAGES, setLanguage as setLanguageAction } from 'actions/app'
 import EnglishIcon from 'assets/icons/english.svg'
 import GitHubIcon from 'assets/icons/github.svg'
 import PolishIcon from 'assets/icons/polish.svg'
@@ -5,6 +6,7 @@ import Icon from 'components/atoms/Icon/Icon'
 import ArrowButton from 'components/molecules/ArrowButton/ArrowButton'
 import PropTypes from 'prop-types'
 import React from 'react'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 
@@ -15,6 +17,12 @@ const Wrapper = styled.nav`
    width: 104px;
    padding: 20px;
    z-index: 10;
+   pointer-events: none;
+
+   a,
+   img {
+      pointer-events: all;
+   }
 `
 
 const BackButton = styled(Link)`
@@ -52,13 +60,18 @@ const StyledIcon = styled(Icon)`
    cursor: pointer;
 `
 
-const Navigation = ({ backlink, language }) => (
+const Navigation = ({ backlink, language, setLanguage }) => (
    <Wrapper>
       <BackButton to={backlink || '/'}>
          <ArrowButton prev as="span" />
       </BackButton>
       <NavList up={!backlink}>
-         <StyledIcon src={language === 'pl' ? PolishIcon : EnglishIcon} />
+         <StyledIcon
+            src={language === LANGUAGES.pl ? PolishIcon : EnglishIcon}
+            onClick={() => {
+               setLanguage(language === LANGUAGES.pl ? LANGUAGES.en : LANGUAGES.pl)
+            }}
+         />
          <a href="https://github.com/RiddickAbaddon" target="_blank" rel="noopener noreferrer">
             <Icon src={GitHubIcon} />
          </a>
@@ -68,11 +81,18 @@ const Navigation = ({ backlink, language }) => (
 
 Navigation.propTypes = {
    backlink: PropTypes.string,
-   language: PropTypes.oneOf(['pl', 'eng']).isRequired,
+   language: PropTypes.string.isRequired,
+   setLanguage: PropTypes.func.isRequired,
 }
 
 Navigation.defaultProps = {
    backlink: null,
 }
 
-export default Navigation
+const mapStateToProps = ({ app: { language } }) => ({ language })
+
+const mapDispatchToProps = (dispatch) => ({
+   setLanguage: (language) => dispatch(setLanguageAction(language)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Navigation)

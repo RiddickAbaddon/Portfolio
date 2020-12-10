@@ -15,7 +15,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import CenterPageTemplate from 'templates/CenterPageTemplate/CenterPageTemplate'
 import RealizationsSliderTemplate from 'templates/RealizationsSliderTemplate/RealizationsSliderTemplate'
-import { getDataByIds } from 'Utils'
+import { getDataByIds, getPhrase } from 'Utils'
 
 class Home extends React.Component {
    componentDidMount() {
@@ -27,7 +27,7 @@ class Home extends React.Component {
    }
 
    render() {
-      const { about, realizations, categories, technologies } = this.props
+      const { phrases, about, realizations, categories, technologies, language } = this.props
 
       return (
          <>
@@ -39,13 +39,14 @@ class Home extends React.Component {
                   <Heading size="h4">Front-end developer / UI designer</Heading>
                   <Divider size="medium" />
                   {about ? (
-                     <About avatar={`${API_URL}${about.avatar.path}`}>{about.pl}</About>
+                     <About avatar={`${API_URL}${about.avatar.path}`}>{about[language]}</About>
                   ) : (
                      <PreloadAbout />
                   )}
                   <Divider size="large" />
-                  {technologies && about ? (
+                  {technologies && about && phrases ? (
                      <TechnologyStack
+                        title={getPhrase(phrases, 'technologies-i-work-with', language)}
                         technologies={getDataByIds(about.technologies, technologies)}
                      />
                   ) : (
@@ -57,7 +58,7 @@ class Home extends React.Component {
             <BackgroundSection background="center">
                <Container>
                   <Divider size="large" />
-                  <Heading size="h1">Realizacje</Heading>
+                  <Heading size="h1">{getPhrase(phrases, 'realizations', language)}</Heading>
                   <Divider size="large" />
                </Container>
 
@@ -66,6 +67,7 @@ class Home extends React.Component {
                      realizations={realizations.slice(0, 9)}
                      categories={categories}
                      technologies={technologies}
+                     language={language}
                   />
                ) : (
                   <Container>
@@ -77,11 +79,11 @@ class Home extends React.Component {
 
                <Container>
                   <Divider size="large" />
-                  <Button>Zobacz więcej</Button>
+                  <Button>{getPhrase(phrases, 'show-more', language)}</Button>
                </Container>
             </BackgroundSection>
             <BackgroundSection background="bottom">
-               <CenterPageTemplate title="Kontakt">
+               <CenterPageTemplate title={getPhrase(phrases, 'contact', language)}>
                   <Container>
                      <Button>marcin36k@outlook.com</Button>
                   </Container>
@@ -93,6 +95,13 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
+   phrases: PropTypes.arrayOf(
+      PropTypes.shape({
+         name: PropTypes.string,
+         pl: PropTypes.string,
+         en: PropTypes.string,
+      }),
+   ),
    about: PropTypes.shape({
       avatar: PropTypes.shape({
          path: PropTypes.string,
@@ -143,6 +152,7 @@ Home.propTypes = {
          }),
       }),
    ),
+   language: PropTypes.string.isRequired,
    fetchAbout: PropTypes.func.isRequired,
    fetchRealizations: PropTypes.func.isRequired,
    fetchCategories: PropTypes.func.isRequired,
@@ -154,13 +164,19 @@ Home.defaultProps = {
    realizations: null,
    categories: null,
    technologies: null,
+   phrases: null,
 }
 
-const mapStateToProps = ({ api: { about, realizations, categories, technologies } }) => ({
+const mapStateToProps = ({
+   api: { about, realizations, categories, technologies, phrases },
+   app: { language },
+}) => ({
    about,
    realizations,
    categories,
    technologies,
+   language,
+   phrases,
 })
 
 const mapDispatchToProps = (dispatch) => ({
