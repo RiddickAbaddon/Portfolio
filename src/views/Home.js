@@ -17,6 +17,12 @@ import CenterPageTemplate from 'templates/CenterPageTemplate/CenterPageTemplate'
 import RealizationsSliderTemplate from 'templates/RealizationsSliderTemplate/RealizationsSliderTemplate'
 import { getDataByIds, getPhrase } from 'Utils'
 
+const sortRealizations = (a, b) => {
+   if (a._created > b._created) return -1
+   if (a._created < b._created) return 1
+   return 0
+}
+
 class Home extends React.Component {
    componentDidMount() {
       const { fetchAbout, fetchRealizations, fetchCategories, fetchTechnologies } = this.props
@@ -64,7 +70,7 @@ class Home extends React.Component {
 
                {realizations && categories && technologies ? (
                   <RealizationsSliderTemplate
-                     realizations={realizations.slice(0, 9)}
+                     realizations={realizations.sort(sortRealizations).slice(0, 9)}
                      categories={categories}
                      technologies={technologies}
                      language={language}
@@ -133,6 +139,7 @@ Home.propTypes = {
                value: PropTypes.string,
             }),
          ),
+         _created: PropTypes.number,
       }),
    ),
    categories: PropTypes.arrayOf(
