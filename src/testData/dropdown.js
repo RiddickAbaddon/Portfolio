@@ -19,7 +19,7 @@ export const sort = [
    },
 ]
 
-export const category = [
+export const categories = [
    {
       _id: '1',
       value: 'all',

@@ -1,4 +1,4 @@
-import { fetchCollection, fetchSingleton } from 'actions/api'
+import { fetchSingleton } from 'actions/api'
 import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
@@ -13,6 +13,7 @@ import { API_URL } from 'defines'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom'
 import CenterPageTemplate from 'templates/CenterPageTemplate/CenterPageTemplate'
 import RealizationsSliderTemplate from 'templates/RealizationsSliderTemplate/RealizationsSliderTemplate'
 import { getDataByIds, getPhrase } from 'Utils'
@@ -25,11 +26,8 @@ const sortRealizations = (a, b) => {
 
 class Home extends React.Component {
    componentDidMount() {
-      const { fetchAbout, fetchRealizations, fetchCategories, fetchTechnologies } = this.props
+      const { fetchAbout } = this.props
       fetchAbout()
-      fetchRealizations()
-      fetchCategories()
-      fetchTechnologies()
    }
 
    render() {
@@ -85,13 +83,17 @@ class Home extends React.Component {
 
                <Container>
                   <Divider size="large" />
-                  <Button>{getPhrase(phrases, 'show-more', language)}</Button>
+                  <Button as={Link} to="/realizations">
+                     {getPhrase(phrases, 'show-more', language)}
+                  </Button>
                </Container>
             </BackgroundSection>
             <BackgroundSection background="bottom">
                <CenterPageTemplate title={getPhrase(phrases, 'contact', language)}>
                   <Container>
-                     <Button>marcin36k@outlook.com</Button>
+                     <Button as="a" href="mailto: Marcin36K@outlook.com">
+                        Marcin36K@outlook.com
+                     </Button>
                   </Container>
                </CenterPageTemplate>
             </BackgroundSection>
@@ -161,9 +163,6 @@ Home.propTypes = {
    ),
    language: PropTypes.string.isRequired,
    fetchAbout: PropTypes.func.isRequired,
-   fetchRealizations: PropTypes.func.isRequired,
-   fetchCategories: PropTypes.func.isRequired,
-   fetchTechnologies: PropTypes.func.isRequired,
 }
 
 Home.defaultProps = {
@@ -188,9 +187,6 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = (dispatch) => ({
    fetchAbout: () => dispatch(fetchSingleton('about')),
-   fetchRealizations: () => dispatch(fetchCollection('realizations')),
-   fetchCategories: () => dispatch(fetchCollection('categories')),
-   fetchTechnologies: () => dispatch(fetchCollection('technologies')),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

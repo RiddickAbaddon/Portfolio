@@ -8,7 +8,8 @@ import styled from 'styled-components'
 const ButtonWrapper = styled.button`
    height: 80px;
    position: relative;
-   display: flex;
+   display: inline-flex;
+   margin: 0 auto;
    text-decoration: none;
    color: ${({ theme }) => theme.fontPrimary};
    align-items: center;
@@ -21,7 +22,6 @@ const ButtonWrapper = styled.button`
    user-select: none;
    text-align: center;
    max-width: 100%;
-   margin: 0 auto;
 
    ::before {
       content: '';

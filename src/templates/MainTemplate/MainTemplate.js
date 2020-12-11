@@ -1,6 +1,7 @@
 import { fetchCollection } from 'actions/api'
 import Footer from 'components/atoms/Footer/Footer'
 import Text from 'components/atoms/Text/Text'
+import ToTop from 'components/atoms/ToTop/ToTop'
 import Navigation from 'components/organisms/Navigation/Navigation'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -17,8 +18,11 @@ const Wrapper = styled.div`
 
 class MainTemplate extends React.Component {
    componentDidMount() {
-      const { fetchPhrases } = this.props
+      const { fetchPhrases, fetchRealizations, fetchCategories, fetchTechnologies } = this.props
       fetchPhrases()
+      fetchRealizations()
+      fetchCategories()
+      fetchTechnologies()
    }
 
    render() {
@@ -26,6 +30,7 @@ class MainTemplate extends React.Component {
 
       return (
          <ThemeProvider theme={MainTheme}>
+            <ToTop />
             <GlobalStyle />
             <SlickSliderStyle />
             <Navigation />
@@ -51,6 +56,9 @@ MainTemplate.propTypes = {
       }),
    ),
    fetchPhrases: PropTypes.func.isRequired,
+   fetchRealizations: PropTypes.func.isRequired,
+   fetchCategories: PropTypes.func.isRequired,
+   fetchTechnologies: PropTypes.func.isRequired,
 }
 
 MainTemplate.defaultProps = {
@@ -61,6 +69,9 @@ const mapStateToProps = ({ api: { phrases }, app: { language } }) => ({ phrases,
 
 const mapDispatchToProps = (dispatch) => ({
    fetchPhrases: () => dispatch(fetchCollection('phrases')),
+   fetchRealizations: () => dispatch(fetchCollection('realizations')),
+   fetchCategories: () => dispatch(fetchCollection('categories')),
+   fetchTechnologies: () => dispatch(fetchCollection('technologies')),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainTemplate)

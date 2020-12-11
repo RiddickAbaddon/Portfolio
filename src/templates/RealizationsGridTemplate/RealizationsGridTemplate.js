@@ -4,15 +4,13 @@ import React from 'react'
 import styled from 'styled-components'
 import { getDataByIds } from 'Utils'
 
-const lang = 'pl'
-
 const Wrapper = styled.section`
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(3, calc(33.33333% - 26.5px));
    grid-gap: 40px;
 `
 
-const RealizationsGridTemplate = ({ realizations, categories, technologies }) => (
+const RealizationsGridTemplate = ({ realizations, categories, technologies, language }) => (
    <Wrapper>
       {realizations.map((realization) => {
          const {
@@ -25,13 +23,14 @@ const RealizationsGridTemplate = ({ realizations, categories, technologies }) =>
          return (
             <Card
                key={_id}
-               title={realization[`${lang}_title`]}
+               title={realization[`${language}_title`]}
                image={path}
-               description={realization[`${lang}_description`]}
+               description={realization[`${language}_description`]}
                categories={refCategories.length ? getDataByIds(refCategories, categories) : []}
                technologies={
                   refTechnologies.length ? getDataByIds(refTechnologies, technologies) : []
                }
+               language={language}
             />
          )
       })}
@@ -76,6 +75,7 @@ RealizationsGridTemplate.propTypes = {
          }),
       }),
    ).isRequired,
+   language: PropTypes.string.isRequired,
 }
 
 export default RealizationsGridTemplate

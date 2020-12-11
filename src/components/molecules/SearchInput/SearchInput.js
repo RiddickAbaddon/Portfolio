@@ -1,4 +1,5 @@
 import SearchIcon from '@material-ui/icons/Search'
+import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
@@ -54,7 +55,7 @@ const StyledIcon = styled(SearchIcon)`
    color: ${({ theme }) => theme.fontPrimary} !important;
 `
 
-const SearchInput = ({ ...props }) => {
+const SearchInput = ({ label, ...props }) => {
    const [value, setValue] = useState('')
 
    return (
@@ -62,7 +63,7 @@ const SearchInput = ({ ...props }) => {
          <Input
             type="search"
             active={value !== ''}
-            placeholder="Szukaj..."
+            placeholder={label}
             onChange={(e) => setValue(e.target.value)}
          />
          <IconWrapper>
@@ -70,6 +71,10 @@ const SearchInput = ({ ...props }) => {
          </IconWrapper>
       </Wrapper>
    )
+}
+
+SearchInput.propTypes = {
+   label: PropTypes.string.isRequired,
 }
 
 export default SearchInput

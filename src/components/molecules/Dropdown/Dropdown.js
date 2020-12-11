@@ -120,24 +120,30 @@ const Option = styled.button`
    }
 `
 
+const Value = styled.span`
+   text-transform: lowercase;
+`
+
 class Dropdown extends React.Component {
    constructor(props) {
       super(props)
 
       this.Select = createRef()
-   }
 
-   state = {
-      isOpen: false,
-      value: null,
-      sortDirection: 'asc',
+      const { sort } = this.props
+
+      this.state = {
+         isOpen: false,
+         value: null,
+         sortDirection: sort,
+      }
    }
 
    componentDidMount() {
       const { defaultvalue, options } = this.props
       try {
          const option = options.find((x) => x.value === defaultvalue)
-         this.setState({ value: option.display })
+         this.setState({ value: option.value })
       } catch (e) {
          this.setState({ value: e.message })
       }
@@ -157,33 +163,40 @@ class Dropdown extends React.Component {
       }
    }
 
-   handleClickOption(e, value) {
-      this.Select.current.value = value
-      const { options } = this.props
-      const option = options.find((x) => x.value === value)
-      this.setState({
-         value: option.display,
-      })
+   handleClickOption(e, selectedValue) {
+      this.Select.current.value = selectedValue
+      const { options, setValueCallback } = this.props
+      const option = options.find((x) => x.value === selectedValue)
+      this.setState(
+         {
+            value: option.value,
+         },
+         () => {
+            const { value, sortDirection } = this.state
+            setValueCallback(value, sortDirection)
+         },
+      )
       e.currentTarget.blur()
    }
 
    toggleSortDirection() {
+      const { setValueCallback } = this.props
       const { sortDirection } = this.state
-      if (sortDirection === 'asc') {
-         this.setState({
-            sortDirection: 'desc',
-         })
-      } else {
-         this.setState({
-            sortDirection: 'asc',
-         })
-      }
+      this.setState(
+         {
+            sortDirection: sortDirection === 'asc' ? 'desc' : 'asc',
+         },
+         () => {
+            const { value, sortDirection: newSortDirection } = this.state
+            setValueCallback(value, newSortDirection)
+         },
+      )
    }
 
    render() {
       const { options, label, sort, defaultvalue, ...props } = this.props
       const { value, isOpen, sortDirection } = this.state
-
+      const buttonDisplay = value ? options.find((x) => x.value === value).display : ''
       return (
          <Wrapper
             tabIndex="0"
@@ -194,14 +207,14 @@ class Dropdown extends React.Component {
          >
             <Select ref={this.Select} defaultValue={defaultvalue}>
                {options &&
-                  options.map(({ _id, value: optValue, displayList }) => (
+                  options.map(({ _id, value: optValue, display }) => (
                      <option key={_id} value={optValue}>
-                        {displayList}
+                        {display}
                      </option>
                   ))}
             </Select>
             <Button active={isOpen}>
-               {label}:&nbsp;{value && value}
+               {label}:&nbsp;<Value>{buttonDisplay}</Value>
                {sort && (
                   <IconWrapper onClick={() => this.toggleSortDirection()}>
                      <StyledIcon direction={sortDirection} />
@@ -210,14 +223,14 @@ class Dropdown extends React.Component {
             </Button>
             {isOpen && (
                <DropdownList>
-                  {options.map(({ _id, value: optValue, displayList }) => (
+                  {options.map(({ _id, value: optValue, display }) => (
                      <Option
                         key={_id}
                         value={optValue}
                         selected={optValue === value}
                         onClick={(e) => this.handleClickOption(e, optValue)}
                      >
-                        {displayList}
+                        {display}
                      </Option>
                   ))}
                </DropdownList>
@@ -233,17 +246,18 @@ Dropdown.propTypes = {
          _id: PropTypes.string,
          value: PropTypes.string,
          display: PropTypes.string,
-         displayList: PropTypes.string,
       }),
    ),
    label: PropTypes.string.isRequired,
-   sort: PropTypes.bool,
+   sort: PropTypes.string,
    defaultvalue: PropTypes.string.isRequired,
+   setValueCallback: PropTypes.func,
 }
 
 Dropdown.defaultProps = {
    options: null,
-   sort: false,
+   sort: null,
+   setValueCallback: () => {},
 }
 
 export default Dropdown
