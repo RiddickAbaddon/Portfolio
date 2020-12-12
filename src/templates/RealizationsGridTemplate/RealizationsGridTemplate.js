@@ -23,6 +23,7 @@ const RealizationsGridTemplate = ({ realizations, categories, technologies, lang
          return (
             <Card
                key={_id}
+               link={`/realizations/${_id}`}
                title={realization[`${language}_title`]}
                image={path}
                description={realization[`${language}_description`]}

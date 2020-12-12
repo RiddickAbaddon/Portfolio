@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import store from 'store'
 import MainTemplate from 'templates/MainTemplate/MainTemplate'
 import Home from 'views/Home'
+import Realization from 'views/Realization'
 import Realizations from 'views/Realizations'
 
 const Root = () => {
@@ -12,6 +13,7 @@ const Root = () => {
          <BrowserRouter>
             <MainTemplate>
                <Switch>
+                  <Route path="/realizations/:id" component={Realization} />
                   <Route path="/realizations" component={Realizations} />
                   <Route path="/" component={Home} />
                </Switch>

@@ -92,6 +92,7 @@ const RealizationsSliderTemplate = ({ realizations, categories, technologies, la
                return (
                   <Slide key={_id}>
                      <Card
+                        link={`/realizations/${_id}`}
                         title={realization[`${language}_title`]}
                         image={path}
                         description={realization[`${language}_description`]}

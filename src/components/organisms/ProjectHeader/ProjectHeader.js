@@ -6,7 +6,8 @@ import styled from 'styled-components'
 
 const Wrapper = styled.header`
    width: 100%;
-   max-width: 700px;
+   max-width: 1000px;
+   text-align: center;
 `
 
 const StyledImage = styled(Image)`
@@ -29,8 +30,6 @@ const HeadingWrapper = styled.div`
    background: ${({ theme }) => theme.bgPrimary};
    position: relative;
    top: -32px;
-   left: 50%;
-   transform: translateX(-50%);
 `
 
 const ProjectHeader = ({ image, title }) => (

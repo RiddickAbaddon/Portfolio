@@ -1,6 +1,3 @@
-import GitHubIcon from '@material-ui/icons/GitHub'
-import LinkIcon from '@material-ui/icons/Link'
-import WebIcon from '@material-ui/icons/Web'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -54,7 +51,9 @@ const IconWrapper = styled.span`
    display: block;
    position: relative;
    z-index: 1;
-   margin-right: 15px;
+   margin-right: 10px;
+   width: 32px;
+   height: 32px;
 
    .MuiSvgIcon-root {
       color: ${({ theme }) => theme.fontPrimary} !important;
@@ -62,13 +61,11 @@ const IconWrapper = styled.span`
    }
 `
 
-const Button = ({ children, icon, ...props }) => (
+const Button = ({ children, icon: IconComponent, ...props }) => (
    <ButtonWrapper {...props}>
-      {icon && (
+      {IconComponent && (
          <IconWrapper>
-            {icon === 'link' && <LinkIcon />}
-            {icon === 'github' && <GitHubIcon />}
-            {icon === 'web' && <WebIcon />}
+            <IconComponent />
          </IconWrapper>
       )}
       <ButtonText>{children}</ButtonText>
@@ -77,7 +74,7 @@ const Button = ({ children, icon, ...props }) => (
 
 Button.propTypes = {
    children: PropTypes.string.isRequired,
-   icon: PropTypes.oneOf(['link', 'github', 'web']),
+   icon: PropTypes.func,
 }
 
 Button.defaultProps = {
