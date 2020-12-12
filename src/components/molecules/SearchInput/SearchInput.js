@@ -55,8 +55,8 @@ const StyledIcon = styled(SearchIcon)`
    color: ${({ theme }) => theme.fontPrimary} !important;
 `
 
-const SearchInput = ({ label, ...props }) => {
-   const [value, setValue] = useState('')
+const SearchInput = ({ label, defaultValue, setValueCallback, ...props }) => {
+   const [value, setValue] = useState(defaultValue)
 
    return (
       <Wrapper {...props}>
@@ -64,7 +64,11 @@ const SearchInput = ({ label, ...props }) => {
             type="search"
             active={value !== ''}
             placeholder={label}
-            onChange={(e) => setValue(e.target.value)}
+            defaultValue={defaultValue}
+            onChange={({ target: { value: changeValue } }) => {
+               setValue(changeValue)
+               setValueCallback(changeValue)
+            }}
          />
          <IconWrapper>
             <StyledIcon />
@@ -75,6 +79,13 @@ const SearchInput = ({ label, ...props }) => {
 
 SearchInput.propTypes = {
    label: PropTypes.string.isRequired,
+   setValueCallback: PropTypes.func,
+   defaultValue: PropTypes.string,
+}
+
+SearchInput.defaultProps = {
+   setValueCallback: () => {},
+   defaultValue: '',
 }
 
 export default SearchInput

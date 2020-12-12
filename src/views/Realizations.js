@@ -12,7 +12,7 @@ import { getPhrase } from 'Utils'
 
 class Realizations extends React.Component {
    filterRealizations() {
-      const { sort, filter, realizations } = this.props
+      const { sort, filter, realizations, language } = this.props
 
       if (realizations) {
          let filtered = [...realizations]
@@ -37,6 +37,15 @@ class Realizations extends React.Component {
             })
          }
 
+         if (filter.search !== '') {
+            filtered = filtered.filter((x) => {
+               const phrase = filter.search.toLowerCase()
+               const title = x[`${language}_title`].toLowerCase()
+               const description = x[`${language}_description`].toLowerCase()
+               return title.includes(phrase) || description.includes(phrase)
+            })
+         }
+
          if (sort.option === 'date') {
             filtered = filtered.sort((a, b) => {
                if (a._created > b._created) return sortTrue
@@ -45,7 +54,7 @@ class Realizations extends React.Component {
             })
          } else if (sort.option === 'technologycount') {
             filtered = filtered.sort((a, b) => {
-               if (sort.direction === 'asc') return a.technologies.length - b.technologies.length
+               if (sort.direction === 'desc') return a.technologies.length - b.technologies.length
                return b.technologies.length - a.technologies.length
             })
          } else if (sort.option === 'category') {
@@ -149,6 +158,7 @@ Realizations.propTypes = {
    filter: PropTypes.shape({
       category: PropTypes.string,
       technology: PropTypes.string,
+      search: PropTypes.string,
    }).isRequired,
 }
 

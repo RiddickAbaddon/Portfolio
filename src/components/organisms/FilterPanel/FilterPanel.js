@@ -1,4 +1,8 @@
-import { setFilter as setFilterAction, setSort as setSortAction } from 'actions/app'
+import {
+   setFilter as setFilterAction,
+   setSearch as setSearchAction,
+   setSort as setSortAction,
+} from 'actions/app'
 import Dropdown from 'components/molecules/Dropdown/Dropdown'
 import SearchInput from 'components/molecules/SearchInput/SearchInput'
 import PropTypes from 'prop-types'
@@ -116,6 +120,7 @@ const FilterPanel = ({
    language,
    setSort,
    setFilter,
+   setSearch,
    sort,
    filter,
 }) => {
@@ -157,7 +162,13 @@ const FilterPanel = ({
                </>
             )}
          </Section>
-         <StyledSearch label={`${getPhrase(phrases, 'search', language)}...`} />
+         <StyledSearch
+            label={`${getPhrase(phrases, 'search', language)}...`}
+            defaultValue={filter.search}
+            setValueCallback={(value) => {
+               setSearch(value)
+            }}
+         />
       </Wrapper>
    )
 }
@@ -216,9 +227,11 @@ FilterPanel.propTypes = {
    filter: PropTypes.shape({
       category: PropTypes.string,
       technology: PropTypes.string,
+      search: PropTypes.string,
    }).isRequired,
    setSort: PropTypes.func.isRequired,
    setFilter: PropTypes.func.isRequired,
+   setSearch: PropTypes.func.isRequired,
 }
 
 FilterPanel.defaultProps = {
@@ -236,6 +249,7 @@ const mapStateToProps = ({
 const mapDispatchToProps = (dispatch) => ({
    setSort: (option, direction) => dispatch(setSortAction(option, direction)),
    setFilter: (type, value) => dispatch(setFilterAction(type, value)),
+   setSearch: (phrase) => dispatch(setSearchAction(phrase)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterPanel)

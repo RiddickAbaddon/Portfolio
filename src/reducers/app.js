@@ -6,6 +6,7 @@ import {
    LANGUAGES,
    SET_FILTER,
    SET_LANGUAGE,
+   SET_SEARCH,
    SET_SORT,
 } from 'actions/app'
 
@@ -45,6 +46,15 @@ const appReducer = (state = initialState, action) => {
             filter: {
                ...state.filter,
                [action.payload.type]: action.payload.value,
+            },
+         }
+      }
+      case SET_SEARCH: {
+         return {
+            ...state,
+            filter: {
+               ...state.filter,
+               search: action.payload.phrase,
             },
          }
       }

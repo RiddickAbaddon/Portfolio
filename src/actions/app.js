@@ -1,11 +1,14 @@
 export const SET_LANGUAGE = 'SET_LANGUAGE'
 export const SET_SORT = 'SET_SORT'
 export const SET_FILTER = 'SET_FILTER'
+export const SET_SEARCH = 'SET_SEARCH'
 
 export const DEFAULT_SORT = 'date'
-export const DEFAULT_SORT_DIRECTION = 'desc'
+export const DEFAULT_SORT_DIRECTION = 'asc'
 export const DEFAULT_CATEGORY = 'all'
 export const DEFAULT_TECHNOLOGY = 'all'
+
+let searchTimeout = null
 
 export const LANGUAGES = {
    pl: 'pl',
@@ -22,4 +25,11 @@ export const setSort = (option, direction) => (dispatch) => {
 
 export const setFilter = (type, value) => (dispatch) => {
    dispatch({ type: SET_FILTER, payload: { type, value } })
+}
+
+export const setSearch = (phrase) => (dispatch) => {
+   clearTimeout(searchTimeout)
+   searchTimeout = setTimeout(() => {
+      dispatch({ type: SET_SEARCH, payload: { phrase } })
+   }, 300)
 }
