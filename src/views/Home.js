@@ -1,9 +1,11 @@
 import { fetchSingleton } from 'actions/api'
+import mailIcon from 'assets/mail.svg'
 import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
 import PreloadAbout from 'components/atoms/PreloadAbout/PreloadAbout'
+import SVG from 'components/atoms/SVG/SVG'
 import Button from 'components/molecules/Button/Button'
 import PreloadCards from 'components/molecules/PreloadCard/PreloadCards'
 import PreloadTechnologyStack from 'components/molecules/PreloadTechnologyStack/PreloadTechnologyStack'
@@ -89,6 +91,8 @@ class Home extends React.Component {
             <BackgroundSection background="bottom">
                <CenterPageTemplate title={getPhrase(phrases, 'contact', language)}>
                   <Container>
+                     <SVG src={mailIcon} alt="mail" />
+                     <Divider size="medium" />
                      <Button as="a" href="mailto: Marcin36K@outlook.com">
                         Marcin36K@outlook.com
                      </Button>

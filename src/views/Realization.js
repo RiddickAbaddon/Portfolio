@@ -7,6 +7,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import RealizationTemplate from 'templates/RealizationTemplate/RealizationTemplate'
 import { getDataByIds } from 'Utils'
+import Page404 from 'views/Page404'
 
 const Realization = ({
    match: {
@@ -22,7 +23,7 @@ const Realization = ({
       const project = realizations.find((x) => x._id === id)
 
       if (!project) {
-         return <>Error 404</>
+         return <Page404 />
       }
 
       const projectCategories = getDataByIds(project.categories, categories)
