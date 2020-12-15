@@ -80,7 +80,8 @@ const StyledText = styled(Text)`
    padding: 75px 50px 50px 50px;
    position: relative;
    z-index: 2;
-   animation: ${ShowText} 0.75s 1.75s ${({ theme }) => theme.easing.primary} backwards;
+   animation: ${ShowText} 0.75s ${({ theme }) => theme.easing.primary} backwards;
+   animation-delay: ${({ delay }) => delay || 0}s;
 `
 
 const Avatar = styled(Image)`
@@ -94,7 +95,8 @@ const Avatar = styled(Image)`
    top: 0;
    transform: translate(-50%, -50%);
    z-index: 5;
-   animation: ${ShowAvatar} 0.5s 1s ease-out backwards;
+   animation: ${ShowAvatar} 0.5s ease-out backwards;
+   animation-delay: ${({ delay }) => delay || 0}s;
    will-change: transform;
 `
 
@@ -107,7 +109,8 @@ const Background = styled(CardWrapper)`
    z-index: 0;
    will-change: transform;
    transform-origin: top;
-   animation: ${ShowBackground} 1.5s 0.6s ${({ theme }) => theme.easing.primary} backwards;
+   animation: ${ShowBackground} 1.5s ${({ theme }) => theme.easing.primary} backwards;
+   animation-delay: ${({ delay }) => delay || 0}s;
 `
 
 const Line = styled.div`
@@ -152,22 +155,23 @@ const Circle = styled.div`
    z-index: 3;
    transform: translate(-50%, 50%);
    background: ${({ theme }) => theme.accentColor};
-   animation: ${ShowCircle} 0.3s 2.4s ease-out backwards;
+   animation: ${ShowCircle} 0.3s 1.4s ease-out backwards;
    box-shadow: ${({ theme }) => theme.shadow.glow};
+   animation-delay: ${({ delay }) => delay || 0}s;
 `
 
 const About = ({ avatar, children, ...props }) => (
    <Wrapper {...props}>
-      <Avatar src={avatar} alt="Marcin Kalinowski" />
-      <Line delay="1.1" />
-      <StyledGlow delay="1.8" />
+      <Avatar src={avatar} alt="Marcin Kalinowski" delay="0.1" />
+      <Line delay="0.3" />
+      <StyledGlow delay="0.8" />
       <TextWrapper>
-         <StyledText>{children}</StyledText>
+         <StyledText delay="1">{children}</StyledText>
       </TextWrapper>
-      <StyledGlow bottom delay="2.7" />
-      <Line bottom delay="2.4" />
-      <Circle />
-      <Background />
+      <StyledGlow bottom delay="1.7" />
+      <Line bottom delay="1.7" />
+      <Circle delay="1.6" />
+      <Background delay="0.2" />
    </Wrapper>
 )
 

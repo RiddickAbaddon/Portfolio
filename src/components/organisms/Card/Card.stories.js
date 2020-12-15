@@ -1,6 +1,7 @@
 import Card from 'components/organisms/Card/Card'
 import PropTypes from 'prop-types'
 import React from 'react'
+import StoryRouter from 'storybook-react-router'
 import styled from 'styled-components'
 import { categories, realizations, technologies } from 'testData/api'
 
@@ -19,6 +20,7 @@ const CardWrapper = styled.div`
 export default {
    component: Card,
    title: 'Organisms/Card',
+   decorators: [StoryRouter()],
    argTypes: {
       title: {
          control: 'text',

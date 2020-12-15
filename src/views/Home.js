@@ -5,7 +5,7 @@ import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
 import PreloadAbout from 'components/atoms/PreloadAbout/PreloadAbout'
 import Button from 'components/molecules/Button/Button'
-import PreloadCard from 'components/molecules/PreloadCard/PreloadCard'
+import PreloadCards from 'components/molecules/PreloadCard/PreloadCards'
 import PreloadTechnologyStack from 'components/molecules/PreloadTechnologyStack/PreloadTechnologyStack'
 import TechnologyStack from 'components/molecules/TechnologyStack/TechnologyStack'
 import About from 'components/organisms/About/About'
@@ -75,9 +75,7 @@ class Home extends React.Component {
                   />
                ) : (
                   <Container>
-                     <PreloadCard />
-                     <PreloadCard delay={0.2} />
-                     <PreloadCard delay={0.4} />
+                     <PreloadCards smallgap />
                   </Container>
                )}
 

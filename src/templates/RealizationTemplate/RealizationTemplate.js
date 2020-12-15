@@ -3,8 +3,6 @@ import GitHubIcon from '@material-ui/icons/GitHub'
 import LinkIcon from '@material-ui/icons/Link'
 import WebAssetIcon from '@material-ui/icons/WebAsset'
 import FigmaIconURL from 'assets/icons/figma.svg'
-import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
-import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Icon from 'components/atoms/Icon/Icon'
 import Text from 'components/atoms/Text/Text'
@@ -22,6 +20,10 @@ import { getPhrase } from 'Utils'
 
 const FigmaIcon = () => <Icon src={FigmaIconURL} small />
 
+const Wrapper = styled.div`
+   max-width: 1000px;
+`
+
 const ButtonsWrapper = styled.div`
    display: flex;
    flex-wrap: wrap;
@@ -34,105 +36,103 @@ const ButtonContainer = styled.div`
 `
 
 const RealizationTemplate = ({ phrases, realization, categories, technologies, language }) => (
-   <BackgroundSection background="top">
-      <Container>
-         <ProjectHeader
-            image={`${API_URL}${realization.thumbnail.path}`}
-            title={realization[`${language}_title`]}
-         />
-         <Categories categories={categories} language={language} />
-         <Text>{ReactHtmlParser(realization[`${language}_description`])}</Text>
-         {technologies.length ? (
-            <>
-               <Divider size="medium" />
-               <TechnologyStack
-                  title={getPhrase(phrases, 'technology-used', language)}
-                  technologies={technologies}
-               />
-            </>
-         ) : null}
-         <Divider size="medium" />
-         <ButtonsWrapper>
-            {realization.links.map(({ value, field: { label } }) => {
-               switch (label) {
-                  case 'app':
-                     return (
-                        <ButtonContainer>
-                           <Button
-                              icon={WebAssetIcon}
-                              as="a"
-                              href={value}
-                              target="_balnk"
-                              rel="noopener noreferrer"
-                           >
-                              {getPhrase(phrases, 'app', language)}
-                           </Button>
-                        </ButtonContainer>
-                     )
-                  case 'demo':
-                     return (
-                        <ButtonContainer>
-                           <Button
-                              icon={LinkIcon}
-                              as="a"
-                              href={value}
-                              target="_balnk"
-                              rel="noopener noreferrer"
-                           >
-                              {getPhrase(phrases, 'demo', language)}
-                           </Button>
-                        </ButtonContainer>
-                     )
-                  case 'download':
-                     return (
-                        <ButtonContainer>
-                           <Button
-                              icon={GetAppIcon}
-                              as="a"
-                              href={value}
-                              target="_balnk"
-                              rel="noopener noreferrer"
-                           >
-                              {getPhrase(phrases, 'download', language)}
-                           </Button>
-                        </ButtonContainer>
-                     )
-                  case 'github':
-                     return (
-                        <ButtonContainer>
-                           <Button
-                              icon={GitHubIcon}
-                              as="a"
-                              href={value}
-                              target="_balnk"
-                              rel="noopener noreferrer"
-                           >
-                              {getPhrase(phrases, 'github', language)}
-                           </Button>
-                        </ButtonContainer>
-                     )
-                  case 'figma':
-                     return (
-                        <ButtonContainer>
-                           <Button
-                              icon={FigmaIcon}
-                              as="a"
-                              href={value}
-                              target="_balnk"
-                              rel="noopener noreferrer"
-                           >
-                              {getPhrase(phrases, 'figma', language)}
-                           </Button>
-                        </ButtonContainer>
-                     )
-                  default:
-                     return null
-               }
-            })}
-         </ButtonsWrapper>
-         <Divider size="large" />
-      </Container>
-   </BackgroundSection>
+   <Wrapper>
+      <ProjectHeader
+         image={`${API_URL}${realization.thumbnail.path}`}
+         title={realization[`${language}_title`]}
+      />
+      <Categories categories={categories} language={language} />
+      <Text>{ReactHtmlParser(realization[`${language}_description`])}</Text>
+      {technologies.length ? (
+         <>
+            <Divider size="medium" />
+            <TechnologyStack
+               title={getPhrase(phrases, 'technology-used', language)}
+               technologies={technologies}
+            />
+         </>
+      ) : null}
+      <Divider size="medium" />
+      <ButtonsWrapper>
+         {realization.links.map(({ value, field: { label } }) => {
+            switch (label) {
+               case 'app':
+                  return (
+                     <ButtonContainer>
+                        <Button
+                           icon={WebAssetIcon}
+                           as="a"
+                           href={value}
+                           target="_balnk"
+                           rel="noopener noreferrer"
+                        >
+                           {getPhrase(phrases, 'app', language)}
+                        </Button>
+                     </ButtonContainer>
+                  )
+               case 'demo':
+                  return (
+                     <ButtonContainer>
+                        <Button
+                           icon={LinkIcon}
+                           as="a"
+                           href={value}
+                           target="_balnk"
+                           rel="noopener noreferrer"
+                        >
+                           {getPhrase(phrases, 'demo', language)}
+                        </Button>
+                     </ButtonContainer>
+                  )
+               case 'download':
+                  return (
+                     <ButtonContainer>
+                        <Button
+                           icon={GetAppIcon}
+                           as="a"
+                           href={value}
+                           target="_balnk"
+                           rel="noopener noreferrer"
+                        >
+                           {getPhrase(phrases, 'download', language)}
+                        </Button>
+                     </ButtonContainer>
+                  )
+               case 'github':
+                  return (
+                     <ButtonContainer>
+                        <Button
+                           icon={GitHubIcon}
+                           as="a"
+                           href={value}
+                           target="_balnk"
+                           rel="noopener noreferrer"
+                        >
+                           {getPhrase(phrases, 'github', language)}
+                        </Button>
+                     </ButtonContainer>
+                  )
+               case 'figma':
+                  return (
+                     <ButtonContainer>
+                        <Button
+                           icon={FigmaIcon}
+                           as="a"
+                           href={value}
+                           target="_balnk"
+                           rel="noopener noreferrer"
+                        >
+                           {getPhrase(phrases, 'figma', language)}
+                        </Button>
+                     </ButtonContainer>
+                  )
+               default:
+                  return null
+            }
+         })}
+      </ButtonsWrapper>
+      <Divider size="large" />
+   </Wrapper>
 )
 
 RealizationTemplate.propTypes = {

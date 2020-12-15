@@ -14,6 +14,14 @@ const Text = styled.p`
          overflow: hidden;
          height: ${theme.line.mainNumber * lineclamp}em;
       `}
+
+   a {
+      color: ${({ theme }) => theme.fontPrimary};
+
+      :hover {
+         color: ${({ theme }) => theme.accentColor};
+      }
+   }
 `
 
 export default Text

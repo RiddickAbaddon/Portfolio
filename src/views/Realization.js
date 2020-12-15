@@ -1,3 +1,6 @@
+import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
+import Container from 'components/atoms/Container/Container'
+import PreloadRealization from 'components/organisms/PreloadRealization/PreloadRealization'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
@@ -15,27 +18,37 @@ const Realization = ({
    technologies,
    language,
 }) => {
-   const project = realizations.find((x) => x._id === id)
+   if (phrases && realizations && categories && technologies) {
+      const project = realizations.find((x) => x._id === id)
 
-   if (phrases && realizations && categories && technologies && project) {
+      if (!project) {
+         return <>Error 404</>
+      }
+
       const projectCategories = getDataByIds(project.categories, categories)
       const projectTechnologies = getDataByIds(project.technologies, technologies)
 
       return (
-         <RealizationTemplate
-            realization={project}
-            categories={projectCategories}
-            technologies={projectTechnologies}
-            language={language}
-         />
+         <BackgroundSection background="top">
+            <Container>
+               <RealizationTemplate
+                  realization={project}
+                  categories={projectCategories}
+                  technologies={projectTechnologies}
+                  language={language}
+               />
+            </Container>
+         </BackgroundSection>
       )
    }
 
-   if (realizations && phrases && !project) {
-      return <>Error 404</>
-   }
-
-   return <>Loading</>
+   return (
+      <BackgroundSection background="top">
+         <Container>
+            <PreloadRealization />
+         </Container>
+      </BackgroundSection>
+   )
 }
 
 Realization.propTypes = {

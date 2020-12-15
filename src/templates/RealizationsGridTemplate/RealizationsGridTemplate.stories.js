@@ -1,4 +1,5 @@
 import React from 'react'
+import StoryRouter from 'storybook-react-router'
 import styled from 'styled-components'
 import RealizationsGridTemplate from 'templates/RealizationsGridTemplate/RealizationsGridTemplate'
 import { categories, realizations, technologies } from 'testData/api'
@@ -11,6 +12,7 @@ const Wrapper = styled.div`
 export default {
    component: RealizationsGridTemplate,
    title: 'Templates/RealizationsGridTemplate',
+   decorators: [StoryRouter()],
 }
 
 export const Basic = () => (

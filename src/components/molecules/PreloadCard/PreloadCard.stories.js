@@ -1,15 +1,10 @@
 import PreloadCard from 'components/molecules/PreloadCard/PreloadCard'
+import PreloadCards from 'components/molecules/PreloadCard/PreloadCards'
 import React from 'react'
 import styled from 'styled-components'
 
 const CardWrapper = styled.div`
    width: 310px;
-`
-
-const Wrapper = styled.div`
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   grid-gap: 20px;
 `
 
 export default {
@@ -23,10 +18,4 @@ export const Basic = () => (
    </CardWrapper>
 )
 
-export const Cards = () => (
-   <Wrapper>
-      <PreloadCard />
-      <PreloadCard delay={0.2} />
-      <PreloadCard delay={0.4} />
-   </Wrapper>
-)
+export const Cards = () => <PreloadCards />

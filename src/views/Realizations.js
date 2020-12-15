@@ -2,7 +2,7 @@ import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSect
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
-import PreloadCard from 'components/molecules/PreloadCard/PreloadCard'
+import PreloadCards from 'components/molecules/PreloadCard/PreloadCards'
 import FilterPanel from 'components/organisms/FilterPanel/FilterPanel'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -91,11 +91,7 @@ class Realizations extends React.Component {
                      language={language}
                   />
                ) : (
-                  <>
-                     <PreloadCard />
-                     <PreloadCard delay={0.2} />
-                     <PreloadCard delay={0.4} />
-                  </>
+                  <PreloadCards />
                )}
                <Divider size="large" />
             </Container>

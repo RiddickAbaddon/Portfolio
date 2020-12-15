@@ -1,5 +1,6 @@
 import CardWrapper from 'components/atoms/CardWrapper/CardWrapper'
 import PreloadImage from 'components/atoms/PreloadImage/PreloadImage'
+import PreloadCategories from 'components/molecules/PreloadCategories/PreloadCategories'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
@@ -53,20 +54,6 @@ const Image = styled(PreloadImage)`
    animation-delay: ${({ globaldelay }) => globaldelay}s;
 `
 
-const Tag = styled(PreloadImage)`
-   margin: 0 5px;
-   height: 20px;
-   border-radius: 10px;
-   width: ${({ width }) => width};
-   animation-delay: ${({ delay, globaldelay }) => (delay || 0) + globaldelay}s;
-`
-
-const TagsWrapper = styled.div`
-   display: flex;
-   margin-top: 10px;
-   margin-bottom: 20px;
-`
-
 const Icon = styled(PreloadImage)`
    width: 32px;
    height: 32px;
@@ -96,10 +83,7 @@ const PreloadCard = ({ delay: globalDelay }) => (
          <DescriptionLine width="80%" globaldelay={globalDelay} />
          <DescriptionLine width="90%" globaldelay={globalDelay} />
          <DescriptionLine width="60%" globaldelay={globalDelay} />
-         <TagsWrapper>
-            <Tag width="80px" globaldelay={globalDelay} />
-            <Tag width="90px" delay={0.06} globaldelay={globalDelay} />
-         </TagsWrapper>
+         <PreloadCategories delay={globalDelay} />
       </Container>
       <CardFooter>
          {delays.map((delay, i) => (
