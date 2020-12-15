@@ -12,12 +12,38 @@ import { getPhrase } from 'Utils'
 
 class Realizations extends React.Component {
    filterRealizations() {
-      const { sort, filter, realizations, language } = this.props
+      const { sort, filter, realizations, categories, language } = this.props
 
       if (realizations) {
          let filtered = [...realizations]
-         const sortTrue = sort.direction === 'asc' ? 1 : -1
-         const sortFalse = sort.direction === 'desc' ? -1 : 1
+         const sortTrue = sort.direction === 'desc' ? 1 : -1
+         const sortFalse = sort.direction === 'asc' ? 1 : -1
+
+         filtered = filtered.sort((a, b) => {
+            if (a._created > b._created) return sortTrue
+            if (a._created < b._created) return sortFalse
+            return 0
+         })
+
+         if (sort.option === 'technologycount') {
+            filtered = filtered.sort((a, b) => {
+               if (sort.direction === 'desc') return a.technologies.length - b.technologies.length
+               return b.technologies.length - a.technologies.length
+            })
+         } else if (sort.option === 'category') {
+            filtered = filtered.sort((a, b) => {
+               const firstCategoryA = a.categories[0]
+                  ? categories.find((x) => x.name === a.categories[0].display)
+                  : null
+               const firstCategoryB = a.categories[0]
+                  ? categories.find((x) => x.name === b.categories[0].display)
+                  : null
+               const displayA = firstCategoryA ? firstCategoryA[language] : ''
+               const displayB = firstCategoryB ? firstCategoryB[language] : ''
+               if (sort.direction === 'asc') return displayA.localeCompare(displayB)
+               return displayB.localeCompare(displayA)
+            })
+         }
 
          if (filter.technology !== 'all') {
             filtered = filtered.filter((x) => {
@@ -46,34 +72,13 @@ class Realizations extends React.Component {
             })
          }
 
-         if (sort.option === 'date') {
-            filtered = filtered.sort((a, b) => {
-               if (a._created > b._created) return sortTrue
-               if (a._created < b._created) return sortFalse
-               return 0
-            })
-         } else if (sort.option === 'technologycount') {
-            filtered = filtered.sort((a, b) => {
-               if (sort.direction === 'desc') return a.technologies.length - b.technologies.length
-               return b.technologies.length - a.technologies.length
-            })
-         } else if (sort.option === 'category') {
-            filtered = filtered.sort((a, b) => {
-               const displayA = a.categories[0] ? a.categories[0].display : ''
-               const displayB = b.categories[0] ? b.categories[0].display : ''
-               if (sort.direction === 'asc') return displayA.localeCompare(displayB)
-               return displayB.localeCompare(displayA)
-            })
-         }
-
          return filtered
       }
       return null
    }
 
    render() {
-      const { phrases, categories, technologies, language } = this.props
-      const realizations = this.filterRealizations()
+      const { phrases, realizations, categories, technologies, language } = this.props
 
       return (
          <BackgroundSection background="center">
@@ -85,7 +90,7 @@ class Realizations extends React.Component {
                <Divider size="medium" />
                {realizations && categories && technologies ? (
                   <RealizationsGridTemplate
-                     realizations={realizations}
+                     realizations={this.filterRealizations()}
                      categories={categories}
                      technologies={technologies}
                      language={language}

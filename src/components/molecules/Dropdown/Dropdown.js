@@ -58,7 +58,7 @@ const IconWrapper = styled.button`
 const StyledIcon = styled(ArrowForwardIosRoundedIcon)`
    color: ${({ theme }) => theme.fontPrimary} !important;
    font-size: 16px !important;
-   transform: rotate(${({ direction }) => (direction === 'desc' ? 90 : -90)}deg);
+   transform: rotate(${({ direction }) => (direction === 'asc' ? 90 : -90)}deg);
 `
 
 const Select = styled.select`

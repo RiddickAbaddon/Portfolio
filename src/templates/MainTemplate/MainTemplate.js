@@ -15,6 +15,7 @@ import { getPhrase } from 'Utils'
 
 const Wrapper = styled.div`
    min-height: calc(100vh - 104px);
+   overflow: hidden;
 `
 
 class MainTemplate extends React.Component {

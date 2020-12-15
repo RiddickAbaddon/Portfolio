@@ -20,9 +20,8 @@ const BackgroundSection = styled.div`
             case 'center':
                return css`
                   background-image: url(${bgCenter});
-                  top: 50%;
-                  transform: translateY(-50%);
-                  background-position: center;
+                  top: 0;
+                  background-position: top;
                `
             case 'bottom':
                return css`
