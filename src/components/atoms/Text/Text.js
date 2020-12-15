@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-const Text = styled.p`
+const Text = styled.div`
    margin: 0;
    font-size: ${({ small, theme }) => (small ? theme.fontSize.s : theme.fontSize.m)};
    text-align: center;

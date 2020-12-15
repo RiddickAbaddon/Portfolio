@@ -14,13 +14,15 @@ import { getPhrase } from 'Utils'
 const Page404 = ({ phrases, language }) => (
    <BackgroundSection background="bottom">
       <CenterPageTemplate>
-         <SVG src={image404} alt="404" />
-         <Divider size="medium" />
-         <Text>{getPhrase(phrases, '404-info', language)}</Text>
-         <Divider size="medium" />
-         <Button as={Link} to="/">
-            {getPhrase(phrases, 'back-to-homepage', language)}
-         </Button>
+         <>
+            <SVG src={image404} alt="404" />
+            <Divider size="medium" />
+            <Text>{getPhrase(phrases, '404-info', language)}</Text>
+            <Divider size="medium" />
+            <Button as={Link} to="/">
+               {getPhrase(phrases, 'back-to-homepage', language)}
+            </Button>
+         </>
       </CenterPageTemplate>
    </BackgroundSection>
 )
