@@ -1,3 +1,4 @@
+import bgHome from 'assets/backgrounds/home.png'
 import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
 import Container from 'components/atoms/Container/Container'
 import PreloadRealization from 'components/organisms/PreloadRealization/PreloadRealization'
@@ -30,7 +31,7 @@ const Realization = ({
       const projectTechnologies = getDataByIds(project.technologies, technologies)
 
       return (
-         <BackgroundSection background="top">
+         <BackgroundSection background={bgHome}>
             <Container>
                <RealizationTemplate
                   realization={project}
@@ -44,7 +45,7 @@ const Realization = ({
    }
 
    return (
-      <BackgroundSection background="top">
+      <BackgroundSection background={bgHome}>
          <Container>
             <PreloadRealization />
          </Container>

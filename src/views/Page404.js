@@ -1,4 +1,5 @@
 import image404 from 'assets/404.svg'
+import bgHex from 'assets/backgrounds/hex.png'
 import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
 import Divider from 'components/atoms/Divider/Divider'
 import SVG from 'components/atoms/SVG/SVG'
@@ -12,7 +13,7 @@ import CenterPageTemplate from 'templates/CenterPageTemplate/CenterPageTemplate'
 import { getPhrase } from 'Utils'
 
 const Page404 = ({ phrases, language }) => (
-   <BackgroundSection background="bottom">
+   <BackgroundSection background={bgHex} align="bottom">
       <CenterPageTemplate>
          <>
             <SVG src={image404} alt="404" />

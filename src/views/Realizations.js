@@ -1,9 +1,10 @@
+import bgRealizations from 'assets/backgrounds/realizations.png'
 import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
-import PreloadCards from 'components/molecules/PreloadCard/PreloadCards'
 import FilterPanel from 'components/organisms/FilterPanel/FilterPanel'
+import PreloadCards from 'components/organisms/PreloadCard/PreloadCards'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
@@ -81,7 +82,7 @@ class Realizations extends React.Component {
       const { phrases, realizations, categories, technologies, language } = this.props
 
       return (
-         <BackgroundSection background="center">
+         <BackgroundSection background={bgRealizations}>
             <Container>
                <Divider size="large" />
                <Heading>{getPhrase(phrases, 'realizations', language)}</Heading>

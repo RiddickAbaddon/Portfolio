@@ -1,5 +1,7 @@
+import bgHex from 'assets/backgrounds/hex.png'
+import bgHome from 'assets/backgrounds/home.png'
+import bgRealizations from 'assets/backgrounds/realizations.png'
 import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
-import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -46,40 +48,22 @@ const TestContent = () => (
 export default {
    component: BackgroundSection,
    title: 'Atoms/BackgroundSection',
-   argTypes: {
-      background: {
-         control: {
-            type: 'select',
-            options: ['top', 'center', 'bottom'],
-         },
-      },
-   },
 }
 
-export const Basic = ({ background }) => (
-   <BackgroundSection background={background}>
+export const Home = () => (
+   <BackgroundSection background={bgHome}>
       <TestContent />
    </BackgroundSection>
 )
 
-Basic.propTypes = {
-   background: PropTypes.string.isRequired,
-}
+export const Realizations = () => (
+   <BackgroundSection background={bgRealizations}>
+      <TestContent />
+   </BackgroundSection>
+)
 
-Basic.args = {
-   background: 'top',
-}
-
-export const Sections = () => (
-   <>
-      <BackgroundSection background="top">
-         <TestContent />
-      </BackgroundSection>
-      <BackgroundSection background="center">
-         <TestContent />
-      </BackgroundSection>
-      <BackgroundSection background="bottom">
-         <TestContent />
-      </BackgroundSection>
-   </>
+export const Hex = () => (
+   <BackgroundSection background={bgHex} align="bottom">
+      <TestContent />
+   </BackgroundSection>
 )

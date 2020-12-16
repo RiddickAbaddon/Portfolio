@@ -1,5 +1,5 @@
-import PreloadCard from 'components/molecules/PreloadCard/PreloadCard'
-import PreloadCards from 'components/molecules/PreloadCard/PreloadCards'
+import PreloadCard from 'components/organisms/PreloadCard/PreloadCard'
+import PreloadCards from 'components/organisms/PreloadCard/PreloadCards'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -9,7 +9,7 @@ const CardWrapper = styled.div`
 
 export default {
    component: PreloadCard,
-   title: 'Molecules/PreloadCard',
+   title: 'Organisms/PreloadCard',
 }
 
 export const Basic = () => (

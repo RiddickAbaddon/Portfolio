@@ -1,43 +1,46 @@
-import bgBottom from 'assets/backgrounds/bgBottom.png'
-import bgCenter from 'assets/backgrounds/bgCenter.png'
-import bgTop from 'assets/backgrounds/bgTop.png'
+import PropTypes from 'prop-types'
+import React, { useState } from 'react'
 import styled, { css } from 'styled-components'
 
-const BackgroundSection = styled.div`
+const Wrapper = styled.div`
    position: relative;
-
-   ::before {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 75vw;
-      background-size: 100% auto;
-      background-repeat: no-repeat;
-      z-index: -1;
-
-      ${({ background }) => {
-         switch (background) {
-            case 'center':
-               return css`
-                  background-image: url(${bgCenter});
-                  top: 0;
-                  background-position: top;
-               `
-            case 'bottom':
-               return css`
-                  background-image: url(${bgBottom});
-                  bottom: 0;
-                  background-position: center bottom;
-               `
-            default:
-               return css`
-                  background-image: url(${bgTop});
-                  top: 0;
-                  background-position: center top;
-               `
-         }
-      }}
-   }
 `
+
+const Image = styled.img`
+   position: absolute;
+   z-index: -1;
+   opacity: ${({ loaded }) => (loaded ? 1 : 0)};
+   transition: opacity 3s ease-out;
+   width: 100%;
+   ${({ align }) =>
+      align === 'top'
+         ? css`
+              top: 0;
+           `
+         : css`
+              bottom: 0;
+           `}
+`
+
+const BackgroundSection = ({ background, align, children, ...props }) => {
+   const [loaded, setLoaded] = useState(false)
+
+   return (
+      <Wrapper {...props}>
+         {children}
+         <Image loaded={loaded} align={align} src={background} onLoad={() => setLoaded(true)} />
+      </Wrapper>
+   )
+}
+
+BackgroundSection.propTypes = {
+   children: PropTypes.element.isRequired,
+   background: PropTypes.string.isRequired,
+   align: PropTypes.oneOf(['top', 'bottom']),
+}
+
+BackgroundSection.defaultProps = {
+   align: 'top',
+}
 
 export default BackgroundSection

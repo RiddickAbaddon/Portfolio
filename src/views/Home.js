@@ -1,4 +1,6 @@
 import { fetchSingleton } from 'actions/api'
+import bgHex from 'assets/backgrounds/hex.png'
+import bgHome from 'assets/backgrounds/home.png'
 import mailIcon from 'assets/mail.svg'
 import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
 import Container from 'components/atoms/Container/Container'
@@ -7,10 +9,10 @@ import Heading from 'components/atoms/Heading/Heading'
 import PreloadAbout from 'components/atoms/PreloadAbout/PreloadAbout'
 import SVG from 'components/atoms/SVG/SVG'
 import Button from 'components/molecules/Button/Button'
-import PreloadCards from 'components/molecules/PreloadCard/PreloadCards'
 import PreloadTechnologyStack from 'components/molecules/PreloadTechnologyStack/PreloadTechnologyStack'
 import TechnologyStack from 'components/molecules/TechnologyStack/TechnologyStack'
 import About from 'components/organisms/About/About'
+import PreloadCards from 'components/organisms/PreloadCard/PreloadCards'
 import { API_URL } from 'defines'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -37,7 +39,7 @@ class Home extends React.Component {
 
       return (
          <>
-            <BackgroundSection background="top">
+            <BackgroundSection background={bgHome}>
                <Container>
                   <Divider size="large" />
                   <Heading size="h1">Marcin Kalinowski</Heading>
@@ -61,7 +63,7 @@ class Home extends React.Component {
                </Container>
             </BackgroundSection>
 
-            <BackgroundSection background="center">
+            <section>
                <Container>
                   <Divider size="large" />
                   <Heading size="h1">{getPhrase(phrases, 'realizations', language)}</Heading>
@@ -87,8 +89,9 @@ class Home extends React.Component {
                      {getPhrase(phrases, 'show-more', language)}
                   </Button>
                </Container>
-            </BackgroundSection>
-            <BackgroundSection background="bottom">
+            </section>
+
+            <BackgroundSection background={bgHex} align="bottom">
                <CenterPageTemplate title={getPhrase(phrases, 'contact', language)}>
                   <Container>
                      <SVG src={mailIcon} alt="mail" />

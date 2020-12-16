@@ -1,4 +1,4 @@
-import PreloadCard from 'components/molecules/PreloadCard/PreloadCard'
+import PreloadCard from 'components/organisms/PreloadCard/PreloadCard'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from 'styled-components'
