@@ -11,6 +11,7 @@ const Image = styled.img`
    z-index: -1;
    opacity: ${({ loaded }) => (loaded ? 1 : 0)};
    transition: opacity 3s ease-out;
+   will-change: transform;
    width: 100%;
    ${({ align }) =>
       align === 'top'

@@ -8,15 +8,38 @@ import { API_URL } from 'defines'
 import PropTypes from 'prop-types'
 import React from 'react'
 import ReactHtmlParser from 'react-html-parser'
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { removeHtmlTags } from 'Utils'
+import { getPhrase, removeHtmlTags } from 'Utils'
+
+const Button = styled.div`
+   height: 64px;
+   width: 100%;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background: ${({ theme }) => theme.gradient.accent};
+   font-size: ${({ theme }) => theme.fontSize.m};
+   color: ${({ theme }) => theme.fontPrimary};
+   position: absolute;
+   bottom: 0;
+   will-change: transform;
+   transform: translateY(100%);
+   transition: transform 0.3s ease-out;
+`
 
 const StyledCardWrapper = styled(CardWrapper)`
    color: ${({ theme }) => theme.fontPrimary};
    display: flex;
    flex-direction: column;
    text-decoration: none;
+   overflow: hidden;
+   position: relative;
+
+   :hover ${Button} {
+      transform: translateY(0%);
+   }
 `
 
 const StyledHeading = styled(Heading)`
@@ -43,7 +66,7 @@ const StyledImage = styled(Image)`
    flex-shrink: 0;
 `
 
-const Card = ({ link, title, image, description, categories, technologies, language }) => (
+const Card = ({ phrases, link, title, image, description, categories, technologies, language }) => (
    <StyledCardWrapper as={Link} to={link}>
       <StyledImage src={`${API_URL}${image}`} alt={title} />
       <StyledHeading size="h3">{title}</StyledHeading>
@@ -54,10 +77,18 @@ const Card = ({ link, title, image, description, categories, technologies, langu
          <Categories categories={categories} language={language} trim />
       ) : null}
       <StyledTechnologyStack technologies={technologies} />
+      <Button>{getPhrase(phrases, 'show', language)}</Button>
    </StyledCardWrapper>
 )
 
 Card.propTypes = {
+   phrases: PropTypes.arrayOf(
+      PropTypes.shape({
+         name: PropTypes.string,
+         pl: PropTypes.string,
+         en: PropTypes.string,
+      }),
+   ),
    link: PropTypes.string.isRequired,
    title: PropTypes.string.isRequired,
    image: PropTypes.string.isRequired,
@@ -83,8 +114,11 @@ Card.propTypes = {
 }
 
 Card.defaultProps = {
-   description: 'Brak opisu...',
+   description: null,
    categories: [],
+   phrases: null,
 }
 
-export default Card
+const mapStateToProps = ({ api: { phrases }, app: { language } }) => ({ phrases, language })
+
+export default connect(mapStateToProps)(Card)

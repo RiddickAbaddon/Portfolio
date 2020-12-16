@@ -102,7 +102,6 @@ const RealizationsSliderTemplate = ({ realizations, categories, technologies, la
                         technologies={
                            refTechnologies.length ? getDataByIds(refTechnologies, technologies) : []
                         }
-                        language={language}
                      />
                   </Slide>
                )

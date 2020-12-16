@@ -31,7 +31,6 @@ const RealizationsGridTemplate = ({ realizations, categories, technologies, lang
                technologies={
                   refTechnologies.length ? getDataByIds(refTechnologies, technologies) : []
                }
-               language={language}
             />
          )
       })}
