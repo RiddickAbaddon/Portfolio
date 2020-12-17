@@ -18,12 +18,15 @@ const GlobalStyle = createGlobalStyle`
       font-size: ${({ theme }) => theme.fontSize.m};
       background: ${({ theme }) => theme.bgMain};
       color: ${({ theme }) => theme.fontPrimary};
+
+      @media ${({ theme }) => theme.breakpoints.max.tablet} {
+         margin: 0 !important;
+      }
    }
 
    input, button, textarea {
       font-family: ${({ theme }) => theme.fontFamily.primary};
    }
-
 
    ::selection {
       background: ${({ theme }) => theme.accentColor};

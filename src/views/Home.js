@@ -41,7 +41,7 @@ class Home extends React.Component {
          <>
             <BackgroundSection background={bgHome}>
                <Container>
-                  <Divider size="large" />
+                  <Divider size="large" mobile />
                   <Heading size="h1">Marcin Kalinowski</Heading>
                   <Divider size="small" />
                   <Heading size="h4">Front-end developer / UI designer</Heading>

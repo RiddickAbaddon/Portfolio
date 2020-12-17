@@ -84,7 +84,7 @@ class Realizations extends React.Component {
       return (
          <BackgroundSection background={bgRealizations}>
             <Container>
-               <Divider size="large" />
+               <Divider size="large" mobile />
                <Heading>{getPhrase(phrases, 'realizations', language)}</Heading>
                <Divider size="medium" />
                <FilterPanel />

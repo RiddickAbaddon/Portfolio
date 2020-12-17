@@ -77,7 +77,13 @@ const TextWrapper = styled.div`
 `
 
 const StyledText = styled(Text)`
-   padding: 75px 50px 50px 50px;
+   @media ${({ theme }) => theme.breakpoints.min.mobile} {
+      padding: 75px 50px 50px 50px;
+   }
+   @media ${({ theme }) => theme.breakpoints.max.mobile} {
+      padding: 75px 30px 50px 30px;
+      font-size: ${({ theme }) => theme.fontSize.s};
+   }
    position: relative;
    z-index: 2;
    animation: ${ShowText} 0.75s ${({ theme }) => theme.easing.primary} backwards;

@@ -6,17 +6,33 @@ const StyledHeading = styled.h1`
    margin: 0;
    font-weight: ${({ size, theme }) =>
       size === 'h1' ? theme.fontWeight.bold : theme.fontWeight.regular};
-   font-size: ${({ size, theme }) => {
-      switch (size) {
-         case 'h2':
-            return theme.fontSize.l
-         case 'h3':
-         case 'h4':
-            return theme.fontSize.m
-         default:
-            return theme.fontSize.xl
-      }
-   }};
+
+   @media ${({ theme }) => theme.breakpoints.min.mobile} {
+      font-size: ${({ size, theme }) => {
+         switch (size) {
+            case 'h2':
+               return theme.fontSize.l
+            case 'h3':
+            case 'h4':
+               return theme.fontSize.m
+            default:
+               return theme.fontSize.xl
+         }
+      }};
+   }
+   @media ${({ theme }) => theme.breakpoints.max.mobile} {
+      font-size: ${({ size, theme }) => {
+         switch (size) {
+            case 'h2':
+               return theme.fontSize.l
+            case 'h3':
+            case 'h4':
+               return theme.fontSize.m
+            default:
+               return '12vw'
+         }
+      }};
+   }
    color: ${({ size, theme }) => size === 'h4' && theme.fontSecondary};
    text-align: center;
 `

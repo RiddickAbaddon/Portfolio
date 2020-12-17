@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const Divider = styled.div`
    height: ${({ size }) => {
@@ -11,6 +11,13 @@ const Divider = styled.div`
             return 40
       }
    }}px;
+   ${({ mobile }) =>
+      mobile &&
+      css`
+         @media ${({ theme }) => theme.breakpoints.max.tablet} {
+            margin-bottom: 20px;
+         }
+      `}
 `
 
 export default Divider

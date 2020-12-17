@@ -41,7 +41,12 @@ const ButtonWrapper = styled.button`
 
 const ButtonText = styled.span`
    display: block;
-   font-size: ${({ theme }) => theme.fontSize.m};
+   @media ${({ theme }) => theme.breakpoints.min.mobile} {
+      font-size: ${({ theme }) => theme.fontSize.m};
+   }
+   @media ${({ theme }) => theme.breakpoints.max.mobile} {
+      font-size: 5vw;
+   }
    color: ${({ theme }) => theme.fontPrimary};
    position: relative;
    z-index: 1;

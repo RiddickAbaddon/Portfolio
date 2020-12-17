@@ -7,11 +7,22 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import styled, { ThemeProvider } from 'styled-components'
+import styled, { keyframes, ThemeProvider } from 'styled-components'
 import GlobalStyle from 'theme/GlobalStyle'
 import MainTheme from 'theme/MainTheme'
 import SlickSliderStyle from 'theme/SlickSliderStyle'
 import { getPhrase } from 'Utils'
+
+const PulseMessenger = keyframes`
+   from {
+      opacity: 1;
+      transform: scale(0);
+   }
+   to {
+      opacity: 0;
+      transform: scale(1);
+   }
+`
 
 const Wrapper = styled.div`
    min-height: calc(100vh - 104px);
@@ -26,7 +37,21 @@ const MessengerBackground = styled.div`
    bottom: 20px;
    border-radius: 50%;
    background-color: ${({ theme }) => theme.accentColor};
-   z-index: 1;
+   z-index: 2;
+
+   ::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 58px;
+      height: 58px;
+      top: 3px;
+      left: 3px;
+      border-radius: 50%;
+      will-change: transform;
+      background: ${({ theme }) => theme.transparent.white.mid};
+      animation: ${PulseMessenger} 1s ease-out infinite;
+   }
 `
 
 class MainTemplate extends React.Component {
