@@ -7,10 +7,12 @@ import styled from 'styled-components'
 
 const Wrapper = styled.section`
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(auto-fill, minmax(198px, auto));
    overflow: hidden;
    border-radius: ${({ theme }) => theme.radius.primary};
    grid-gap: 5px;
+   background: ${({ theme }) => theme.bgPrimary};
+   border: 5px solid ${({ theme }) => theme.bgPrimary};
 `
 
 const StyledImage = styled(Image)`

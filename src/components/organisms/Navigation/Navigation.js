@@ -15,10 +15,28 @@ const Wrapper = styled.nav`
    position: fixed;
    top: 0;
    left: 0;
-   width: 104px;
    padding: 20px;
    z-index: 10;
    pointer-events: none;
+
+   @media ${({ theme }) => theme.breakpoints.min.tablet} {
+      width: 104px;
+   }
+   @media ${({ theme }) => theme.breakpoints.max.tablet} {
+      display: flex;
+
+      ::before {
+         content: '';
+         position: absolute;
+         top: 10px;
+         left: 10px;
+         height: 84px;
+         width: ${({ bgsmall }) => (bgsmall ? 168 : 252)}px;
+         border-radius: ${({ theme }) => theme.radius.primary};
+         backdrop-filter: blur(10px);
+         box-shadow: ${({ theme }) => theme.shadow.soft};
+      }
+   }
 
    a,
    img {
@@ -52,13 +70,24 @@ const NavList = styled.div`
    ${({ up }) =>
       up &&
       css`
-         transform: translateY(-84px);
+         @media ${({ theme }) => theme.breakpoints.min.tablet} {
+            transform: translateY(-84px);
+         }
+         @media ${({ theme }) => theme.breakpoints.max.tablet} {
+            transform: translateX(-84px);
+         }
       `}
 `
 
 const StyledIcon = styled(Icon)`
-   margin: 20px 0;
    cursor: pointer;
+
+   @media ${({ theme }) => theme.breakpoints.min.tablet} {
+      margin: 20px 0;
+   }
+   @media ${({ theme }) => theme.breakpoints.max.tablet} {
+      margin: 0 20px;
+   }
 `
 
 const Navigation = ({ language, setLanguage, location }) => {
@@ -82,7 +111,7 @@ const Navigation = ({ language, setLanguage, location }) => {
    }
 
    return (
-      <Wrapper>
+      <Wrapper bgsmall={backlink === '#'}>
          <BackButton to={backlink}>
             <ArrowButton prev as="span" />
          </BackButton>

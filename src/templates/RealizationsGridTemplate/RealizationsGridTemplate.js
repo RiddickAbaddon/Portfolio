@@ -6,7 +6,8 @@ import { getDataByIds } from 'Utils'
 
 const Wrapper = styled.section`
    display: grid;
-   grid-template-columns: repeat(3, calc(33.33333% - 26.5px));
+   grid-template-columns: repeat(auto-fill, minmax(270px, auto));
+   /* grid-template-columns: repeat(3, calc(33.33333% - 26.5px)); */
    grid-gap: 40px;
 `
 

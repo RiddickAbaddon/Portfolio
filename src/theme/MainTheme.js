@@ -53,20 +53,14 @@ const MainTheme = {
    },
    breakpoints: {
       max: {
-         xs: '(max-width: 320px)',
-         sm: '(max-width: 576px)',
-         md: '(max-width: 768px)',
-         lg: '(max-width: 992px)',
-         xl: '(max-width: 1200px)',
-         xxl: '(max-width: 1400px)',
+         mobile: '(max-width: 576px)',
+         tablet: '(max-width: 768px)',
+         desktop: '(max-width: 1200px)',
       },
       min: {
-         xs: '(min-width: 321px)',
-         sm: '(min-width: 577px)',
-         md: '(min-width: 769px)',
-         lg: '(min-width: 993px)',
-         xl: '(min-width: 1201px)',
-         xxl: '(min-width: 1401px)',
+         mobile: '(min-width: 577px)',
+         tablet: '(min-width: 769px)',
+         desktop: '(min-width: 1201px)',
       },
    },
 }

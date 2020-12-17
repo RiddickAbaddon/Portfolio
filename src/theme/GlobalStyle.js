@@ -28,7 +28,6 @@ const GlobalStyle = createGlobalStyle`
    ::selection {
       background: ${({ theme }) => theme.accentColor};
    }
-
 `
 
 export default GlobalStyle

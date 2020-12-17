@@ -18,6 +18,17 @@ const Wrapper = styled.div`
    overflow: hidden;
 `
 
+const MessengerBackground = styled.div`
+   position: fixed;
+   width: 64px;
+   height: 64px;
+   left: 20px;
+   bottom: 20px;
+   border-radius: 50%;
+   background-color: ${({ theme }) => theme.accentColor};
+   z-index: 1;
+`
+
 class MainTemplate extends React.Component {
    componentDidMount() {
       const { fetchPhrases, fetchRealizations, fetchCategories, fetchTechnologies } = this.props
@@ -43,6 +54,7 @@ class MainTemplate extends React.Component {
                   <Link to="/cookies-policy">{getPhrase(phrases, 'cookies-policy', language)}</Link>
                </Text>
             </Footer>
+            <MessengerBackground />
          </ThemeProvider>
       )
    }

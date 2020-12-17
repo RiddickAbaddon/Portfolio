@@ -7,9 +7,15 @@ import styled, { css } from 'styled-components'
 import { getDataByIds } from 'Utils'
 
 const Wrapper = styled.section`
-   padding: 20px 104px;
    overflow: hidden;
    position: relative;
+
+   @media ${({ theme }) => theme.breakpoints.min.tablet} {
+      padding: 20px 104px;
+   }
+   @media ${({ theme }) => theme.breakpoints.max.tablet} {
+      padding: 20px;
+   }
 `
 
 const StyledSlider = styled(Slider)`
@@ -18,7 +24,12 @@ const StyledSlider = styled(Slider)`
 `
 
 const SliderShadow = styled.div`
-   width: 240px;
+   @media ${({ theme }) => theme.breakpoints.min.tablet} {
+      width: 240px;
+   }
+   @media ${({ theme }) => theme.breakpoints.max.tablet} {
+      width: 40px;
+   }
    height: 100%;
    background: ${({ theme }) => theme.bgMain};
    mask-image: ${({ theme }) => theme.gradient.slider};
@@ -50,10 +61,20 @@ const StyledArrowButton = styled(ArrowButton)`
    ${({ prev }) =>
       prev
          ? css`
-              left: 40px;
+              @media ${({ theme }) => theme.breakpoints.min.tablet} {
+                 left: 40px;
+              }
+              @media ${({ theme }) => theme.breakpoints.max.tablet} {
+                 left: 20px;
+              }
            `
          : css`
-              right: 40px;
+              @media ${({ theme }) => theme.breakpoints.min.tablet} {
+                 right: 40px;
+              }
+              @media ${({ theme }) => theme.breakpoints.max.tablet} {
+                 right: 20px;
+              }
            `}
 
    &.slick-disabled {
@@ -75,6 +96,22 @@ const RealizationsSliderTemplate = ({ realizations, categories, technologies, la
       slidesToScroll: 3,
       nextArrow: <StyledArrowButton />,
       prevArrow: <StyledArrowButton prev />,
+      responsive: [
+         {
+            breakpoint: 970,
+            settings: {
+               slidesToShow: 2,
+               slidesToScroll: 2,
+            },
+         },
+         {
+            breakpoint: 576,
+            settings: {
+               slidesToShow: 1,
+               slidesToScroll: 1,
+            },
+         },
+      ],
    }
 
    return (
