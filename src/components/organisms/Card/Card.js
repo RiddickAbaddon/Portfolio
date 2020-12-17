@@ -68,7 +68,7 @@ const StyledImage = styled(Image)`
 
 const Card = ({ phrases, link, title, image, description, categories, technologies, language }) => (
    <StyledCardWrapper as={Link} to={link}>
-      <StyledImage src={`${API_URL}${image}`} alt={title} />
+      <StyledImage src={`${API_URL}${image}`} thumbnail={[300, 200]} alt={title} />
       <StyledHeading size="h3">{title}</StyledHeading>
       <StyledText small lineclamp={4}>
          {ReactHtmlParser(removeHtmlTags(description))}

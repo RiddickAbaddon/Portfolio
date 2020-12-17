@@ -1,6 +1,14 @@
-import { FETCH_COLLECTION_SUCCESS, FETCH_SINGLETON_SUCCESS } from 'actions/api'
+import {
+   FETCH_COLLECTION_SUCCESS,
+   FETCH_SINGLETON_SUCCESS,
+   FETCH_THUMBNAIL_SUCCESS,
+} from 'actions/api'
 
-const apiReducer = (state = [], action) => {
+const initialState = {
+   thumbnails: [],
+}
+
+const apiReducer = (state = initialState, action) => {
    switch (action.type) {
       case FETCH_COLLECTION_SUCCESS: {
          return {
@@ -12,6 +20,18 @@ const apiReducer = (state = [], action) => {
          return {
             ...state,
             [action.payload.type]: action.payload.data,
+         }
+      }
+      case FETCH_THUMBNAIL_SUCCESS: {
+         return {
+            ...state,
+            thumbnails: [
+               ...state.thumbnails,
+               {
+                  name: action.payload.name,
+                  url: action.payload.url,
+               },
+            ],
          }
       }
       default:

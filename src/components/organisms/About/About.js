@@ -162,7 +162,7 @@ const Circle = styled.div`
 
 const About = ({ avatar, children, ...props }) => (
    <Wrapper {...props}>
-      <Avatar src={avatar} alt="Marcin Kalinowski" delay="0.1" />
+      <Avatar src={avatar} thumbnail={[128]} alt="Marcin Kalinowski" delay="0.1" />
       <Line delay="0.3" />
       <StyledGlow delay="0.8" />
       <TextWrapper>

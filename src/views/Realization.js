@@ -32,7 +32,7 @@ const Realization = ({
 
       return (
          <BackgroundSection background={bgHome}>
-            <Container>
+            <Container small>
                <RealizationTemplate
                   realization={project}
                   categories={projectCategories}

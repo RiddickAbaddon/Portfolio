@@ -9,6 +9,10 @@ export const FETCH_SINGLETON_REQUEST = 'FETCH_SINGLETON_REQUEST'
 export const FETCH_SINGLETON_SUCCESS = 'FETCH_SINGLETON_SUCCESS'
 export const FETCH_SINGLETON_FAILURE = 'FETCH_SINGLETON_FAILURE'
 
+export const FETCH_THUMBNAIL_REQUEST = 'FETCH_THUMBNAIL_REQUEST'
+export const FETCH_THUMBNAIL_SUCCESS = 'FETCH_THUMBNAIL_SUCCESS'
+export const FETCH_THUMBNAIL_FAILURE = 'FETCH_THUMBNAIL_FAILURE'
+
 export const fetchCollection = (collection) => (dispatch) => {
    dispatch({ type: FETCH_COLLECTION_REQUEST })
 
@@ -47,4 +51,27 @@ export const fetchSingleton = (singleton) => (dispatch) => {
          })
       })
       .catch((err) => dispatch({ type: FETCH_SINGLETON_FAILURE, payload: err }))
+}
+
+export const fetchThumbnail = (path, width, height) => (dispatch) => {
+   dispatch({ type: FETCH_THUMBNAIL_REQUEST })
+
+   return axios(`${API_URL}/api/cockpit/image`, {
+      params: {
+         token: API_TOKEN,
+         src: path,
+         w: width,
+         h: height,
+      },
+   })
+      .then(({ data }) => {
+         dispatch({
+            type: FETCH_THUMBNAIL_SUCCESS,
+            payload: {
+               name: `${path}/${width}/${height}`,
+               url: data,
+            },
+         })
+      })
+      .catch((err) => dispatch({ type: FETCH_THUMBNAIL_FAILURE, payload: err }))
 }

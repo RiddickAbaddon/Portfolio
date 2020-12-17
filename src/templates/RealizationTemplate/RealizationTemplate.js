@@ -16,6 +16,7 @@ import React from 'react'
 import ReactHtmlParser from 'react-html-parser'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import GalleryTemplate from 'templates/GalleryTemplate/GalleryTemplate'
 import { getPhrase } from 'Utils'
 
 const FigmaIcon = () => <Icon src={FigmaIconURL} small />
@@ -131,6 +132,12 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
             }
          })}
       </ButtonsWrapper>
+      {realization.gallery && realization.gallery.length && (
+         <>
+            <Divider size="large" />
+            <GalleryTemplate gallery={realization.gallery} />
+         </>
+      )}
       <Divider size="large" />
    </Wrapper>
 )
@@ -158,6 +165,15 @@ RealizationTemplate.propTypes = {
                label: PropTypes.string,
             }),
             value: PropTypes.string,
+         }),
+      ),
+      gallery: PropTypes.arrayOf(
+         PropTypes.shape({
+            meta: PropTypes.shape({
+               title: PropTypes.string,
+               asset: PropTypes.string,
+            }),
+            path: PropTypes.string,
          }),
       ),
       _created: PropTypes.number,
