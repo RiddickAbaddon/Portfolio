@@ -15,72 +15,69 @@ class Realizations extends React.Component {
    filterRealizations() {
       const { sort, filter, realizations, categories, language } = this.props
 
-      if (realizations) {
-         let filtered = [...realizations]
-         const sortTrue = sort.direction === 'desc' ? 1 : -1
-         const sortFalse = sort.direction === 'asc' ? 1 : -1
+      let filtered = [...realizations]
+      const sortTrue = sort.direction === 'desc' ? 1 : -1
+      const sortFalse = sort.direction === 'asc' ? 1 : -1
 
+      filtered = filtered.sort((a, b) => {
+         if (a._created > b._created) return sortTrue
+         if (a._created < b._created) return sortFalse
+         return 0
+      })
+
+      if (sort.option === 'technologycount') {
          filtered = filtered.sort((a, b) => {
-            if (a._created > b._created) return sortTrue
-            if (a._created < b._created) return sortFalse
-            return 0
+            if (sort.direction === 'desc') return a.technologies.length - b.technologies.length
+            return b.technologies.length - a.technologies.length
          })
-
-         if (sort.option === 'technologycount') {
-            filtered = filtered.sort((a, b) => {
-               if (sort.direction === 'desc') return a.technologies.length - b.technologies.length
-               return b.technologies.length - a.technologies.length
-            })
-         } else if (sort.option === 'category') {
-            filtered = filtered.sort((a, b) => {
-               const firstCategoryA = a.categories[0]
-                  ? categories.find((x) => x.name === a.categories[0].display)
-                  : null
-               const firstCategoryB = a.categories[0]
-                  ? categories.find((x) => x.name === b.categories[0].display)
-                  : null
-               const displayA = firstCategoryA ? firstCategoryA[language] : ''
-               const displayB = firstCategoryB ? firstCategoryB[language] : ''
-               if (sort.direction === 'asc') return displayA.localeCompare(displayB)
-               return displayB.localeCompare(displayA)
-            })
-         }
-
-         if (filter.technology !== 'all') {
-            filtered = filtered.filter((x) => {
-               if (x.technologies && x.technologies.length) {
-                  return !!x.technologies.find((y) => y.display === filter.technology)
-               }
-               return false
-            })
-         }
-
-         if (filter.category !== 'all') {
-            filtered = filtered.filter((x) => {
-               if (x.categories && x.categories.length) {
-                  return !!x.categories.find((y) => y.display === filter.category)
-               }
-               return false
-            })
-         }
-
-         if (filter.search !== '') {
-            filtered = filtered.filter((x) => {
-               const phrase = filter.search.toLowerCase()
-               const title = x[`${language}_title`].toLowerCase()
-               const description = x[`${language}_description`].toLowerCase()
-               return title.includes(phrase) || description.includes(phrase)
-            })
-         }
-
-         return filtered
+      } else if (sort.option === 'category') {
+         filtered = filtered.sort((a, b) => {
+            const firstCategoryA = a.categories[0]
+               ? categories.find((x) => x.name === a.categories[0].display)
+               : null
+            const firstCategoryB = a.categories[0]
+               ? categories.find((x) => x.name === b.categories[0].display)
+               : null
+            const displayA = firstCategoryA ? firstCategoryA[language] : ''
+            const displayB = firstCategoryB ? firstCategoryB[language] : ''
+            if (sort.direction === 'asc') return displayA.localeCompare(displayB)
+            return displayB.localeCompare(displayA)
+         })
       }
-      return null
+
+      if (filter.technology !== 'all') {
+         filtered = filtered.filter((x) => {
+            if (x.technologies && x.technologies.length) {
+               return !!x.technologies.find((y) => y.display === filter.technology)
+            }
+            return false
+         })
+      }
+
+      if (filter.category !== 'all') {
+         filtered = filtered.filter((x) => {
+            if (x.categories && x.categories.length) {
+               return !!x.categories.find((y) => y.display === filter.category)
+            }
+            return false
+         })
+      }
+
+      if (filter.search !== '') {
+         filtered = filtered.filter((x) => {
+            const phrase = filter.search.toLowerCase()
+            const title = x[`${language}_title`].toLowerCase()
+            const description = x[`${language}_description`].toLowerCase()
+            return title.includes(phrase) || description.includes(phrase)
+         })
+      }
+
+      return filtered
    }
 
    render() {
       const { phrases, realizations, categories, technologies, language } = this.props
-
+      const filtered = this.filterRealizations()
       return (
          <BackgroundSection background={bgRealizations}>
             <Container>
@@ -91,7 +88,7 @@ class Realizations extends React.Component {
                <Divider size="medium" />
                {realizations && categories && technologies ? (
                   <RealizationsGridTemplate
-                     realizations={this.filterRealizations()}
+                     realizations={filtered}
                      categories={categories}
                      technologies={technologies}
                      language={language}

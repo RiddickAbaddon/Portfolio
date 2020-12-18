@@ -81,7 +81,7 @@ const Button = styled.div`
 `
 
 const DropdownList = styled(CardWrapper)`
-   padding: 10px 0;
+   padding: 20px 0;
    display: inline-flex;
    flex-direction: column;
    position: absolute;
@@ -89,6 +89,17 @@ const DropdownList = styled(CardWrapper)`
    left: 0;
    min-width: 200px;
    animation: ${Show} 0.2s ease-out;
+   max-height: 320px;
+   overflow-y: auto;
+
+   ::-webkit-scrollbar {
+      width: 10px;
+   }
+
+   ::-webkit-scrollbar-thumb {
+      background: ${({ theme }) => theme.transparent.white.soft};
+      border-radius: 5px;
+   }
 `
 
 const Option = styled.button`

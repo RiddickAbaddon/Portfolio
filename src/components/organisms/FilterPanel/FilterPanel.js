@@ -61,6 +61,7 @@ const getDropdownData = (phrases, realizations, categories, technologies, langua
          _id: 'category-0',
          value: 'all',
          display: getPhrase(phrases, 'all', language),
+         projectsCount: 9999999,
       },
    ]
    const dropdownTechnologies = [
@@ -68,6 +69,7 @@ const getDropdownData = (phrases, realizations, categories, technologies, langua
          _id: 'technology-0',
          value: 'all',
          display: getPhrase(phrases, 'all', language),
+         projectsCount: 9999999,
       },
    ]
 
@@ -75,12 +77,17 @@ const getDropdownData = (phrases, realizations, categories, technologies, langua
       if (realization.categories) {
          realization.categories.map((category) => {
             const findedCategoryInDropdown = dropdownCategories.find((x) => x._id === category._id)
-            const findedCategory = categories.find((x) => x._id === category._id)
             if (!findedCategoryInDropdown) {
+               const findedCategory = categories.find((x) => x._id === category._id)
+
+               const projectsCount = realizations.filter((x) =>
+                  x.categories.find((y) => y._id === category._id),
+               )
                dropdownCategories.push({
                   _id: findedCategory._id,
                   value: findedCategory.name,
                   display: findedCategory[language],
+                  projectsCount: projectsCount.length,
                })
             }
             return 0
@@ -91,18 +98,30 @@ const getDropdownData = (phrases, realizations, categories, technologies, langua
             const findedTechnologyInDropdown = dropdownTechnologies.find(
                (x) => x._id === technology._id,
             )
-            const findedTechnology = technologies.find((x) => x._id === technology._id)
             if (!findedTechnologyInDropdown) {
+               const findedTechnology = technologies.find((x) => x._id === technology._id)
+
+               const projectsCount = realizations.filter((x) =>
+                  x.technologies.find((y) => y._id === technology._id),
+               )
                dropdownTechnologies.push({
                   _id: findedTechnology._id,
                   value: findedTechnology.name,
                   display: findedTechnology.name,
+                  projectsCount: projectsCount.length,
                })
             }
             return 0
          })
       }
       return 0
+   })
+
+   dropdownTechnologies.sort((a, b) => {
+      return b.projectsCount - a.projectsCount
+   })
+   dropdownCategories.sort((a, b) => {
+      return b.projectsCount - a.projectsCount
    })
 
    return {
