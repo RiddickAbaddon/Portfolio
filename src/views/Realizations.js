@@ -1,8 +1,10 @@
 import bgRealizations from 'assets/backgrounds/realizations.png'
 import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
+import CardWrapper from 'components/atoms/CardWrapper/CardWrapper'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
+import Text from 'components/atoms/Text/Text'
 import FilterPanel from 'components/organisms/FilterPanel/FilterPanel'
 import PreloadCards from 'components/organisms/PreloadCard/PreloadCards'
 import PropTypes from 'prop-types'
@@ -87,12 +89,24 @@ class Realizations extends React.Component {
                <FilterPanel />
                <Divider size="medium" />
                {realizations && categories && technologies ? (
-                  <RealizationsGridTemplate
-                     realizations={filtered}
-                     categories={categories}
-                     technologies={technologies}
-                     language={language}
-                  />
+                  <>
+                     {filtered.length ? (
+                        <>
+                           <RealizationsGridTemplate
+                              realizations={filtered}
+                              categories={categories}
+                              technologies={technologies}
+                              language={language}
+                           />
+                        </>
+                     ) : (
+                        <CardWrapper>
+                           <Divider size="small" />
+                           <Text>{getPhrase(phrases, 'no-filtered-realizations', language)}</Text>
+                           <Divider size="small" />
+                        </CardWrapper>
+                     )}
+                  </>
                ) : (
                   <PreloadCards />
                )}
