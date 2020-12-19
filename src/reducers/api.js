@@ -1,11 +1,14 @@
 import {
+   FETCH_COLLECTION_FAILURE,
    FETCH_COLLECTION_SUCCESS,
+   FETCH_SINGLETON_FAILURE,
    FETCH_SINGLETON_SUCCESS,
    FETCH_THUMBNAIL_SUCCESS,
 } from 'actions/api'
 
 const initialState = {
    thumbnails: [],
+   connectionErrors: {},
 }
 
 const apiReducer = (state = initialState, action) => {
@@ -32,6 +35,30 @@ const apiReducer = (state = initialState, action) => {
                   url: action.payload.url,
                },
             ],
+         }
+      }
+      case FETCH_SINGLETON_FAILURE: {
+         return {
+            ...state,
+            connectionErrors: {
+               ...state.connectionErrors,
+               fetchDataFailure: true,
+            },
+         }
+      }
+      case FETCH_COLLECTION_FAILURE: {
+         return {
+            ...state,
+            connectionErrors: {
+               ...state.connectionErrors,
+               fetchDataFailure: true,
+            },
+         }
+      }
+      case '@@INIT': {
+         return {
+            ...state,
+            connectionErrors: {},
          }
       }
       default:

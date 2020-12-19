@@ -16,6 +16,17 @@ const Show = keyframes`
    }
 `
 
+const Pulse = keyframes`
+   from {
+      transform: scale(0);
+      opacity: 1;
+   }
+   to {
+      transform: scale(1);
+      opacity: 0;
+   }
+`
+
 const Wrapper = styled.div`
    position: relative;
    background: ${({ theme }) => theme.bgBadge};
@@ -42,6 +53,18 @@ const StyledPreloadImage = styled(PreloadImage)`
    display: ${({ show }) => (show ? 'block' : 'none')};
 `
 
+const PreloadPulse = styled.div`
+   width: 100%;
+   height: 100%;
+   position: absolute;
+   top: 0;
+   left: 0;
+   background: ${({ theme }) => theme.transparent.white.soft};
+   border-radius: 50%;
+   display: ${({ show }) => (show ? 'block' : 'none')};
+   animation: ${Pulse} 1s ease-out infinite;
+`
+
 class Image extends React.Component {
    state = {
       loaded: false,
@@ -59,7 +82,7 @@ class Image extends React.Component {
    }
 
    render() {
-      const { src, isLink, thumbnail, thumbnails, alt, ...props } = this.props
+      const { src, isLink, thumbnail, thumbnails, alt, preloadAnimation, ...props } = this.props
       const { loaded } = this.state
       const thumbnailSrc =
          src && thumbnail && thumbnails ? getThumbnail(thumbnails, src, thumbnail) : null
@@ -81,7 +104,11 @@ class Image extends React.Component {
                   show={loaded}
                />
             )}
-            <StyledPreloadImage show={!loaded} />
+            {preloadAnimation === 'gradient' ? (
+               <StyledPreloadImage show={!loaded} />
+            ) : (
+               <PreloadPulse show={!loaded} />
+            )}
          </Wrapper>
       )
    }
@@ -99,6 +126,7 @@ Image.propTypes = {
          url: PropTypes.string,
       }),
    ),
+   preloadAnimation: PropTypes.oneOf(['gradient', 'pulse']),
 }
 
 Image.defaultProps = {
@@ -107,6 +135,7 @@ Image.defaultProps = {
    isLink: false,
    thumbnail: null,
    thumbnails: null,
+   preloadAnimation: 'gradient',
 }
 
 const mapStateToProps = ({ api: { thumbnails } }) => ({ thumbnails })

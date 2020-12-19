@@ -13,7 +13,7 @@ import styled, { css } from 'styled-components'
 
 const Wrapper = styled.nav`
    position: fixed;
-   top: 0;
+   top: ${({ infoMargin }) => (infoMargin ? '40px' : 0)};
    left: 0;
    padding: 20px;
    z-index: 10;
@@ -90,7 +90,7 @@ const StyledIcon = styled(Icon)`
    }
 `
 
-const Navigation = ({ language, setLanguage, location }) => {
+const Navigation = ({ language, setLanguage, location, infoMargin }) => {
    const path = location.pathname.split('/').filter((x) => x !== '')
 
    let backlink = '#'
@@ -111,7 +111,7 @@ const Navigation = ({ language, setLanguage, location }) => {
    }
 
    return (
-      <Wrapper bgsmall={backlink === '#'}>
+      <Wrapper bgsmall={backlink === '#'} infoMargin={infoMargin}>
          <BackButton to={backlink}>
             <ArrowButton prev as="span" />
          </BackButton>
@@ -136,6 +136,11 @@ Navigation.propTypes = {
    location: PropTypes.shape({
       pathname: PropTypes.string,
    }).isRequired,
+   infoMargin: PropTypes.bool,
+}
+
+Navigation.defaultProps = {
+   infoMargin: false,
 }
 
 const mapStateToProps = ({ app: { language } }) => ({ language })

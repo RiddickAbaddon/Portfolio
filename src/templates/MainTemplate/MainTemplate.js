@@ -1,5 +1,6 @@
 import { fetchCollection } from 'actions/api'
 import Footer from 'components/atoms/Footer/Footer'
+import OfflineInfo from 'components/atoms/OfflineInfo/OfflineInfo'
 import Text from 'components/atoms/Text/Text'
 import ToTop from 'components/atoms/ToTop/ToTop'
 import Navigation from 'components/organisms/Navigation/Navigation'
@@ -64,14 +65,14 @@ class MainTemplate extends React.Component {
    }
 
    render() {
-      const { children, language, phrases } = this.props
-
+      const { children, language, phrases, connectionErrors } = this.props
       return (
          <ThemeProvider theme={MainTheme}>
+            {connectionErrors.fetchDataFailure && <OfflineInfo />}
             <ToTop />
             <GlobalStyle />
             <SlickSliderStyle />
-            <Navigation />
+            <Navigation infoMargin={connectionErrors.fetchDataFailure} />
             <Wrapper>{children}</Wrapper>
             <Footer>
                <Text>
@@ -99,13 +100,19 @@ MainTemplate.propTypes = {
    fetchRealizations: PropTypes.func.isRequired,
    fetchCategories: PropTypes.func.isRequired,
    fetchTechnologies: PropTypes.func.isRequired,
+   // eslint-disable-next-line react/forbid-prop-types
+   connectionErrors: PropTypes.object.isRequired,
 }
 
 MainTemplate.defaultProps = {
    phrases: null,
 }
 
-const mapStateToProps = ({ api: { phrases }, app: { language } }) => ({ phrases, language })
+const mapStateToProps = ({ api: { phrases, connectionErrors }, app: { language } }) => ({
+   phrases,
+   language,
+   connectionErrors,
+})
 
 const mapDispatchToProps = (dispatch) => ({
    fetchPhrases: () => dispatch(fetchCollection('phrases')),

@@ -17,6 +17,10 @@ class Realizations extends React.Component {
    filterRealizations() {
       const { sort, filter, realizations, categories, language } = this.props
 
+      if (!realizations || !categories) {
+         return []
+      }
+
       let filtered = [...realizations]
       const sortTrue = sort.direction === 'desc' ? 1 : -1
       const sortFalse = sort.direction === 'asc' ? 1 : -1

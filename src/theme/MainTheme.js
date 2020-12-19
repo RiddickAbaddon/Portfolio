@@ -6,6 +6,7 @@ const MainTheme = {
    fontPrimary: 'hsl(0, 0%, 100%)',
    fontSecondary: 'hsl(0, 0%, 77%)',
    accentColor: 'hsl(32, 100%, 50%)',
+   errorColor: 'hsl(0, 100%, 60%)',
 
    transparent: {
       white: {

@@ -2,12 +2,15 @@ import GetAppIcon from '@material-ui/icons/GetApp'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import LinkIcon from '@material-ui/icons/Link'
 import WebAssetIcon from '@material-ui/icons/WebAsset'
+import authenticalInfoImage from 'assets/authentical_info.png'
 import FigmaIconURL from 'assets/icons/figma.svg'
+import CardWrapper from 'components/atoms/CardWrapper/CardWrapper'
 import Divider from 'components/atoms/Divider/Divider'
 import Icon from 'components/atoms/Icon/Icon'
 import Text from 'components/atoms/Text/Text'
 import Button from 'components/molecules/Button/Button'
 import Categories from 'components/molecules/Categories/Categories'
+import Image from 'components/molecules/Image/Image'
 import TechnologyStack from 'components/molecules/TechnologyStack/TechnologyStack'
 import ProjectHeader from 'components/organisms/ProjectHeader/ProjectHeader'
 import { API_URL } from 'defines'
@@ -34,6 +37,36 @@ const ButtonsWrapper = styled.div`
 const ButtonContainer = styled.div`
    display: inline-block;
    margin: 20px;
+`
+
+const AuthenticalInfoWrapper = styled(CardWrapper)`
+   padding: 20px;
+   display: flex;
+   align-items: center;
+
+   @media ${({ theme }) => theme.breakpoints.min.tablet} {
+      justify-content: space-between;
+   }
+
+   @media ${({ theme }) => theme.breakpoints.max.tablet} {
+      flex-direction: column;
+   }
+`
+
+const StyledAuthenticalInfoImage = styled(Image)`
+   width: 300px;
+   height: 171px;
+   flex-shrink: 0;
+   border-radius: ${({ theme }) => theme.radius.secondary};
+
+   @media ${({ theme }) => theme.breakpoints.min.tablet} {
+      margin-left: 20px;
+   }
+
+   @media ${({ theme }) => theme.breakpoints.max.tablet} {
+      margin-top: 20px;
+      max-width: 100%;
+   }
 `
 
 const RealizationTemplate = ({ phrases, realization, categories, technologies, language }) => (
@@ -132,6 +165,15 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
             }
          })}
       </ButtonsWrapper>
+      {realization.authentical_info && (
+         <>
+            <Divider size="large" />
+            <AuthenticalInfoWrapper>
+               <Text>{getPhrase(phrases, 'authentical-info', language)}</Text>
+               <StyledAuthenticalInfoImage src={authenticalInfoImage} />
+            </AuthenticalInfoWrapper>
+         </>
+      )}
       {realization.gallery && realization.gallery.length && (
          <>
             <Divider size="large" />
@@ -177,6 +219,7 @@ RealizationTemplate.propTypes = {
          }),
       ),
       _created: PropTypes.number,
+      authentical_info: PropTypes.bool,
    }).isRequired,
    categories: PropTypes.arrayOf(
       PropTypes.shape({
