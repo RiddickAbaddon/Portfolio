@@ -73,5 +73,10 @@ export const fetchThumbnail = (path, width, height) => (dispatch) => {
             },
          })
       })
-      .catch((err) => dispatch({ type: FETCH_THUMBNAIL_FAILURE, payload: err }))
+      .catch((err) =>
+         dispatch({
+            type: FETCH_THUMBNAIL_FAILURE,
+            payload: { err, name: `${path}/${width}/${height}` },
+         }),
+      )
 }

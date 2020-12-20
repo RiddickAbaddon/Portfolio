@@ -3,6 +3,7 @@ import {
    FETCH_COLLECTION_SUCCESS,
    FETCH_SINGLETON_FAILURE,
    FETCH_SINGLETON_SUCCESS,
+   FETCH_THUMBNAIL_FAILURE,
    FETCH_THUMBNAIL_SUCCESS,
 } from 'actions/api'
 import { capitalizeFirstLetter } from 'Utils'
@@ -10,6 +11,7 @@ import { capitalizeFirstLetter } from 'Utils'
 const initialState = {
    thumbnails: [],
    connectionErrors: {},
+   imageErrors: [],
 }
 
 const apiReducer = (state = initialState, action) => {
@@ -58,10 +60,17 @@ const apiReducer = (state = initialState, action) => {
             },
          }
       }
+      case FETCH_THUMBNAIL_FAILURE: {
+         return {
+            ...state,
+            imageErrors: [...state.imageErrors, action.payload.name],
+         }
+      }
       case '@@INIT': {
          return {
             ...state,
             connectionErrors: {},
+            imageErrors: [],
          }
       }
       default:

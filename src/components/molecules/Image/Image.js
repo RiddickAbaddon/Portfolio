@@ -90,10 +90,24 @@ class Image extends React.Component {
    }
 
    render() {
-      const { src, isLink, thumbnail, thumbnails, alt, preloadAnimation, ...props } = this.props
+      const {
+         src,
+         isLink,
+         thumbnail,
+         thumbnails,
+         alt,
+         preloadAnimation,
+         imageErrors,
+         ...props
+      } = this.props
+
       const { loaded, error } = this.state
+
       const thumbnailSrc =
-         src && thumbnail && thumbnails ? getThumbnail(thumbnails, src, thumbnail) : null
+         src && thumbnail && thumbnails
+            ? getThumbnail(thumbnails, src, thumbnail, imageErrors)
+            : null
+
       return (
          <Wrapper as={isLink ? 'a' : 'div'} {...props}>
             {src && !thumbnail && (
@@ -111,17 +125,8 @@ class Image extends React.Component {
                   alt={alt}
                   onLoad={() => this.setState({ loaded: true })}
                   onError={() => {
-                     console.log('error')
                      this.setState({ error: true, loaded: true })
                   }}
-                  show={loaded}
-               />
-            )}
-            {thumbnail && !thumbnailSrc && (
-               <IMG
-                  src={emptyIcon}
-                  alt={alt}
-                  onLoad={() => this.setState({ loaded: true })}
                   show={loaded}
                />
             )}
@@ -147,6 +152,7 @@ Image.propTypes = {
          url: PropTypes.string,
       }),
    ),
+   imageErrors: PropTypes.arrayOf(PropTypes.string),
    preloadAnimation: PropTypes.oneOf(['gradient', 'pulse']),
 }
 
@@ -156,10 +162,11 @@ Image.defaultProps = {
    isLink: false,
    thumbnail: null,
    thumbnails: null,
+   imageErrors: [],
    preloadAnimation: 'gradient',
 }
 
-const mapStateToProps = ({ api: { thumbnails } }) => ({ thumbnails })
+const mapStateToProps = ({ api: { thumbnails, imageErrors } }) => ({ thumbnails, imageErrors })
 
 const mapDispatchToProps = (dispatch) => ({
    fetchThumbnail: (path, width, height) => dispatch(fetchThumbnailAction(path, width, height)),

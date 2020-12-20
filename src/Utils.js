@@ -23,12 +23,14 @@ export const getPhrase = (phrases, name, language) => {
    return '...'
 }
 
-export const getThumbnail = (thumbnails, path, size) => {
-   if (thumbnails) {
+export const getThumbnail = (thumbnails, path, size, imageErrors) => {
+   if (thumbnails && thumbnails.length) {
       const width = size[0] || 200
       const height = size[1] || width
       const thumbnail = thumbnails.find((x) => x.name === `${path}/${width}/${height}`)
       if (thumbnail) return thumbnail.url
+      const error = imageErrors.find((x) => x === `${path}/${width}/${height}`)
+      if (error) return 'error'
       return null
    }
    return null
