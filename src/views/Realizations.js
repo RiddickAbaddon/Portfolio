@@ -1,11 +1,11 @@
 import bgRealizations from 'assets/backgrounds/realizations.png'
-import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
-import CardWrapper from 'components/atoms/CardWrapper/CardWrapper'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
-import Text from 'components/atoms/Text/Text'
+import BackgroundSection from 'components/molecules/BackgroundSection/BackgroundSection'
+import NoContent from 'components/molecules/NoContent/NoContent'
 import FilterPanel from 'components/organisms/FilterPanel/FilterPanel'
+import NoContentInfo from 'components/organisms/NoContentInfo/NoContentInfo'
 import PreloadCards from 'components/organisms/PreloadCard/PreloadCards'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -82,8 +82,16 @@ class Realizations extends React.Component {
    }
 
    render() {
-      const { phrases, realizations, categories, technologies, language } = this.props
+      const {
+         phrases,
+         realizations,
+         categories,
+         technologies,
+         language,
+         connectionErrors,
+      } = this.props
       const filtered = this.filterRealizations()
+
       return (
          <BackgroundSection background={bgRealizations}>
             <Container>
@@ -104,15 +112,25 @@ class Realizations extends React.Component {
                            />
                         </>
                      ) : (
-                        <CardWrapper>
+                        <>
                            <Divider size="small" />
-                           <Text>{getPhrase(phrases, 'no-filtered-realizations', language)}</Text>
+                           <NoContent>
+                              {getPhrase(phrases, 'no-filtered-realizations', language)}
+                           </NoContent>
                            <Divider size="small" />
-                        </CardWrapper>
+                        </>
                      )}
                   </>
                ) : (
-                  <PreloadCards />
+                  <>
+                     {connectionErrors.collectionRealizations ||
+                     connectionErrors.collectionCategories ||
+                     connectionErrors.collectionTechnologies ? (
+                        <NoContentInfo />
+                     ) : (
+                        <PreloadCards />
+                     )}
+                  </>
                )}
                <Divider size="large" />
             </Container>
@@ -177,6 +195,8 @@ Realizations.propTypes = {
       technology: PropTypes.string,
       search: PropTypes.string,
    }).isRequired,
+   // eslint-disable-next-line react/forbid-prop-types
+   connectionErrors: PropTypes.object.isRequired,
 }
 
 Realizations.defaultProps = {
@@ -187,7 +207,7 @@ Realizations.defaultProps = {
 }
 
 const mapStateToProps = ({
-   api: { phrases, realizations, categories, technologies },
+   api: { phrases, realizations, categories, technologies, connectionErrors },
    app: { language, sort, filter },
 }) => ({
    phrases,
@@ -197,6 +217,7 @@ const mapStateToProps = ({
    language,
    sort,
    filter,
+   connectionErrors,
 })
 
 export default connect(mapStateToProps)(Realizations)

@@ -1,7 +1,7 @@
 import bgHex from 'assets/backgrounds/hex.png'
 import bgHome from 'assets/backgrounds/home.png'
 import bgRealizations from 'assets/backgrounds/realizations.png'
-import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
+import BackgroundSection from 'components/molecules/BackgroundSection/BackgroundSection'
 import React from 'react'
 import styled from 'styled-components'
 
@@ -47,7 +47,7 @@ const TestContent = () => (
 
 export default {
    component: BackgroundSection,
-   title: 'Atoms/BackgroundSection',
+   title: 'Molecules/BackgroundSection',
 }
 
 export const Home = () => (

@@ -1,4 +1,5 @@
 import { fetchThumbnail as fetchThumbnailAction } from 'actions/api'
+import emptyIcon from 'assets/empty.svg'
 import PreloadImage from 'components/atoms/PreloadImage/PreloadImage'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -42,6 +43,12 @@ const IMG = styled.img`
       css`
          animation: ${Show} 0.5s ease-out;
       `}
+
+   ${({ src }) =>
+      src === emptyIcon &&
+      css`
+         object-fit: scale-down;
+      `}
 `
 
 const StyledPreloadImage = styled(PreloadImage)`
@@ -68,6 +75,7 @@ const PreloadPulse = styled.div`
 class Image extends React.Component {
    state = {
       loaded: false,
+      error: false,
    }
 
    componentDidMount() {
@@ -83,22 +91,35 @@ class Image extends React.Component {
 
    render() {
       const { src, isLink, thumbnail, thumbnails, alt, preloadAnimation, ...props } = this.props
-      const { loaded } = this.state
+      const { loaded, error } = this.state
       const thumbnailSrc =
          src && thumbnail && thumbnails ? getThumbnail(thumbnails, src, thumbnail) : null
       return (
          <Wrapper as={isLink ? 'a' : 'div'} {...props}>
             {src && !thumbnail && (
                <IMG
-                  src={src}
+                  src={error ? emptyIcon : src}
                   alt={alt}
                   onLoad={() => this.setState({ loaded: true })}
+                  onError={() => this.setState({ error: true, loaded: true })}
                   show={loaded}
                />
             )}
             {thumbnailSrc && (
                <IMG
-                  src={thumbnailSrc}
+                  src={error ? emptyIcon : thumbnailSrc}
+                  alt={alt}
+                  onLoad={() => this.setState({ loaded: true })}
+                  onError={() => {
+                     console.log('error')
+                     this.setState({ error: true, loaded: true })
+                  }}
+                  show={loaded}
+               />
+            )}
+            {thumbnail && !thumbnailSrc && (
+               <IMG
+                  src={emptyIcon}
                   alt={alt}
                   onLoad={() => this.setState({ loaded: true })}
                   show={loaded}

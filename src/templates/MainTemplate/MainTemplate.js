@@ -1,8 +1,9 @@
 import { fetchCollection } from 'actions/api'
+import emptyIcon from 'assets/empty.svg'
 import Footer from 'components/atoms/Footer/Footer'
-import OfflineInfo from 'components/atoms/OfflineInfo/OfflineInfo'
 import Text from 'components/atoms/Text/Text'
 import ToTop from 'components/atoms/ToTop/ToTop'
+import OfflineInfo from 'components/molecules/OfflineInfo/OfflineInfo'
 import Navigation from 'components/organisms/Navigation/Navigation'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -38,7 +39,7 @@ const MessengerBackground = styled.div`
    bottom: 20px;
    border-radius: 50%;
    background-color: ${({ theme }) => theme.accentColor};
-   z-index: 2;
+   z-index: 9;
 
    ::before {
       content: '';
@@ -53,6 +54,14 @@ const MessengerBackground = styled.div`
       background: ${({ theme }) => theme.transparent.white.mid};
       animation: ${PulseMessenger} 1s ease-out infinite;
    }
+`
+
+const LoadNoContentIcon = styled.img`
+   width: 0;
+   height: 0;
+   position: absolute;
+   top: 0;
+   left: 0;
 `
 
 class MainTemplate extends React.Component {
@@ -81,6 +90,7 @@ class MainTemplate extends React.Component {
                </Text>
             </Footer>
             <MessengerBackground />
+            <LoadNoContentIcon src={emptyIcon} alt="no content" />
          </ThemeProvider>
       )
    }

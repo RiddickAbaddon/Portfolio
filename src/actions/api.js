@@ -30,7 +30,7 @@ export const fetchCollection = (collection) => (dispatch) => {
             },
          })
       })
-      .catch((err) => dispatch({ type: FETCH_SINGLETON_FAILURE, payload: err }))
+      .catch((err) => dispatch({ type: FETCH_COLLECTION_FAILURE, payload: { err, collection } }))
 }
 
 export const fetchSingleton = (singleton) => (dispatch) => {
@@ -50,7 +50,7 @@ export const fetchSingleton = (singleton) => (dispatch) => {
             },
          })
       })
-      .catch((err) => dispatch({ type: FETCH_SINGLETON_FAILURE, payload: err }))
+      .catch((err) => dispatch({ type: FETCH_SINGLETON_FAILURE, payload: { err, singleton } }))
 }
 
 export const fetchThumbnail = (path, width, height) => (dispatch) => {

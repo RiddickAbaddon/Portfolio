@@ -1,11 +1,12 @@
 import { fetchCollection } from 'actions/api'
 import bgRealizations from 'assets/backgrounds/realizations.png'
-import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
 import Text from 'components/atoms/Text/Text'
+import BackgroundSection from 'components/molecules/BackgroundSection/BackgroundSection'
 import PreloadText from 'components/molecules/PreloadText/PreloadText'
+import NoContentInfo from 'components/organisms/NoContentInfo/NoContentInfo'
 import PropTypes from 'prop-types'
 import React from 'react'
 import reactHtmlParser from 'react-html-parser'
@@ -26,6 +27,7 @@ class InfoPage extends React.Component {
          match: {
             params: { page: pageSlug },
          },
+         connectionErrors,
       } = this.props
 
       if (pages) {
@@ -51,7 +53,7 @@ class InfoPage extends React.Component {
       return (
          <Container>
             <Divider size="large" />
-            <PreloadText />
+            <>{connectionErrors.collectionPages ? <NoContentInfo /> : <PreloadText />}</>
             <Divider size="large" />
          </Container>
       )
@@ -75,13 +77,19 @@ InfoPage.propTypes = {
          page: PropTypes.string,
       }),
    }).isRequired,
+   // eslint-disable-next-line react/forbid-prop-types
+   connectionErrors: PropTypes.object.isRequired,
 }
 
 InfoPage.defaultProps = {
    pages: null,
 }
 
-const mapStateToProps = ({ api: { pages }, app: { language } }) => ({ pages, language })
+const mapStateToProps = ({ api: { pages, connectionErrors }, app: { language } }) => ({
+   pages,
+   language,
+   connectionErrors,
+})
 
 const mapDispatchToProps = (dispatch) => ({
    fetchPages: () => dispatch(fetchCollection('pages')),

@@ -56,7 +56,6 @@ const PreloadRealization = () => (
       <PreloadTechnologyStack />
       <Divider size="medium" />
       <PreloadButton />
-      <Divider size="large" />
    </Wrapper>
 )
 

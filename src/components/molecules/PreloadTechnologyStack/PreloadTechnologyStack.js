@@ -15,6 +15,8 @@ const IconsWrapper = styled.div`
    justify-content: center;
    flex-wrap: wrap;
    margin-top: 20px;
+   height: 104px;
+   overflow: hidden;
 `
 
 const PreloadIcon = styled(PreloadImage)`

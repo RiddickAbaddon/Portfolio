@@ -5,8 +5,11 @@ import styled from 'styled-components'
 
 const Wrapper = styled.div`
    display: grid;
-   grid-template-columns: repeat(3, 1fr);
+   grid-template-columns: repeat(auto-fill, minmax(270px, auto));
    grid-gap: ${({ smallgap }) => (smallgap ? 20 : 40)}px;
+   grid-auto-rows: 489px;
+   height: 510px;
+   overflow: hidden;
 `
 
 const PreloadCards = ({ smallgap, ...props }) => (

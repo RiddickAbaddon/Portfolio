@@ -2,16 +2,17 @@ import { fetchSingleton } from 'actions/api'
 import bgHex from 'assets/backgrounds/hex.png'
 import bgHome from 'assets/backgrounds/home.png'
 import mailIcon from 'assets/mail.svg'
-import BackgroundSection from 'components/atoms/BackgroundSection/BackgroundSection'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
 import PreloadAbout from 'components/atoms/PreloadAbout/PreloadAbout'
 import SVG from 'components/atoms/SVG/SVG'
+import BackgroundSection from 'components/molecules/BackgroundSection/BackgroundSection'
 import Button from 'components/molecules/Button/Button'
 import PreloadTechnologyStack from 'components/molecules/PreloadTechnologyStack/PreloadTechnologyStack'
 import TechnologyStack from 'components/molecules/TechnologyStack/TechnologyStack'
 import About from 'components/organisms/About/About'
+import NoContentInfo from 'components/organisms/NoContentInfo/NoContentInfo'
 import PreloadCards from 'components/organisms/PreloadCard/PreloadCards'
 import { API_URL } from 'defines'
 import PropTypes from 'prop-types'
@@ -35,7 +36,15 @@ class Home extends React.Component {
    }
 
    render() {
-      const { phrases, about, realizations, categories, technologies, language } = this.props
+      const {
+         phrases,
+         about,
+         realizations,
+         categories,
+         technologies,
+         language,
+         connectionErrors,
+      } = this.props
 
       return (
          <>
@@ -49,16 +58,23 @@ class Home extends React.Component {
                   {about ? (
                      <About avatar={`${API_URL}${about.avatar.path}`}>{about[language]}</About>
                   ) : (
-                     <PreloadAbout />
+                     <>{connectionErrors.singletonAbout ? <NoContentInfo /> : <PreloadAbout />}</>
                   )}
                   <Divider size="large" />
-                  {technologies && about && phrases ? (
+                  {technologies && about ? (
                      <TechnologyStack
                         title={getPhrase(phrases, 'technologies-i-work-with', language)}
                         technologies={getDataByIds(about.technologies, technologies)}
                      />
                   ) : (
-                     <PreloadTechnologyStack />
+                     <>
+                        {connectionErrors.singletonAbout ||
+                        connectionErrors.collectionTechnologies ? (
+                           <NoContentInfo />
+                        ) : (
+                           <PreloadTechnologyStack />
+                        )}
+                     </>
                   )}
                </Container>
             </BackgroundSection>
@@ -79,7 +95,15 @@ class Home extends React.Component {
                   />
                ) : (
                   <Container>
-                     <PreloadCards smallgap />
+                     <>
+                        {connectionErrors.collectionRealizations ||
+                        connectionErrors.collectionCategories ||
+                        connectionErrors.collectionTechnologies ? (
+                           <NoContentInfo />
+                        ) : (
+                           <PreloadCards smallgap />
+                        )}
+                     </>
                   </Container>
                )}
 
@@ -168,6 +192,8 @@ Home.propTypes = {
    ),
    language: PropTypes.string.isRequired,
    fetchAbout: PropTypes.func.isRequired,
+   // eslint-disable-next-line react/forbid-prop-types
+   connectionErrors: PropTypes.object.isRequired,
 }
 
 Home.defaultProps = {
@@ -179,7 +205,7 @@ Home.defaultProps = {
 }
 
 const mapStateToProps = ({
-   api: { about, realizations, categories, technologies, phrases },
+   api: { about, realizations, categories, technologies, phrases, connectionErrors },
    app: { language },
 }) => ({
    about,
@@ -188,6 +214,7 @@ const mapStateToProps = ({
    technologies,
    language,
    phrases,
+   connectionErrors,
 })
 
 const mapDispatchToProps = (dispatch) => ({

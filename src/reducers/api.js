@@ -5,6 +5,7 @@ import {
    FETCH_SINGLETON_SUCCESS,
    FETCH_THUMBNAIL_SUCCESS,
 } from 'actions/api'
+import { capitalizeFirstLetter } from 'Utils'
 
 const initialState = {
    thumbnails: [],
@@ -43,6 +44,7 @@ const apiReducer = (state = initialState, action) => {
             connectionErrors: {
                ...state.connectionErrors,
                fetchDataFailure: true,
+               [`singleton${capitalizeFirstLetter(action.payload.singleton)}`]: true,
             },
          }
       }
@@ -52,6 +54,7 @@ const apiReducer = (state = initialState, action) => {
             connectionErrors: {
                ...state.connectionErrors,
                fetchDataFailure: true,
+               [`collection${capitalizeFirstLetter(action.payload.collection)}`]: true,
             },
          }
       }
