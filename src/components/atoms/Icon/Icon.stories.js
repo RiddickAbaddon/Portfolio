@@ -1,7 +1,7 @@
-import ReactIcon from 'assets/react.png'
 import Icon from 'components/atoms/Icon/Icon'
 import PropTypes from 'prop-types'
 import React from 'react'
+import ReactIcon from 'testData/assets/react.png'
 
 export default {
    component: Icon,

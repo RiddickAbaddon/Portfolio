@@ -21,6 +21,7 @@ export const Basic = () => (
          realizations={realizations}
          categories={categories}
          technologies={technologies}
+         language="pl"
       />
    </Wrapper>
 )

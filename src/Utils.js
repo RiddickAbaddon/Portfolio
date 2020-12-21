@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 export const getDataByIds = (idsCollection, collection) => {
    const result = []
    if (idsCollection.length) {
@@ -23,13 +22,22 @@ export const getPhrase = (phrases, name, language) => {
    return '...'
 }
 
-export const getThumbnail = (thumbnails, path, size, imageErrors) => {
+export const getThumbnailSize = (thumbnail) => {
+   const width = thumbnail[0] || 200
+   const height = thumbnail[1] || width
+
+   return {
+      w: width,
+      h: height,
+   }
+}
+
+export const getThumbnail = (thumbnails, path, thumbnailSizes, imageErrors) => {
    if (thumbnails && thumbnails.length) {
-      const width = size[0] || 200
-      const height = size[1] || width
-      const thumbnail = thumbnails.find((x) => x.name === `${path}/${width}/${height}`)
+      const size = getThumbnailSize(thumbnailSizes)
+      const thumbnail = thumbnails.find((x) => x.name === `${path}/${size.w}/${size.h}`)
       if (thumbnail) return thumbnail.url
-      const error = imageErrors.find((x) => x === `${path}/${width}/${height}`)
+      const error = imageErrors.find((x) => x === `${path}/${size.w}/${size.h}`)
       if (error) return 'error'
       return null
    }

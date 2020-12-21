@@ -14,5 +14,6 @@ export const Basic = () => (
       realizations={realizations.splice(0, 9)}
       categories={categories}
       technologies={technologies}
+      language="pl"
    />
 )

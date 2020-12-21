@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import styled, { css, keyframes } from 'styled-components'
-import { getThumbnail } from 'Utils'
+import { getThumbnail, getThumbnailSize } from 'Utils'
 
 const Show = keyframes`
    from {
@@ -82,10 +82,9 @@ class Image extends React.Component {
       const { fetchThumbnail, thumbnail, src } = this.props
 
       if (thumbnail) {
-         const width = thumbnail[0] || 200
-         const height = thumbnail[1] || width
+         const size = getThumbnailSize(thumbnail)
 
-         fetchThumbnail(src, width, height)
+         fetchThumbnail(src, size.w, size.h)
       }
    }
 
@@ -107,6 +106,10 @@ class Image extends React.Component {
          src && thumbnail && thumbnails
             ? getThumbnail(thumbnails, src, thumbnail, imageErrors)
             : null
+      const thumbnailSizes = thumbnail ? getThumbnailSize(thumbnail) : null
+      const findImageError = thumbnail
+         ? imageErrors.find((x) => x === `${src}/${thumbnailSizes.w}/${thumbnailSizes.h}`)
+         : null
 
       return (
          <Wrapper as={isLink ? 'a' : 'div'} {...props}>
@@ -127,6 +130,14 @@ class Image extends React.Component {
                   onError={() => {
                      this.setState({ error: true, loaded: true })
                   }}
+                  show={loaded}
+               />
+            )}
+            {thumbnail && !thumbnailSrc && findImageError && (
+               <IMG
+                  src={emptyIcon}
+                  alt={alt}
+                  onLoad={() => this.setState({ loaded: true })}
                   show={loaded}
                />
             )}

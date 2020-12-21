@@ -1,6 +1,6 @@
-import Avatar from 'assets/avatar.jpg'
 import About from 'components/organisms/About/About'
 import React from 'react'
+import Avatar from 'testData/assets/avatar.jpg'
 
 export default {
    component: About,

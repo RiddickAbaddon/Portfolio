@@ -71,7 +71,9 @@ const Card = ({ phrases, link, title, image, description, categories, technologi
       <StyledImage src={`${API_URL}${image}`} thumbnail={[300, 200]} alt={title} />
       <StyledHeading size="h3">{title}</StyledHeading>
       <StyledText small lineclamp={4}>
-         {ReactHtmlParser(removeHtmlTags(description))}
+         {description
+            ? ReactHtmlParser(removeHtmlTags(description))
+            : getPhrase(phrases, 'no-description', language)}
       </StyledText>
       {categories && categories.length ? (
          <Categories categories={categories} language={language} trim />

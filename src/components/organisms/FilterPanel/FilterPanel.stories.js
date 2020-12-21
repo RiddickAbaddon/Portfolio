@@ -1,4 +1,4 @@
-import FilterPanel from 'components/organisms/FilterPanel/FilterPanel'
+import FilterPanel from 'components/organisms/FilterPanel/DataContainerWithFilterPanel'
 import React from 'react'
 
 export default {

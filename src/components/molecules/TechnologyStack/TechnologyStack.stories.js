@@ -7,4 +7,6 @@ export default {
    title: 'Molecules/TechnologyStack',
 }
 
-export const Basic = () => <TechnologyStack technologies={technologies} />
+export const Basic = () => (
+   <TechnologyStack title="Technologie których używam" technologies={technologies} />
+)

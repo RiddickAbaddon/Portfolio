@@ -1,35 +1,32 @@
 import Navigation from 'components/organisms/Navigation/Navigation'
-import PropTypes from 'prop-types'
 import React from 'react'
+import { Link } from 'react-router-dom'
 import StoryRouter from 'storybook-react-router'
+import styled from 'styled-components'
+
+const ActionsWrapper = styled.div`
+   margin-top: 300px;
+`
+
+const StyledLink = styled(Link)`
+   color: ${({ theme }) => theme.fontPrimary};
+
+   :hover {
+      color: ${({ theme }) => theme.accentColor};
+   }
+`
 
 export default {
    components: Navigation,
    title: 'Organisms/Navigation',
    decorators: [StoryRouter()],
-   argTypes: {
-      backlink: {
-         control: 'boolean',
-      },
-      language: {
-         control: {
-            type: 'inline-radio',
-            options: ['pl', 'eng'],
-         },
-      },
-   },
 }
 
-export const Basic = ({ backlink, language }) => (
-   <Navigation backlink={backlink ? '/back' : null} language={language} />
+export const Basic = () => (
+   <>
+      <Navigation />
+      <ActionsWrapper>
+         <StyledLink to="/page">Go to page</StyledLink>
+      </ActionsWrapper>
+   </>
 )
-
-Basic.propTypes = {
-   backlink: PropTypes.bool.isRequired,
-   language: PropTypes.string.isRequired,
-}
-
-Basic.args = {
-   backlink: false,
-   language: 'pl',
-}

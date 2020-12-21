@@ -6,4 +6,4 @@ export default {
    title: 'Molecules/SearchInput',
 }
 
-export const Basic = () => <SearchInput />
+export const Basic = () => <SearchInput label="Szukaj..." />

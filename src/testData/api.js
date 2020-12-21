@@ -1,6 +1,6 @@
 export const realizations = [
    {
-      pl_title: 'Gra Xeon',
+      pl_title: 'Gra Xeno',
       en_title: 'Game Xeno',
       thumbnail: {
          path: '/storage/uploads/2020/12/01/5fc66f3520523xeno-v0-5-2.png',
@@ -9,14 +9,20 @@ export const realizations = [
          {
             _id: '5fc661793733332f1500013b',
             link: 'categories',
-            display: 'Gry',
+            display: 'games',
          },
       ],
       pl_description:
          '<p>Gra RPG w windowsowej konsoli. (Należy ustawić szerokość konsoli na 80 aby gra wyświetlała się poprawnie)</p>',
       en_description:
          '<p><span class="JLqJ4b ChMk0b" data-language-for-alternatives="en" data-language-to-translate-into="pl" data-phrase-index="0">RPG game in a Windows console.</span> <span class="JLqJ4b ChMk0b" data-language-for-alternatives="en" data-language-to-translate-into="pl" data-phrase-index="1">(You need to set the console width to 80 for the game to display correctly)</span></p>',
-      technologies: [],
+      technologies: [
+         {
+            _id: '5fdc1a466536353e400001f4',
+            link: 'technologies',
+            display: 'C++',
+         },
+      ],
       links: [
          {
             field: {
@@ -27,13 +33,14 @@ export const realizations = [
          },
       ],
       gallery: '',
-      pl_title_slug: 'gra-xeon',
+      pl_title_slug: 'gra-xeno',
       en_title_slug: 'game-xeno',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606900384,
+      _modified: 1608410672,
       _created: 1606840277,
       _id: '5fc66fd5643433c05a000242',
+      authentical_info: false,
    },
    {
       pl_title: 'Kółko i krzyżyk',
@@ -45,12 +52,18 @@ export const realizations = [
          {
             _id: '5fc661793733332f1500013b',
             link: 'categories',
-            display: 'Gry',
+            display: 'games',
          },
       ],
       pl_description: '<p>Klasyczna minigierka dla dw&oacute;ch os&oacute;b (hotseat)</p>',
       en_description: '<p>Classic mini-game for two (hotseat)</p>',
-      technologies: [],
+      technologies: [
+         {
+            _id: '5fdc1a466536353e400001f4',
+            link: 'technologies',
+            display: 'C++',
+         },
+      ],
       links: [
          {
             field: {
@@ -65,9 +78,10 @@ export const realizations = [
       en_title_slug: 'tic-tac-toe',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606900371,
+      _modified: 1608410665,
       _created: 1606840762,
       _id: '5fc671ba6163654dd800000c',
+      authentical_info: false,
    },
    {
       pl_title: 'Gra DarkWay',
@@ -79,7 +93,7 @@ export const realizations = [
          {
             _id: '5fc661793733332f1500013b',
             link: 'categories',
-            display: 'Gry',
+            display: 'games',
          },
       ],
       pl_description: '<p>Prosta i prymitywna strzelanka zrobiona na silniku Unity 4.</p>',
@@ -105,9 +119,10 @@ export const realizations = [
       en_title_slug: 'game-darkway',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606900361,
+      _modified: 1608410659,
       _created: 1606840925,
       _id: '5fc6725d30376655e4000236',
+      authentical_info: false,
    },
    {
       pl_title: 'Szubienica',
@@ -119,7 +134,7 @@ export const realizations = [
          {
             _id: '5fc661793733332f1500013b',
             link: 'categories',
-            display: 'Gry',
+            display: 'games',
          },
       ],
       pl_description:
@@ -154,9 +169,10 @@ export const realizations = [
       en_title_slug: 'gallow',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606841211,
+      _modified: 1608410653,
       _created: 1606841053,
       _id: '5fc672dd6432345ec40002a8',
+      authentical_info: false,
    },
    {
       pl_title: 'Gra PowerClicker',
@@ -168,7 +184,7 @@ export const realizations = [
          {
             _id: '5fc661793733332f1500013b',
             link: 'categories',
-            display: 'Gry',
+            display: 'games',
          },
       ],
       pl_description:
@@ -203,9 +219,10 @@ export const realizations = [
       en_title_slug: 'game-powerclicker',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606841495,
+      _modified: 1608410647,
       _created: 1606841495,
       _id: '5fc674973866364c5c00011b',
+      authentical_info: false,
    },
    {
       pl_title: 'Szachy (Pre-Alfa)',
@@ -217,7 +234,7 @@ export const realizations = [
          {
             _id: '5fc661793733332f1500013b',
             link: 'categories',
-            display: 'Gry',
+            display: 'games',
          },
       ],
       pl_description:
@@ -226,9 +243,9 @@ export const realizations = [
          '<p>Traditional game in my edition. The plans assumed a quite extensive form of the application, Online game, computer game, Possibility to change the theme. However, the application was supposed to be created in cooperation with another developer who, unfortunately, withdrew and I managed to finish only 1/3 of the game which includes a relatively working hotseat mode. Perhaps now I could easily make a similar game fully functional with the online version. If time allows, I will try.</p>',
       technologies: [
          {
-            _id: '5fc64ef4346635a70c0002cd',
+            _id: '5fdc1c1c646633abdb000206',
             link: 'technologies',
-            display: 'VanillaJS',
+            display: 'jQuery',
          },
       ],
       links: [
@@ -252,9 +269,10 @@ export const realizations = [
       en_title_slug: 'chess-pre-alfa',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606842674,
+      _modified: 1608410642,
       _created: 1606842674,
       _id: '5fc6793264393555e4000198',
+      authentical_info: false,
    },
    {
       pl_title: 'StarDuel',
@@ -266,7 +284,7 @@ export const realizations = [
          {
             _id: '5fc661793733332f1500013b',
             link: 'categories',
-            display: 'Gry',
+            display: 'games',
          },
       ],
       pl_description:
@@ -275,9 +293,9 @@ export const realizations = [
          "<p>A game for two with the possibility of playing with the computer. It is a simple shooter in which we control spaceships and try to destroy the enemy's ship. Each player has a limited amount of health that does not regenerate. Each shot takes energy which is regenerated over time.</p>",
       technologies: [
          {
-            _id: '5fc64ef4346635a70c0002cd',
+            _id: '5fdc1c1c646633abdb000206',
             link: 'technologies',
-            display: 'VanillaJS',
+            display: 'jQuery',
          },
       ],
       links: [
@@ -301,9 +319,10 @@ export const realizations = [
       en_title_slug: 'starduel',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606900694,
+      _modified: 1608410636,
       _created: 1606900694,
       _id: '5fc75bd6666661da67000397',
+      authentical_info: false,
    },
    {
       pl_title: 'WebSandbox',
@@ -315,7 +334,7 @@ export const realizations = [
          {
             _id: '5fc661943431314ec9000384',
             link: 'categories',
-            display: 'Narzędzia',
+            display: 'tools',
          },
       ],
       pl_description:
@@ -324,9 +343,9 @@ export const realizations = [
          '<p>A simplified version of CodePen. This is a blank page containing only a console where you can write your own page using only html. Check how much you can do. Changes are made in real time.</p>',
       technologies: [
          {
-            _id: '5fc64ef4346635a70c0002cd',
+            _id: '5fdc1c1c646633abdb000206',
             link: 'technologies',
-            display: 'VanillaJS',
+            display: 'jQuery',
          },
       ],
       links: [
@@ -343,9 +362,10 @@ export const realizations = [
       en_title_slug: 'websandbox',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606900806,
+      _modified: 1608410629,
       _created: 1606900806,
       _id: '5fc75c46356661d40f000123',
+      authentical_info: false,
    },
    {
       pl_title: 'BWMFCSS',
@@ -357,20 +377,14 @@ export const realizations = [
          {
             _id: '5fc661943431314ec9000384',
             link: 'categories',
-            display: 'Narzędzia',
+            display: 'tools',
          },
       ],
       pl_description:
          '<p>Jest to mini framework składający się tylko z jednego arkusza styli, kt&oacute;rego zadaniem jest jak najprostsze zastosowanie przez osoby uczące się jezyka HTML. Prostota tego frameworka sprawia iż strony jakie są na nim tworzone mimo, że nie są zbyt skomplikowane to wykonanie ich jest bardzo szybkie a osoby początkujące przygotowuje na pracę z bardziej rozbudowanymi technologiami.</p>',
       en_description:
          '<p>It is a mini framework consisting of only one style sheet, which is designed to be easily used by people learning HTML. The simplicity of this framework makes the pages that are created on it, even though they are not too complicated, their execution is very fast and beginners prepare them to work with more advanced technologies.</p>',
-      technologies: [
-         {
-            _id: '5fc64ef4346635a70c0002cd',
-            link: 'technologies',
-            display: 'VanillaJS',
-         },
-      ],
+      technologies: [],
       links: [
          {
             field: {
@@ -385,9 +399,10 @@ export const realizations = [
       en_title_slug: 'bwmfcss',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606900956,
+      _modified: 1608410624,
       _created: 1606900956,
       _id: '5fc75cdc653861ed470000c2',
+      authentical_info: false,
    },
    {
       pl_title: 'Paint Online',
@@ -399,12 +414,12 @@ export const realizations = [
          {
             _id: '5fc661943431314ec9000384',
             link: 'categories',
-            display: 'Narzędzia',
+            display: 'tools',
          },
          {
             _id: '5fc66165656432be9300009a',
             link: 'categories',
-            display: 'Aplikacje',
+            display: 'applications',
          },
       ],
       pl_description:
@@ -439,9 +454,10 @@ export const realizations = [
       en_title_slug: 'paint-online',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606901118,
+      _modified: 1608410619,
       _created: 1606901118,
       _id: '5fc75d7e65316152d8000204',
+      authentical_info: false,
    },
    {
       pl_title: 'SimpleSlider',
@@ -453,14 +469,20 @@ export const realizations = [
          {
             _id: '5fc6620e63396301560000e5',
             link: 'categories',
-            display: 'Biblioteki',
+            display: 'libraries',
          },
       ],
       pl_description:
          '<p>Prosta wtyczka do łatwego i szybkiego tworzenia slider&oacute;w oparta o bibliotekę JQuery. Wymagane do jej działania są JQuery w wersji:&nbsp;1.6+ oraz jQueryUI w wersji 1.8+.</p>',
       en_description:
          '<p>A simple plugin for easy and quick creation of sliders based on the JQuery library. JQuery version 1.6+ and jQueryUI version 1.8+ are required for its operation.</p>',
-      technologies: '',
+      technologies: [
+         {
+            _id: '5fdc1c1c646633abdb000206',
+            link: 'technologies',
+            display: 'jQuery',
+         },
+      ],
       links: [
          {
             field: {
@@ -482,9 +504,10 @@ export const realizations = [
       en_title_slug: 'simpleslider',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606901233,
+      _modified: 1608410610,
       _created: 1606901233,
       _id: '5fc75df13165372fc90000d6',
+      authentical_info: false,
    },
    {
       pl_title: 'Mirror',
@@ -496,7 +519,7 @@ export const realizations = [
          {
             _id: '5fc66165656432be9300009a',
             link: 'categories',
-            display: 'Aplikacje',
+            display: 'applications',
          },
       ],
       pl_description:
@@ -508,6 +531,16 @@ export const realizations = [
             _id: '5fc64ed53835623c240001fc',
             link: 'technologies',
             display: 'Electron',
+         },
+         {
+            _id: '5fc64f8f386662fcf70000b9',
+            link: 'technologies',
+            display: 'NodeJS',
+         },
+         {
+            _id: '5fc64fb8643134458c0002ad',
+            link: 'technologies',
+            display: 'SASS',
          },
       ],
       links: [
@@ -531,9 +564,10 @@ export const realizations = [
       en_title_slug: 'mirror',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606901325,
+      _modified: 1608410599,
       _created: 1606901325,
       _id: '5fc75e4d3931332f12000043',
+      authentical_info: false,
    },
    {
       pl_title: 'RA Work',
@@ -545,19 +579,30 @@ export const realizations = [
          {
             _id: '5fc66165656432be9300009a',
             link: 'categories',
-            display: 'Aplikacje',
+            display: 'applications',
          },
          {
             _id: '5fc661943431314ec9000384',
             link: 'categories',
-            display: 'Narzędzia',
+            display: 'tools',
          },
       ],
       pl_description:
          '<p>Jest to aplikacja do zarządzania projektami w twojej firmie. W zależności od przydzielonych Ci uprawnień możesz przeglądać projekty, zarządzać nimi, zarządzać użytkownikami oraz grupami, przydzielać ludzi do projekt&oacute;w a projekty przydzielać do grup w celu zapewnienia dyskrecji.&nbsp;</p>\n<p>Login: demo&nbsp;<br />Hasło: Testowe1!</p>',
       en_description:
          '<p>It is an application for project management in your company. Depending on the rights assigned to you, you can view projects, manage them, manage users and groups, assign people to projects, and assign projects to groups to ensure discretion.</p>\n<p>Login: demo<br />Password: Testowe1!</p>',
-      technologies: '',
+      technologies: [
+         {
+            _id: '5fdc1e9230663763de0002ea',
+            link: 'technologies',
+            display: 'PHP',
+         },
+         {
+            _id: '5fc64fb8643134458c0002ad',
+            link: 'technologies',
+            display: 'SASS',
+         },
+      ],
       links: [
          {
             field: {
@@ -579,9 +624,10 @@ export const realizations = [
       en_title_slug: 'ra-work',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606901446,
+      _modified: 1608410592,
       _created: 1606901446,
       _id: '5fc75ec6336237b79c00031d',
+      authentical_info: false,
    },
    {
       pl_title: 'Szablon strony zespołu Lichmistress',
@@ -593,14 +639,25 @@ export const realizations = [
          {
             _id: '5fc661f6306436eaf5000338',
             link: 'categories',
-            display: 'Szablony',
+            display: 'templates',
          },
       ],
       pl_description:
          '<p>Szablon strony zespołu Lichmistress. Prace nad backendem strony zostały wstrzymane jednak front end jest w 100% gotowy i działający. Być może w niedalekiej przyszłości pojawi się już w pełni działająca strona.</p>',
       en_description:
          "<p>Lichmistress band page template. Work on the website's backend has been suspended, but the front end is 100% ready and working. Perhaps a fully functional website will appear in the near future.</p>",
-      technologies: '',
+      technologies: [
+         {
+            _id: '5fdc1c1c646633abdb000206',
+            link: 'technologies',
+            display: 'jQuery',
+         },
+         {
+            _id: '5fc64fb8643134458c0002ad',
+            link: 'technologies',
+            display: 'SASS',
+         },
+      ],
       links: [
          {
             field: {
@@ -615,9 +672,10 @@ export const realizations = [
       en_title_slug: 'lichmistress-band-page-template',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606901551,
+      _modified: 1608410581,
       _created: 1606901551,
       _id: '5fc75f2f3230619e08000345',
+      authentical_info: false,
    },
    {
       pl_title: 'Parallax Pack',
@@ -629,7 +687,7 @@ export const realizations = [
          {
             _id: '5fc6620e63396301560000e5',
             link: 'categories',
-            display: 'Biblioteki',
+            display: 'libraries',
          },
       ],
       pl_description:
@@ -664,9 +722,10 @@ export const realizations = [
       en_title_slug: 'parallax-pack',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606901662,
+      _modified: 1608410571,
       _created: 1606901662,
       _id: '5fc75f9e62333652090001a0',
+      authentical_info: false,
    },
    {
       pl_title: 'Masonry grid',
@@ -678,7 +737,7 @@ export const realizations = [
          {
             _id: '5fc6620e63396301560000e5',
             link: 'categories',
-            display: 'Biblioteki',
+            display: 'libraries',
          },
       ],
       pl_description:
@@ -713,9 +772,10 @@ export const realizations = [
       en_title_slug: 'masonry-grid',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606901783,
+      _modified: 1608410560,
       _created: 1606901783,
       _id: '5fc760176661378d4700009b',
+      authentical_info: false,
    },
    {
       pl_title: 'Szablon strony anime',
@@ -727,7 +787,7 @@ export const realizations = [
          {
             _id: '5fc661f6306436eaf5000338',
             link: 'categories',
-            display: 'Szablony',
+            display: 'templates',
          },
       ],
       pl_description:
@@ -744,6 +804,21 @@ export const realizations = [
             _id: '5fc64f4e643363aa2d00004d',
             link: 'technologies',
             display: 'Materialize',
+         },
+         {
+            _id: '5fdc2056306136e8930002da',
+            link: 'technologies',
+            display: 'Grunt',
+         },
+         {
+            _id: '5fdc1c1c646633abdb000206',
+            link: 'technologies',
+            display: 'jQuery',
+         },
+         {
+            _id: '5fdc250638326631e60000e9',
+            link: 'technologies',
+            display: 'Figma',
          },
       ],
       links: [
@@ -774,9 +849,10 @@ export const realizations = [
       en_title_slug: 'anime-website-template',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606901954,
+      _modified: 1608410543,
       _created: 1606901954,
       _id: '5fc760c23433660c8100032b',
+      authentical_info: false,
    },
    {
       pl_title: 'ujs-player',
@@ -788,7 +864,7 @@ export const realizations = [
          {
             _id: '5fc6620e63396301560000e5',
             link: 'categories',
-            display: 'Biblioteki',
+            display: 'libraries',
          },
       ],
       pl_description:
@@ -800,6 +876,16 @@ export const realizations = [
             _id: '5fc64ef4346635a70c0002cd',
             link: 'technologies',
             display: 'VanillaJS',
+         },
+         {
+            _id: '5fc64fce393030b42c00000c',
+            link: 'technologies',
+            display: 'Webpack',
+         },
+         {
+            _id: '5fc64fb8643134458c0002ad',
+            link: 'technologies',
+            display: 'SASS',
          },
       ],
       links: [
@@ -823,9 +909,10 @@ export const realizations = [
       en_title_slug: 'ujs-player',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606902039,
+      _modified: 1608410539,
       _created: 1606902039,
       _id: '5fc76117363063cba60001a4',
+      authentical_info: false,
    },
    {
       pl_title: 'Makieta komunikatora',
@@ -837,14 +924,20 @@ export const realizations = [
          {
             _id: '5fc661f6306436eaf5000338',
             link: 'categories',
-            display: 'Szablony',
+            display: 'templates',
          },
       ],
       pl_description:
          '<p>Jest to interaktywna makieta komunikatora. Projekt obejmuje wygląd i zachowanie podstawowych funkcji interfejsu oraz zawiera przybliżone działanie animacji. Poniżej znajdują się dwa podstawowe tematy kolorystyczne, jasny i ciemny.</p>',
       en_description:
          '<p>It is an interactive messenger mockup. The design covers the look and feel of the basic interface functions, and approximates how the animation works. Below are two basic color themes, light and dark.</p>',
-      technologies: '',
+      technologies: [
+         {
+            _id: '5fdc250638326631e60000e9',
+            link: 'technologies',
+            display: 'Figma',
+         },
+      ],
       links: [
          {
             field: {
@@ -866,9 +959,10 @@ export const realizations = [
       en_title_slug: 'messenger-mockup',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606902142,
+      _modified: 1608410532,
       _created: 1606902142,
       _id: '5fc7617e38646382130001a3',
+      authentical_info: false,
    },
    {
       pl_title: 'Countdown',
@@ -880,7 +974,7 @@ export const realizations = [
          {
             _id: '5fc6620e63396301560000e5',
             link: 'categories',
-            display: 'Biblioteki',
+            display: 'libraries',
          },
       ],
       pl_description:
@@ -892,6 +986,11 @@ export const realizations = [
             _id: '5fc64ef4346635a70c0002cd',
             link: 'technologies',
             display: 'VanillaJS',
+         },
+         {
+            _id: '5fc64fce393030b42c00000c',
+            link: 'technologies',
+            display: 'Webpack',
          },
       ],
       links: [
@@ -915,9 +1014,10 @@ export const realizations = [
       en_title_slug: 'countdown',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606902253,
+      _modified: 1608410528,
       _created: 1606902253,
       _id: '5fc761ed306362923e000365',
+      authentical_info: false,
    },
    {
       pl_title: 'Hard Styled Elements',
@@ -929,7 +1029,7 @@ export const realizations = [
          {
             _id: '5fc6620e63396301560000e5',
             link: 'categories',
-            display: 'Biblioteki',
+            display: 'libraries',
          },
       ],
       pl_description:
@@ -941,6 +1041,11 @@ export const realizations = [
             _id: '5fc64ef4346635a70c0002cd',
             link: 'technologies',
             display: 'VanillaJS',
+         },
+         {
+            _id: '5fc64fce393030b42c00000c',
+            link: 'technologies',
+            display: 'Webpack',
          },
       ],
       links: [
@@ -964,9 +1069,10 @@ export const realizations = [
       en_title_slug: 'hard-styled-elements',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606902408,
+      _modified: 1608410521,
       _created: 1606902408,
       _id: '5fc7628864346408ad00020b',
+      authentical_info: false,
    },
    {
       pl_title: 'Lyric formatter',
@@ -978,7 +1084,7 @@ export const realizations = [
          {
             _id: '5fc66165656432be9300009a',
             link: 'categories',
-            display: 'Aplikacje',
+            display: 'applications',
          },
       ],
       pl_description:
@@ -990,6 +1096,16 @@ export const realizations = [
             _id: '5fc64ef4346635a70c0002cd',
             link: 'technologies',
             display: 'VanillaJS',
+         },
+         {
+            _id: '5fc64fce393030b42c00000c',
+            link: 'technologies',
+            display: 'Webpack',
+         },
+         {
+            _id: '5fc64fb8643134458c0002ad',
+            link: 'technologies',
+            display: 'SASS',
          },
       ],
       links: [
@@ -1013,9 +1129,10 @@ export const realizations = [
       en_title_slug: 'lyric-formatter',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606902496,
+      _modified: 1608410515,
       _created: 1606902496,
       _id: '5fc762e0313565f43d0003bd',
+      authentical_info: false,
    },
    {
       pl_title: 'Orbitron',
@@ -1027,7 +1144,7 @@ export const realizations = [
          {
             _id: '5fc66165656432be9300009a',
             link: 'categories',
-            display: 'Aplikacje',
+            display: 'applications',
          },
       ],
       pl_description:
@@ -1039,6 +1156,11 @@ export const realizations = [
             _id: '5fc64f9f333666a26a0002ea',
             link: 'technologies',
             display: 'React',
+         },
+         {
+            _id: '5fc64fb8643134458c0002ad',
+            link: 'technologies',
+            display: 'SASS',
          },
       ],
       links: [
@@ -1062,9 +1184,10 @@ export const realizations = [
       en_title_slug: 'orbitron',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606902574,
+      _modified: 1608410503,
       _created: 1606902574,
       _id: '5fc7632e3035645999000131',
+      authentical_info: true,
    },
    {
       pl_title: 'Wypoczynek na wsi',
@@ -1076,7 +1199,7 @@ export const realizations = [
          {
             _id: '5fc661d1383839ee60000206',
             link: 'categories',
-            display: 'Komercyjne',
+            display: 'commercial',
          },
       ],
       pl_description:
@@ -1088,6 +1211,16 @@ export const realizations = [
             _id: '5fc64f9f333666a26a0002ea',
             link: 'technologies',
             display: 'React',
+         },
+         {
+            _id: '5fdc22293638314a070003b4',
+            link: 'technologies',
+            display: 'Leaflet',
+         },
+         {
+            _id: '5fc64fb8643134458c0002ad',
+            link: 'technologies',
+            display: 'SASS',
          },
       ],
       links: [
@@ -1168,9 +1301,10 @@ export const realizations = [
       en_title_slug: 'nawsi-pl',
       _mby: '5fa49dc736663099040003d8',
       _by: '5fa49dc736663099040003d8',
-      _modified: 1606903530,
+      _modified: 1608410484,
       _created: 1606902718,
       _id: '5fc763be376666a056000397',
+      authentical_info: true,
    },
 ]
 
