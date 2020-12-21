@@ -1,5 +1,5 @@
 import { fetchCollection } from 'actions/api'
-import bgRealizations from 'assets/backgrounds/realizations.png'
+import { backgroundWeb } from 'assets'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
@@ -38,7 +38,7 @@ class InfoPage extends React.Component {
          }
 
          return (
-            <BackgroundSection background={bgRealizations}>
+            <BackgroundSection background={backgroundWeb}>
                <Container>
                   <Divider size="large" mobile />
                   <Heading size="h1">{page[`${language}_title`]}</Heading>

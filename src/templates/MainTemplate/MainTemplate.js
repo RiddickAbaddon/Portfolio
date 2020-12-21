@@ -1,5 +1,5 @@
 import { fetchCollection } from 'actions/api'
-import emptyIcon from 'assets/empty.svg'
+import emptyIcon from 'assets/svg/empty.svg'
 import Footer from 'components/atoms/Footer/Footer'
 import Text from 'components/atoms/Text/Text'
 import ToTop from 'components/atoms/ToTop/ToTop'

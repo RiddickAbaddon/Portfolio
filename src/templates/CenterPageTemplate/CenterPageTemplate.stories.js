@@ -1,4 +1,4 @@
-import img404 from 'assets/404.svg'
+import img404 from 'assets/svg/404.svg'
 import SVG from 'components/atoms/SVG/SVG'
 import React from 'react'
 import CenterPageTemplate from 'templates/CenterPageTemplate/CenterPageTemplate'

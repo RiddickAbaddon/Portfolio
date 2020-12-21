@@ -10,7 +10,7 @@ const Image = styled.img`
    position: absolute;
    z-index: -1;
    opacity: ${({ loaded }) => (loaded ? 1 : 0)};
-   transition: opacity 3s ease-out;
+   transition: opacity 1s ease-out;
    will-change: transform;
    width: 100%;
    ${({ align }) =>

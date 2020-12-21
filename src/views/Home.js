@@ -1,7 +1,6 @@
 import { fetchSingleton } from 'actions/api'
-import bgHex from 'assets/backgrounds/hex.png'
-import bgHome from 'assets/backgrounds/home.png'
-import mailIcon from 'assets/mail.svg'
+import { backgroundHex, backgroundLowpoly } from 'assets'
+import mailIcon from 'assets/svg/mail.svg'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
@@ -48,7 +47,7 @@ class Home extends React.Component {
 
       return (
          <>
-            <BackgroundSection background={bgHome}>
+            <BackgroundSection background={backgroundLowpoly}>
                <Container>
                   <Divider size="large" mobile />
                   <Heading size="h1">Marcin Kalinowski</Heading>
@@ -115,7 +114,7 @@ class Home extends React.Component {
                </Container>
             </section>
 
-            <BackgroundSection background={bgHex} align="bottom">
+            <BackgroundSection background={backgroundHex} align="bottom">
                <CenterPageTemplate title={getPhrase(phrases, 'contact', language)}>
                   <Container>
                      <SVG src={mailIcon} alt="mail" />

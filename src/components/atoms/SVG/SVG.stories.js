@@ -1,4 +1,4 @@
-import Image404 from 'assets/404.svg'
+import Image404 from 'assets/svg/404.svg'
 import SVG from 'components/atoms/SVG/SVG'
 import React from 'react'
 

@@ -1,5 +1,5 @@
 import { fetchThumbnail as fetchThumbnailAction } from 'actions/api'
-import emptyIcon from 'assets/empty.svg'
+import emptyIcon from 'assets/svg/empty.svg'
 import PreloadImage from 'components/atoms/PreloadImage/PreloadImage'
 import PropTypes from 'prop-types'
 import React from 'react'

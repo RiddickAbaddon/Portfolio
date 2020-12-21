@@ -1,4 +1,4 @@
-import bgHome from 'assets/backgrounds/home.png'
+import { backgroundLowpoly } from 'assets'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import BackgroundSection from 'components/molecules/BackgroundSection/BackgroundSection'
@@ -34,7 +34,7 @@ const Realization = ({
       const projectTechnologies = getDataByIds(project.technologies, technologies)
 
       return (
-         <BackgroundSection background={bgHome}>
+         <BackgroundSection background={backgroundLowpoly}>
             <Container small>
                <RealizationTemplate
                   realization={project}
@@ -48,7 +48,7 @@ const Realization = ({
    }
 
    return (
-      <BackgroundSection background={bgHome}>
+      <BackgroundSection background={backgroundLowpoly}>
          <Container small>
             <>
                {connectionErrors.collectionRealizations ||

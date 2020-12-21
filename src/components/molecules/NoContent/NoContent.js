@@ -1,4 +1,4 @@
-import emptyIcon from 'assets/empty.svg'
+import emptyIcon from 'assets/svg/empty.svg'
 import CardWrapper from 'components/atoms/CardWrapper/CardWrapper'
 import Divider from 'components/atoms/Divider/Divider'
 import SVG from 'components/atoms/SVG/SVG'

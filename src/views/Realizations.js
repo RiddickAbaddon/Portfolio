@@ -1,4 +1,4 @@
-import bgRealizations from 'assets/backgrounds/realizations.png'
+import { backgroundWeb } from 'assets'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
 import Heading from 'components/atoms/Heading/Heading'
@@ -93,7 +93,7 @@ class Realizations extends React.Component {
       const filtered = this.filterRealizations()
 
       return (
-         <BackgroundSection background={bgRealizations}>
+         <BackgroundSection background={backgroundWeb}>
             <Container>
                <Divider size="large" mobile />
                <Heading>{getPhrase(phrases, 'realizations', language)}</Heading>

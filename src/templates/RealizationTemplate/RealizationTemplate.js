@@ -2,8 +2,7 @@ import GetAppIcon from '@material-ui/icons/GetApp'
 import GitHubIcon from '@material-ui/icons/GitHub'
 import LinkIcon from '@material-ui/icons/Link'
 import WebAssetIcon from '@material-ui/icons/WebAsset'
-import authenticalInfoImage from 'assets/authentical_info.png'
-import FigmaIconURL from 'assets/icons/figma.svg'
+import { iconFigma, pngAuthenticalInfo } from 'assets'
 import CardWrapper from 'components/atoms/CardWrapper/CardWrapper'
 import Divider from 'components/atoms/Divider/Divider'
 import Icon from 'components/atoms/Icon/Icon'
@@ -22,7 +21,7 @@ import styled from 'styled-components'
 import GalleryTemplate from 'templates/GalleryTemplate/GalleryTemplate'
 import { getPhrase } from 'Utils'
 
-const FigmaIcon = () => <Icon src={FigmaIconURL} small />
+const FigmaIcon = () => <Icon src={iconFigma} small />
 
 const Wrapper = styled.div`
    max-width: 1000px;
@@ -170,7 +169,7 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
             <Divider size="large" />
             <AuthenticalInfoWrapper>
                <Text>{getPhrase(phrases, 'authentical-info', language)}</Text>
-               <StyledAuthenticalInfoImage src={authenticalInfoImage} />
+               <StyledAuthenticalInfoImage src={pngAuthenticalInfo} />
             </AuthenticalInfoWrapper>
          </>
       )}

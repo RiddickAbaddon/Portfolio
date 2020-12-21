@@ -1,7 +1,5 @@
 import { LANGUAGES, setLanguage as setLanguageAction } from 'actions/app'
-import EnglishIcon from 'assets/icons/english.svg'
-import GitHubIcon from 'assets/icons/github.svg'
-import PolishIcon from 'assets/icons/polish.svg'
+import { iconEnglish, iconGithub, iconPolish } from 'assets'
 import Icon from 'components/atoms/Icon/Icon'
 import ArrowButton from 'components/molecules/ArrowButton/ArrowButton'
 import PropTypes from 'prop-types'
@@ -117,13 +115,13 @@ const Navigation = ({ language, setLanguage, location, infoMargin }) => {
          </BackButton>
          <NavList up={backlink === '#'}>
             <StyledIcon
-               src={language === LANGUAGES.pl ? PolishIcon : EnglishIcon}
+               src={language === LANGUAGES.pl ? iconPolish : iconEnglish}
                onClick={() => {
                   setLanguage(language === LANGUAGES.pl ? LANGUAGES.en : LANGUAGES.pl)
                }}
             />
             <a href="https://github.com/RiddickAbaddon" target="_blank" rel="noopener noreferrer">
-               <Icon src={GitHubIcon} />
+               <Icon src={iconGithub} />
             </a>
          </NavList>
       </Wrapper>

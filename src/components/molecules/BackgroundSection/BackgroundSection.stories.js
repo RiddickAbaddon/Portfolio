@@ -1,6 +1,4 @@
-import bgHex from 'assets/backgrounds/hex.png'
-import bgHome from 'assets/backgrounds/home.png'
-import bgRealizations from 'assets/backgrounds/realizations.png'
+import { backgroundHex, backgroundLowpoly, backgroundWeb } from 'assets'
 import BackgroundSection from 'components/molecules/BackgroundSection/BackgroundSection'
 import React from 'react'
 import styled from 'styled-components'
@@ -51,19 +49,19 @@ export default {
 }
 
 export const Home = () => (
-   <BackgroundSection background={bgHome}>
+   <BackgroundSection background={backgroundLowpoly}>
       <TestContent />
    </BackgroundSection>
 )
 
 export const Realizations = () => (
-   <BackgroundSection background={bgRealizations}>
+   <BackgroundSection background={backgroundWeb}>
       <TestContent />
    </BackgroundSection>
 )
 
 export const Hex = () => (
-   <BackgroundSection background={bgHex} align="bottom">
+   <BackgroundSection background={backgroundHex} align="bottom">
       <TestContent />
    </BackgroundSection>
 )

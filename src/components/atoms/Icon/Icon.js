@@ -1,4 +1,4 @@
-import emptyIcon from 'assets/empty.svg'
+import emptyIcon from 'assets/svg/empty.svg'
 import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 import styled from 'styled-components'
