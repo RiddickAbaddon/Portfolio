@@ -70,7 +70,8 @@ const TechnologyStack = ({ technologies, title, isLinked, setFilter, ...props })
                      key={_id}
                      onClick={() => {
                         if (isLinked) {
-                           setFilter(name)
+                           setFilter('category', 'all')
+                           setFilter('technology', name)
                            setRedirect(true)
                         }
                      }}
@@ -107,7 +108,7 @@ TechnologyStack.defaultProps = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-   setFilter: (value) => dispatch(setFilterAction('technology', value)),
+   setFilter: (type, value) => dispatch(setFilterAction(type, value)),
 })
 
 export default connect(null, mapDispatchToProps)(TechnologyStack)

@@ -1,6 +1,7 @@
-import { backgroundLowpoly } from 'assets'
+import { backgroundHex, backgroundLowpoly } from 'assets'
 import Container from 'components/atoms/Container/Container'
 import Divider from 'components/atoms/Divider/Divider'
+import Heading from 'components/atoms/Heading/Heading'
 import BackgroundSection from 'components/molecules/BackgroundSection/BackgroundSection'
 import NoContentInfo from 'components/organisms/NoContentInfo/NoContentInfo'
 import PreloadRealization from 'components/organisms/PreloadRealization/PreloadRealization'
@@ -8,64 +9,142 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
+import RealizationsGridTemplate from 'templates/RealizationsGridTemplate/RealizationsGridTemplate'
 import RealizationTemplate from 'templates/RealizationTemplate/RealizationTemplate'
-import { getDataByIds } from 'Utils'
+import { getDataByIds, getPhrase } from 'Utils'
 import Page404 from 'views/Page404'
 
-const Realization = ({
-   match: {
-      params: { id },
-   },
-   phrases,
-   realizations,
-   categories,
-   technologies,
-   language,
-   connectionErrors,
-}) => {
-   if (phrases && realizations && categories && technologies) {
-      const project = realizations.find((x) => x._id === id)
+class Realization extends React.Component {
+   filterSimilarRealizations(realization) {
+      const { realizations } = this.props
+      const filtered = []
 
-      if (!project) {
-         return <Page404 />
+      realizations.map((element) => {
+         if (element._id !== realization._id) {
+            const { categories, technologies } = element
+            let score = 0
+
+            if (categories && realization.categories) {
+               realization.categories.map(({ _id }) => {
+                  if (categories.find((x) => x._id === _id)) {
+                     score += 1
+                  }
+                  return 0
+               })
+            }
+
+            if (technologies && realization.technologies) {
+               realization.technologies.map(({ _id }) => {
+                  if (technologies.find((x) => x._id === _id)) {
+                     score += 1
+                  }
+                  return 0
+               })
+            }
+
+            if (score > 0) {
+               filtered.push({
+                  ...element,
+                  score,
+               })
+            }
+         }
+         return 0
+      })
+
+      filtered.sort((a, b) => {
+         if (a._created > b._created) return 1
+         if (a._created < b._created) return -1
+         return 0
+      })
+
+      filtered.sort((a, b) => {
+         if (a.score < b.score) return 1
+         if (a.score > b.score) return -1
+         return 0
+      })
+
+      return filtered.slice(0, 3)
+   }
+
+   render() {
+      const {
+         match: {
+            params: { id },
+         },
+         phrases,
+         realizations,
+         categories,
+         technologies,
+         language,
+         connectionErrors,
+      } = this.props
+
+      if (phrases && realizations && categories && technologies) {
+         const project = realizations.find((x) => x._id === id)
+
+         if (!project) {
+            return <Page404 />
+         }
+
+         const projectCategories = getDataByIds(project.categories, categories)
+         const projectTechnologies = getDataByIds(project.technologies, technologies)
+         const similarRealizations = this.filterSimilarRealizations(project)
+
+         return (
+            <>
+               <BackgroundSection background={backgroundLowpoly}>
+                  <Container small>
+                     <RealizationTemplate
+                        realization={project}
+                        categories={projectCategories}
+                        technologies={projectTechnologies}
+                        language={language}
+                     />
+                  </Container>
+               </BackgroundSection>
+
+               {similarRealizations.length ? (
+                  <BackgroundSection background={backgroundHex}>
+                     <Container>
+                        <Heading size="h1">
+                           {getPhrase(phrases, 'similar-realizations', language)}
+                        </Heading>
+                        <Divider size="large" />
+                        <RealizationsGridTemplate
+                           realizations={similarRealizations}
+                           categories={categories}
+                           technologies={technologies}
+                           language={language}
+                        />
+                        <Divider size="large" />
+                     </Container>
+                  </BackgroundSection>
+               ) : null}
+            </>
+         )
       }
-
-      const projectCategories = getDataByIds(project.categories, categories)
-      const projectTechnologies = getDataByIds(project.technologies, technologies)
 
       return (
          <BackgroundSection background={backgroundLowpoly}>
             <Container small>
-               <RealizationTemplate
-                  realization={project}
-                  categories={projectCategories}
-                  technologies={projectTechnologies}
-                  language={language}
-               />
+               <>
+                  {connectionErrors.collectionRealizations ||
+                  connectionErrors.collectionCategories ||
+                  connectionErrors.collectionTechnologies ? (
+                     <>
+                        <Divider size="large" />
+                        <NoContentInfo />
+                     </>
+                  ) : (
+                     <PreloadRealization />
+                  )}
+               </>
+               <Divider size="large" />
             </Container>
          </BackgroundSection>
       )
    }
-
-   return (
-      <BackgroundSection background={backgroundLowpoly}>
-         <Container small>
-            <>
-               {connectionErrors.collectionRealizations ||
-               connectionErrors.collectionCategories ||
-               connectionErrors.collectionTechnologies ? (
-                  <>
-                     <Divider size="large" />
-                     <NoContentInfo />
-                  </>
-               ) : (
-                  <PreloadRealization />
-               )}
-            </>
-            <Divider size="large" />
-         </Container>
-      </BackgroundSection>
-   )
 }
 
 Realization.propTypes = {

@@ -35,7 +35,8 @@ const BackgroundSection = ({ background, align, children, ...props }) => {
 }
 
 BackgroundSection.propTypes = {
-   children: PropTypes.element.isRequired,
+   children: PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element)])
+      .isRequired,
    background: PropTypes.string.isRequired,
    align: PropTypes.oneOf(['top', 'bottom']),
 }

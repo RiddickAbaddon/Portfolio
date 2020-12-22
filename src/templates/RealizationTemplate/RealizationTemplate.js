@@ -92,7 +92,7 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
             switch (label) {
                case 'app':
                   return (
-                     <ButtonContainer>
+                     <ButtonContainer key={value}>
                         <Button
                            icon={WebAssetIcon}
                            as="a"
@@ -106,7 +106,7 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
                   )
                case 'demo':
                   return (
-                     <ButtonContainer>
+                     <ButtonContainer key={value}>
                         <Button
                            icon={LinkIcon}
                            as="a"
@@ -120,7 +120,7 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
                   )
                case 'download':
                   return (
-                     <ButtonContainer>
+                     <ButtonContainer key={value}>
                         <Button
                            icon={GetAppIcon}
                            as="a"
@@ -134,7 +134,7 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
                   )
                case 'github':
                   return (
-                     <ButtonContainer>
+                     <ButtonContainer key={value}>
                         <Button
                            icon={GitHubIcon}
                            as="a"
@@ -148,7 +148,7 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
                   )
                case 'figma':
                   return (
-                     <ButtonContainer>
+                     <ButtonContainer key={value}>
                         <Button
                            icon={FigmaIcon}
                            as="a"
@@ -209,15 +209,18 @@ RealizationTemplate.propTypes = {
             value: PropTypes.string,
          }),
       ),
-      gallery: PropTypes.arrayOf(
-         PropTypes.shape({
-            meta: PropTypes.shape({
-               title: PropTypes.string,
-               asset: PropTypes.string,
+      gallery: PropTypes.oneOfType([
+         PropTypes.arrayOf(
+            PropTypes.shape({
+               meta: PropTypes.shape({
+                  title: PropTypes.string,
+                  asset: PropTypes.string,
+               }),
+               path: PropTypes.string,
             }),
-            path: PropTypes.string,
-         }),
-      ),
+         ),
+         PropTypes.string,
+      ]),
       _created: PropTypes.number,
       authentical_info: PropTypes.bool,
    }).isRequired,

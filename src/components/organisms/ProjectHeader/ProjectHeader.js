@@ -34,7 +34,7 @@ const HeadingWrapper = styled.div`
 
 const ProjectHeader = ({ image, title }) => (
    <Wrapper>
-      <StyledImage src={image} thumbnail={[800, 350]} alt={title} />
+      <StyledImage src={image} key={image} thumbnail={[800, 350]} alt={title} />
       <HeadingWrapper>
          <Heading size="h3">{title}</Heading>
       </HeadingWrapper>

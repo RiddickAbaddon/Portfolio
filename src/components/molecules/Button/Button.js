@@ -79,7 +79,7 @@ const Button = ({ children, icon: IconComponent, ...props }) => (
 
 Button.propTypes = {
    children: PropTypes.string.isRequired,
-   icon: PropTypes.func,
+   icon: PropTypes.oneOfType([PropTypes.func, PropTypes.object]),
 }
 
 Button.defaultProps = {

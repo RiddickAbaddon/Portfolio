@@ -47,7 +47,8 @@ const Categories = ({ categories, language, trim, setFilter, ...props }) => {
             <StyledBadge
                key={category._id}
                onClick={() => {
-                  setFilter(category.name)
+                  setFilter('technology', 'all')
+                  setFilter('category', category.name)
                   setRedirect(true)
                }}
                noclick={trim}
@@ -79,7 +80,7 @@ Categories.defaultProps = {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-   setFilter: (value) => dispatch(setFilterAction('category', value)),
+   setFilter: (type, value) => dispatch(setFilterAction(type, value)),
 })
 
 export default connect(null, mapDispatchToProps)(Categories)
