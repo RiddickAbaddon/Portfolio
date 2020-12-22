@@ -82,6 +82,7 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
             <TechnologyStack
                title={getPhrase(phrases, 'technology-used', language)}
                technologies={technologies}
+               isLinked
             />
          </>
       ) : null}

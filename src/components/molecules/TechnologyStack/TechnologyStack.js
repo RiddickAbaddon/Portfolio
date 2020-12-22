@@ -1,9 +1,12 @@
+import { setFilter as setFilterAction } from 'actions/app'
 import Heading from 'components/atoms/Heading/Heading'
 import Icon from 'components/atoms/Icon/Icon'
 import { API_URL } from 'defines'
 import PropTypes from 'prop-types'
-import React from 'react'
-import styled, { keyframes } from 'styled-components'
+import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
+import styled, { css, keyframes } from 'styled-components'
 
 const Show = keyframes`
    from {
@@ -47,22 +50,41 @@ const IconWrapper = styled.div`
       opacity: 1;
       transform: translate(-50%, 0);
    }
+
+   ${({ noclick }) =>
+      !noclick &&
+      css`
+         cursor: pointer;
+      `}
 `
 
-const TechnologyStack = ({ technologies, title, ...props }) => (
-   <Wrapper {...props}>
-      <Heading size="h2">{title}</Heading>
-      <IconsWrapper>
-         {technologies &&
-            technologies.map(({ _id, image: { path }, name }) => (
-               <IconWrapper key={_id}>
-                  <Icon src={`${API_URL}${path}`} alt={name} />
-                  <IconLabel>{name}</IconLabel>
-               </IconWrapper>
-            ))}
-      </IconsWrapper>
-   </Wrapper>
-)
+const TechnologyStack = ({ technologies, title, isLinked, setFilter, ...props }) => {
+   const [redirect, setRedirect] = useState(false)
+   return (
+      <Wrapper {...props}>
+         <Heading size="h2">{title}</Heading>
+         <IconsWrapper>
+            {technologies &&
+               technologies.map(({ _id, image: { path }, name }) => (
+                  <IconWrapper
+                     key={_id}
+                     onClick={() => {
+                        if (isLinked) {
+                           setFilter(name)
+                           setRedirect(true)
+                        }
+                     }}
+                     noclick={!isLinked}
+                  >
+                     <Icon src={`${API_URL}${path}`} alt={name} />
+                     <IconLabel>{name}</IconLabel>
+                  </IconWrapper>
+               ))}
+         </IconsWrapper>
+         {redirect && <Redirect push to="/realizations" />}
+      </Wrapper>
+   )
+}
 
 TechnologyStack.propTypes = {
    title: PropTypes.string.isRequired,
@@ -75,10 +97,17 @@ TechnologyStack.propTypes = {
          }),
       }),
    ),
+   isLinked: PropTypes.bool,
+   setFilter: PropTypes.func.isRequired,
 }
 
 TechnologyStack.defaultProps = {
    technologies: null,
+   isLinked: false,
 }
 
-export default TechnologyStack
+const mapDispatchToProps = (dispatch) => ({
+   setFilter: (value) => dispatch(setFilterAction('technology', value)),
+})
+
+export default connect(null, mapDispatchToProps)(TechnologyStack)
