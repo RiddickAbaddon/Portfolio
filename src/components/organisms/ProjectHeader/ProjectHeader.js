@@ -26,7 +26,7 @@ const HeadingWrapper = styled.div`
    align-items: center;
    justify-content: center;
    max-width: 100%;
-   padding: 0 32px;
+   padding: 16px 32px;
    background: ${({ theme }) => theme.bgPrimary};
    position: relative;
    top: -32px;
