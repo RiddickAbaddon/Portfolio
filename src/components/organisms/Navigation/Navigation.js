@@ -111,7 +111,7 @@ const Navigation = ({ language, setLanguage, location, infoMargin }) => {
    return (
       <Wrapper bgsmall={backlink === '#'} infoMargin={infoMargin}>
          <BackButton to={backlink}>
-            <ArrowButton prev as="span" />
+            <ArrowButton direction="left" as="span" />
          </BackButton>
          <NavList up={backlink === '#'}>
             <StyledIcon

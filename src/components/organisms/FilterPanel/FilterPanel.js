@@ -7,8 +7,9 @@ import {
 } from 'actions/app'
 import Dropdown from 'components/molecules/Dropdown/Dropdown'
 import SearchInput from 'components/molecules/SearchInput/SearchInput'
+import debounce from 'lodash/debounce'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { connect } from 'react-redux'
 import styled, { keyframes } from 'styled-components'
 import { getPhrase } from 'Utils'
@@ -182,6 +183,11 @@ const FilterPanel = ({
    const showResetButton =
       filter.category !== 'all' || filter.technology !== 'all' || filter.search !== ''
 
+   const searchDebounce = useCallback(
+      debounce((value) => setSearch(value), 300),
+      [],
+   )
+
    return (
       <Wrapper>
          <Section>
@@ -233,7 +239,7 @@ const FilterPanel = ({
             label={`${getPhrase(phrases, 'search', language)}...`}
             defaultValue={filter.search}
             setValueCallback={(value) => {
-               setSearch(value)
+               searchDebounce(value)
             }}
             key={`search/${rerenderSearch}`}
          />

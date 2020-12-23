@@ -8,18 +8,21 @@ export default {
    title: 'Molecules/ArrowButton',
    decorators: [StoryRouter()],
    argTypes: {
-      prev: {
-         control: 'boolean',
+      direction: {
+         control: {
+            type: 'select',
+            options: ['right', 'down', 'left', 'up'],
+         },
       },
    },
 }
 
-export const Basic = ({ prev }) => <ArrowButton prev={prev} />
+export const Basic = ({ direction }) => <ArrowButton direction={direction} />
 
 Basic.propTypes = {
-   prev: PropTypes.bool.isRequired,
+   direction: PropTypes.string.isRequired,
 }
 
 Basic.args = {
-   prev: false,
+   direction: 'right',
 }

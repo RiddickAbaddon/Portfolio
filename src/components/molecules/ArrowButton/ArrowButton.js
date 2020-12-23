@@ -43,25 +43,38 @@ const StyledButton = styled.button`
 const StyledIcon = styled(ArrowForwardIosRoundedIcon)`
    color: ${({ theme }) => theme.fontPrimary} !important;
    font-size: 32px !important;
-   ${({ prev }) =>
-      prev === 'true' &&
-      css`
-         transform: rotate(180deg);
-      `}
+   ${({ direction }) => {
+      switch (direction) {
+         case 'up':
+            return css`
+               transform: rotate(-90deg);
+            `
+         case 'left':
+            return css`
+               transform: rotate(180deg);
+            `
+         case 'down':
+            return css`
+               transform: rotate(90deg);
+            `
+         default:
+            return null
+      }
+   }}
 `
 
-const ArrowButton = ({ prev, ...props }) => (
+const ArrowButton = ({ direction, ...props }) => (
    <StyledButton {...props}>
-      <StyledIcon prev={prev ? 'true' : null} />
+      <StyledIcon direction={direction} />
    </StyledButton>
 )
 
 ArrowButton.propTypes = {
-   prev: PropTypes.bool,
+   direction: PropTypes.string,
 }
 
 ArrowButton.defaultProps = {
-   prev: false,
+   direction: 'right',
 }
 
 export default ArrowButton

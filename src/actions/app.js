@@ -9,8 +9,6 @@ export const DEFAULT_SORT_DIRECTION = 'asc'
 export const DEFAULT_CATEGORY = 'all'
 export const DEFAULT_TECHNOLOGY = 'all'
 
-let searchTimeout = null
-
 export const LANGUAGES = {
    pl: 'pl',
    en: 'en',
@@ -33,8 +31,5 @@ export const setRerenderSearch = () => (dispatch) => {
 }
 
 export const setSearch = (phrase) => (dispatch) => {
-   clearTimeout(searchTimeout)
-   searchTimeout = setTimeout(() => {
-      dispatch({ type: SET_SEARCH, payload: { phrase } })
-   }, 300)
+   dispatch({ type: SET_SEARCH, payload: { phrase } })
 }

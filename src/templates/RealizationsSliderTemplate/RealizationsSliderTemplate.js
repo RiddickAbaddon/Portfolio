@@ -95,7 +95,7 @@ const RealizationsSliderTemplate = ({ realizations, categories, technologies, la
       slidesToShow: 3,
       slidesToScroll: 3,
       nextArrow: <StyledArrowButton />,
-      prevArrow: <StyledArrowButton prev />,
+      prevArrow: <StyledArrowButton prev direction="left" />,
       responsive: [
          {
             breakpoint: 970,
