@@ -23,19 +23,11 @@ const Wrapper = styled.div`
 
 const StyledBadge = styled(Badge)`
    margin: 5px;
+   cursor: pointer;
 
-   ${({ noclick }) =>
-      !noclick
-         ? css`
-              cursor: pointer;
-
-              :hover {
-                 color: ${({ theme }) => theme.fontPrimary};
-              }
-           `
-         : css`
-              pointer-events: none;
-           `}
+   :hover {
+      color: ${({ theme }) => theme.fontPrimary};
+   }
 `
 
 const Categories = ({ categories, language, trim, setFilter, ...props }) => {
@@ -51,7 +43,6 @@ const Categories = ({ categories, language, trim, setFilter, ...props }) => {
                   setFilter('category', category.name)
                   setRedirect(true)
                }}
-               noclick={trim}
             >
                #{category[language]}
             </StyledBadge>

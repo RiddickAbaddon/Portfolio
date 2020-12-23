@@ -33,7 +33,6 @@ const StyledCardWrapper = styled(CardWrapper)`
    color: ${({ theme }) => theme.fontPrimary};
    display: flex;
    flex-direction: column;
-   text-decoration: none;
    overflow: hidden;
    position: relative;
 
@@ -66,20 +65,29 @@ const StyledImage = styled(Image)`
    flex-shrink: 0;
 `
 
+const StyledLink = styled(Link)`
+   color: inherit;
+   text-decoration: none;
+`
+
 const Card = ({ phrases, link, title, image, description, categories, technologies, language }) => (
-   <StyledCardWrapper as={Link} to={link}>
-      <StyledImage src={`${API_URL}${image}`} thumbnail={[300, 200]} alt={title} />
-      <StyledHeading size="h3">{title}</StyledHeading>
-      <StyledText small lineclamp={4}>
-         {description
-            ? ReactHtmlParser(removeHtmlTags(description))
-            : getPhrase(phrases, 'no-description', language)}
-      </StyledText>
+   <StyledCardWrapper>
+      <StyledLink to={link}>
+         <StyledImage src={`${API_URL}${image}`} thumbnail={[300, 200]} alt={title} />
+         <StyledHeading size="h3">{title}</StyledHeading>
+         <StyledText small lineclamp={4}>
+            {description
+               ? ReactHtmlParser(removeHtmlTags(description))
+               : getPhrase(phrases, 'no-description', language)}
+         </StyledText>
+      </StyledLink>
       {categories && categories.length ? (
          <Categories categories={categories} language={language} trim />
       ) : null}
-      <StyledTechnologyStack technologies={technologies} />
-      <Button>{getPhrase(phrases, 'show', language)}</Button>
+      <StyledLink to={link}>
+         <StyledTechnologyStack technologies={technologies} />
+         <Button>{getPhrase(phrases, 'show', language)}</Button>
+      </StyledLink>
    </StyledCardWrapper>
 )
 

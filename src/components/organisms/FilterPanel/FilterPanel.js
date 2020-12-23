@@ -1,3 +1,4 @@
+import CloseIcon from '@material-ui/icons/Close'
 import {
    setFilter as setFilterAction,
    setSearch as setSearchAction,
@@ -8,8 +9,17 @@ import SearchInput from 'components/molecules/SearchInput/SearchInput'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { connect } from 'react-redux'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { getPhrase } from 'Utils'
+
+const showButton = keyframes`
+   from {
+      transform: scale(0)
+   }
+   to {
+      transform: scale(1)
+   }
+`
 
 const Wrapper = styled.div`
    min-height: 64px;
@@ -35,6 +45,25 @@ const StyledDropdown = styled(Dropdown)`
 const StyledSearch = styled(SearchInput)`
    margin: 4px;
    margin-left: auto;
+`
+
+const ResetButton = styled.button`
+   width: 48px;
+   height: 48px;
+   background: ${({ theme }) => theme.bgSecondary};
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   border: none;
+   margin: 4px;
+   border-radius: 50%;
+   cursor: pointer;
+   animation: ${showButton} 0.2s ease-out;
+`
+
+const ResetButtonIcon = styled(CloseIcon)`
+   font-size: 24px !important;
+   color: ${({ theme }) => theme.fontPrimary};
 `
 
 const getDropdownData = (phrases, realizations, categories, technologies, language) => {
@@ -147,10 +176,21 @@ const FilterPanel = ({
       phrases && realizations && categories && technologies
          ? getDropdownData(phrases, realizations, categories, technologies, language)
          : null
+   const showResetButton = filter.category !== 'all' || filter.technology !== 'all'
 
    return (
       <Wrapper>
          <Section>
+            {showResetButton && (
+               <ResetButton
+                  onClick={() => {
+                     setFilter('category', 'all')
+                     setFilter('technology', 'all')
+                  }}
+               >
+                  <ResetButtonIcon />
+               </ResetButton>
+            )}
             {dropdownData && (
                <>
                   <StyledDropdown
