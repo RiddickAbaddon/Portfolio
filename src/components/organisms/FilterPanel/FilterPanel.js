@@ -1,7 +1,6 @@
 import CloseIcon from '@material-ui/icons/Close'
 import {
    setFilter as setFilterAction,
-   setRerenderSearch as setRerenderSearchAction,
    setSearch as setSearchAction,
    setSort as setSortAction,
 } from 'actions/app'
@@ -173,8 +172,6 @@ const FilterPanel = ({
    setSearch,
    sort,
    filter,
-   rerenderSearch,
-   setRerenderSearch,
 }) => {
    const dropdownData =
       phrases && realizations && categories && technologies
@@ -197,7 +194,6 @@ const FilterPanel = ({
                      setFilter('category', 'all')
                      setFilter('technology', 'all')
                      setFilter('search', '')
-                     setRerenderSearch()
                   }}
                >
                   <ResetButtonIcon />
@@ -241,7 +237,6 @@ const FilterPanel = ({
             setValueCallback={(value) => {
                searchDebounce(value)
             }}
-            key={`search/${rerenderSearch}`}
          />
       </Wrapper>
    )
@@ -306,8 +301,6 @@ FilterPanel.propTypes = {
    setSort: PropTypes.func.isRequired,
    setFilter: PropTypes.func.isRequired,
    setSearch: PropTypes.func.isRequired,
-   setRerenderSearch: PropTypes.func.isRequired,
-   rerenderSearch: PropTypes.bool.isRequired,
 }
 
 FilterPanel.defaultProps = {
@@ -319,14 +312,13 @@ FilterPanel.defaultProps = {
 
 const mapStateToProps = ({
    api: { phrases, realizations, categories, technologies },
-   app: { language, sort, filter, rerenderSearch },
-}) => ({ phrases, realizations, categories, technologies, language, sort, filter, rerenderSearch })
+   app: { language, sort, filter },
+}) => ({ phrases, realizations, categories, technologies, language, sort, filter })
 
 const mapDispatchToProps = (dispatch) => ({
    setSort: (option, direction) => dispatch(setSortAction(option, direction)),
    setFilter: (type, value) => dispatch(setFilterAction(type, value)),
    setSearch: (phrase) => dispatch(setSearchAction(phrase)),
-   setRerenderSearch: () => dispatch(setRerenderSearchAction()),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(FilterPanel)

@@ -6,7 +6,6 @@ import {
    LANGUAGES,
    SET_FILTER,
    SET_LANGUAGE,
-   SET_RERENDER_SEARCH,
    SET_SEARCH,
    SET_SORT,
 } from 'actions/app'
@@ -22,7 +21,6 @@ const initialState = {
       technology: DEFAULT_TECHNOLOGY,
       search: '',
    },
-   rerenderSearch: false, // toggle value
 }
 
 const appReducer = (state = initialState, action) => {
@@ -58,12 +56,6 @@ const appReducer = (state = initialState, action) => {
                ...state.filter,
                search: action.payload.phrase,
             },
-         }
-      }
-      case SET_RERENDER_SEARCH: {
-         return {
-            ...state,
-            rerenderSearch: !state.rerenderSearch,
          }
       }
       default:

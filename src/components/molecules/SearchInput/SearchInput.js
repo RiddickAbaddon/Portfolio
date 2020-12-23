@@ -1,6 +1,6 @@
 import SearchIcon from '@material-ui/icons/Search'
 import PropTypes from 'prop-types'
-import React, { useState } from 'react'
+import React, { createRef } from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -55,26 +55,54 @@ const StyledIcon = styled(SearchIcon)`
    color: ${({ theme }) => theme.fontPrimary} !important;
 `
 
-const SearchInput = ({ label, defaultValue, setValueCallback, ...props }) => {
-   const [value, setValue] = useState(defaultValue)
+class SearchInput extends React.Component {
+   constructor(props) {
+      super(props)
 
-   return (
-      <Wrapper {...props}>
-         <Input
-            type="search"
-            active={value !== ''}
-            placeholder={label}
-            defaultValue={defaultValue}
-            onChange={({ target: { value: changeValue } }) => {
-               setValue(changeValue)
-               setValueCallback(changeValue)
-            }}
-         />
-         <IconWrapper>
-            <StyledIcon />
-         </IconWrapper>
-      </Wrapper>
-   )
+      this.inputRef = createRef()
+   }
+
+   state = {
+      value: '',
+   }
+
+   componentDidUpdate(prevProps) {
+      const { defaultValue } = this.props
+      const { defaultValue: prevValue } = prevProps
+
+      if (defaultValue === '' && prevValue !== '') {
+         this.setValue('')
+         this.inputRef.current.value = ''
+      }
+   }
+
+   setValue(value) {
+      this.setState({ value })
+   }
+
+   render() {
+      const { label, defaultValue, setValueCallback, ...props } = this.props
+      const { value } = this.state
+
+      return (
+         <Wrapper {...props}>
+            <Input
+               type="search"
+               active={value !== ''}
+               placeholder={label}
+               defaultValue={defaultValue}
+               onChange={({ target: { value: changeValue } }) => {
+                  this.setValue(changeValue)
+                  setValueCallback(changeValue)
+               }}
+               ref={this.inputRef}
+            />
+            <IconWrapper>
+               <StyledIcon />
+            </IconWrapper>
+         </Wrapper>
+      )
+   }
 }
 
 SearchInput.propTypes = {
