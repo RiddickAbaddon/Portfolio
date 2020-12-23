@@ -1,6 +1,8 @@
 import Card from 'components/organisms/Card/Card'
+import PreloadCards from 'components/organisms/PreloadCard/PreloadCards'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
+import InfiniteScroll from 'react-infinite-scroller'
 import styled from 'styled-components'
 import { getDataByIds } from 'Utils'
 
@@ -10,32 +12,50 @@ const Wrapper = styled.section`
    grid-gap: 40px;
 `
 
-const RealizationsGridTemplate = ({ realizations, categories, technologies, language }) => (
-   <Wrapper>
-      {realizations.map((realization) => {
-         const {
-            _id,
-            thumbnail: { path },
-            categories: refCategories,
-            technologies: refTechnologies,
-         } = realization
+const Loader = styled(PreloadCards)`
+   margin-top: 40px;
+`
 
-         return (
-            <Card
-               key={_id}
-               link={`/realizations/${_id}`}
-               title={realization[`${language}_title`]}
-               image={path}
-               description={realization[`${language}_description`]}
-               categories={refCategories.length ? getDataByIds(refCategories, categories) : []}
-               technologies={
-                  refTechnologies.length ? getDataByIds(refTechnologies, technologies) : []
-               }
-            />
-         )
-      })}
-   </Wrapper>
-)
+const RealizationsGridTemplate = ({ realizations, categories, technologies, language }) => {
+   const [records, setRecords] = useState(6)
+
+   return (
+      <InfiniteScroll
+         pageStart={0}
+         loadMore={() => setRecords(records + 6)}
+         hasMore={records < realizations.length}
+         loader={<Loader key="1" />}
+         useWindow
+      >
+         <Wrapper>
+            {realizations.slice(0, records).map((realization) => {
+               const {
+                  _id,
+                  thumbnail: { path },
+                  categories: refCategories,
+                  technologies: refTechnologies,
+               } = realization
+
+               return (
+                  <Card
+                     key={_id}
+                     link={`/realizations/${_id}`}
+                     title={realization[`${language}_title`]}
+                     image={path}
+                     description={realization[`${language}_description`]}
+                     categories={
+                        refCategories.length ? getDataByIds(refCategories, categories) : []
+                     }
+                     technologies={
+                        refTechnologies.length ? getDataByIds(refTechnologies, technologies) : []
+                     }
+                  />
+               )
+            })}
+         </Wrapper>
+      </InfiniteScroll>
+   )
+}
 
 RealizationsGridTemplate.propTypes = {
    realizations: PropTypes.arrayOf(

@@ -90,6 +90,7 @@ class Realizations extends React.Component {
          language,
          connectionErrors,
          filter,
+         sort,
       } = this.props
       const filtered = this.filterRealizations()
 
@@ -99,7 +100,7 @@ class Realizations extends React.Component {
                <Divider size="large" mobile />
                <Heading>{getPhrase(phrases, 'realizations', language)}</Heading>
                <Divider size="medium" />
-               <FilterPanel key={`${filter.category}/${filter.technology}`} />
+               <FilterPanel />
                <Divider size="medium" />
                {realizations && categories && technologies ? (
                   <>
@@ -110,6 +111,7 @@ class Realizations extends React.Component {
                               categories={categories}
                               technologies={technologies}
                               language={language}
+                              key={`grid-${sort.option}/${sort.direction}/${filter.category}/${filter.technology}/${filter.search}`}
                            />
                         </>
                      ) : (
