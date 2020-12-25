@@ -22,7 +22,11 @@ const Container = styled.div`
 const CenterPageTemplate = ({ children, title }) => (
    <Wrapper>
       <Divider size="large" />
-      {title && <Heading size="h1">{title}</Heading>}
+      {title && (
+         <header>
+            <Heading size="h1">{title}</Heading>
+         </header>
+      )}
       <Container>{children}</Container>
       <Divider size="large" />
    </Wrapper>

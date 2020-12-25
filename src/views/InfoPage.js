@@ -14,6 +14,10 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import Page404 from 'views/Page404'
 
+const title = (value) => {
+   document.title = `MK - ${value}`
+}
+
 class InfoPage extends React.Component {
    componentDidMount() {
       const { fetchPages } = this.props
@@ -36,6 +40,8 @@ class InfoPage extends React.Component {
          if (!page) {
             return <Page404 />
          }
+
+         title(page[`${language}_title`])
 
          return (
             <BackgroundSection background={backgroundWeb}>

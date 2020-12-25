@@ -32,6 +32,11 @@ class Home extends React.Component {
    componentDidMount() {
       const { fetchAbout } = this.props
       fetchAbout()
+      document.title = 'Marcin Kalinowski'
+   }
+
+   componentDidUpdate() {
+      document.title = 'Marcin Kalinowski'
    }
 
    render() {
@@ -47,12 +52,14 @@ class Home extends React.Component {
 
       return (
          <>
-            <BackgroundSection background={backgroundLowpoly}>
+            <BackgroundSection background={backgroundLowpoly} as="section">
                <Container>
-                  <Divider size="large" mobile />
-                  <Heading size="h1">Marcin Kalinowski</Heading>
-                  <Divider size="small" />
-                  <Heading size="h4">Front-end developer / UI designer</Heading>
+                  <header>
+                     <Divider size="large" mobile />
+                     <Heading size="h1">Marcin Kalinowski</Heading>
+                     <Divider size="small" />
+                     <Heading size="h4">Front-end developer / UI designer</Heading>
+                  </header>
                   <Divider size="medium" />
                   {about ? (
                      <About avatar={`${API_URL}${about.avatar.path}`}>{about[language]}</About>
@@ -79,7 +86,7 @@ class Home extends React.Component {
             </BackgroundSection>
 
             <section>
-               <Container>
+               <Container as="header">
                   <Divider size="large" />
                   <Heading size="h1">{getPhrase(phrases, 'realizations', language)}</Heading>
                   <Divider size="large" />
@@ -114,7 +121,7 @@ class Home extends React.Component {
                </Container>
             </section>
 
-            <BackgroundSection background={backgroundHex} align="bottom">
+            <BackgroundSection background={backgroundHex} align="bottom" as="section">
                <CenterPageTemplate title={getPhrase(phrases, 'contact', language)}>
                   <Container>
                      <SVG src={mailIcon} alt="mail" />

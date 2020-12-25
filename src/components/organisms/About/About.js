@@ -65,7 +65,7 @@ const ShowText = keyframes`
    }
 `
 
-const Wrapper = styled.section`
+const Wrapper = styled.article`
    margin-top: 66px;
    position: relative;
    width: 1000px;

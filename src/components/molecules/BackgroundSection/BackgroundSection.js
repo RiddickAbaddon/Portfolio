@@ -29,7 +29,13 @@ const BackgroundSection = ({ background, align, children, ...props }) => {
    return (
       <Wrapper {...props}>
          {children}
-         <Image loaded={loaded} align={align} src={background} onLoad={() => setLoaded(true)} />
+         <Image
+            loaded={loaded}
+            align={align}
+            src={background}
+            onLoad={() => setLoaded(true)}
+            alt="background image"
+         />
       </Wrapper>
    )
 }

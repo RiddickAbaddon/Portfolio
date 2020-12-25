@@ -14,6 +14,19 @@ import RealizationsGridTemplate from 'templates/RealizationsGridTemplate/Realiza
 import { getPhrase } from 'Utils'
 
 class Realizations extends React.Component {
+   componentDidMount() {
+      this.title()
+   }
+
+   componentDidUpdate() {
+      this.title()
+   }
+
+   title() {
+      const { phrases, language } = this.props
+      document.title = `MK - ${getPhrase(phrases, 'realizations', language)}`
+   }
+
    filterRealizations() {
       const { sort, filter, realizations, categories, language } = this.props
 
@@ -97,16 +110,21 @@ class Realizations extends React.Component {
       return (
          <BackgroundSection background={backgroundWeb}>
             <Container>
-               <Divider size="large" mobile />
-               <Heading>{getPhrase(phrases, 'realizations', language)}</Heading>
-               <Divider size="medium" />
-               <FilterPanel />
+               <header>
+                  <Divider size="large" mobile />
+                  <Heading>{getPhrase(phrases, 'realizations', language)}</Heading>
+                  <Divider size="medium" />
+               </header>
+               <section>
+                  <FilterPanel />
+               </section>
                <Divider size="medium" />
                {realizations && categories && technologies ? (
                   <>
                      {filtered.length ? (
                         <>
                            <RealizationsGridTemplate
+                              as="section"
                               realizations={filtered}
                               categories={categories}
                               technologies={technologies}

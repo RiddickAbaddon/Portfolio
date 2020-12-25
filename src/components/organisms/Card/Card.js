@@ -71,10 +71,12 @@ const StyledLink = styled(Link)`
 `
 
 const Card = ({ phrases, link, title, image, description, categories, technologies, language }) => (
-   <StyledCardWrapper>
+   <StyledCardWrapper as="article">
       <StyledLink to={link}>
-         <StyledImage src={`${API_URL}${image}`} thumbnail={[300, 200]} alt={title} />
-         <StyledHeading size="h3">{title}</StyledHeading>
+         <header>
+            <StyledImage src={`${API_URL}${image}`} thumbnail={[300, 200]} alt={title} />
+            <StyledHeading size="h3">{title}</StyledHeading>
+         </header>
          <StyledText small lineclamp={4}>
             {description
                ? ReactHtmlParser(removeHtmlTags(description))
@@ -85,7 +87,9 @@ const Card = ({ phrases, link, title, image, description, categories, technologi
          <Categories categories={categories} language={language} trim />
       ) : null}
       <StyledLink to={link}>
-         <StyledTechnologyStack technologies={technologies} />
+         <footer>
+            <StyledTechnologyStack technologies={technologies} />
+         </footer>
          <Button>{getPhrase(phrases, 'show', language)}</Button>
       </StyledLink>
    </StyledCardWrapper>

@@ -23,11 +23,11 @@ import { getPhrase } from 'Utils'
 
 const FigmaIcon = () => <Icon src={iconFigma} small />
 
-const Wrapper = styled.div`
+const Wrapper = styled.article`
    max-width: 1000px;
 `
 
-const ButtonsWrapper = styled.div`
+const ButtonsWrapper = styled.section`
    display: flex;
    flex-wrap: wrap;
    justify-content: center;
@@ -169,7 +169,7 @@ const RealizationTemplate = ({ phrases, realization, categories, technologies, l
       {realization.authentical_info && (
          <>
             <Divider size="large" />
-            <AuthenticalInfoWrapper>
+            <AuthenticalInfoWrapper as="aside">
                <Text>{getPhrase(phrases, 'authentical-info', language)}</Text>
                <StyledAuthenticalInfoImage src={pngAuthenticalInfo} />
             </AuthenticalInfoWrapper>

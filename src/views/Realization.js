@@ -14,6 +14,10 @@ import RealizationTemplate from 'templates/RealizationTemplate/RealizationTempla
 import { getDataByIds, getPhrase } from 'Utils'
 import Page404 from 'views/Page404'
 
+const title = (value) => {
+   document.title = `MK - ${value}`
+}
+
 class Realization extends React.Component {
    filterSimilarRealizations(realization) {
       const { realizations } = this.props
@@ -87,6 +91,7 @@ class Realization extends React.Component {
             return <Page404 />
          }
 
+         title(project[`${language}_title`])
          const projectCategories = getDataByIds(project.categories, categories)
          const projectTechnologies = getDataByIds(project.technologies, technologies)
          const similarRealizations = this.filterSimilarRealizations(project)
@@ -105,11 +110,13 @@ class Realization extends React.Component {
                </BackgroundSection>
 
                {similarRealizations.length ? (
-                  <BackgroundSection background={backgroundHex}>
+                  <BackgroundSection background={backgroundHex} as="section">
                      <Container>
-                        <Heading size="h1">
-                           {getPhrase(phrases, 'similar-realizations', language)}
-                        </Heading>
+                        <header>
+                           <Heading size="h1">
+                              {getPhrase(phrases, 'similar-realizations', language)}
+                           </Heading>
+                        </header>
                         <Divider size="large" />
                         <RealizationsGridTemplate
                            realizations={similarRealizations}

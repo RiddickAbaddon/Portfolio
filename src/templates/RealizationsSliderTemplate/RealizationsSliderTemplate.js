@@ -6,7 +6,7 @@ import Slider from 'react-slick'
 import styled, { css } from 'styled-components'
 import { getDataByIds } from 'Utils'
 
-const Wrapper = styled.section`
+const Wrapper = styled.div`
    overflow: hidden;
    position: relative;
 

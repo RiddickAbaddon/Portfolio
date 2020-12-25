@@ -6,27 +6,33 @@ import Text from 'components/atoms/Text/Text'
 import BackgroundSection from 'components/molecules/BackgroundSection/BackgroundSection'
 import Button from 'components/molecules/Button/Button'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import CenterPageTemplate from 'templates/CenterPageTemplate/CenterPageTemplate'
 import { getPhrase } from 'Utils'
 
-const Page404 = ({ phrases, language }) => (
-   <BackgroundSection background={backgroundHex} align="bottom">
-      <CenterPageTemplate>
-         <>
-            <SVG src={image404} alt="404" />
-            <Divider size="medium" />
-            <Text>{getPhrase(phrases, '404-info', language)}</Text>
-            <Divider size="medium" />
-            <Button as={Link} to="/">
-               {getPhrase(phrases, 'back-to-homepage', language)}
-            </Button>
-         </>
-      </CenterPageTemplate>
-   </BackgroundSection>
-)
+const Page404 = ({ phrases, language }) => {
+   useEffect(() => {
+      document.title = '404'
+   })
+
+   return (
+      <BackgroundSection background={backgroundHex} align="bottom">
+         <CenterPageTemplate>
+            <>
+               <SVG src={image404} alt="404" />
+               <Divider size="medium" />
+               <Text>{getPhrase(phrases, '404-info', language)}</Text>
+               <Divider size="medium" />
+               <Button as={Link} to="/">
+                  {getPhrase(phrases, 'back-to-homepage', language)}
+               </Button>
+            </>
+         </CenterPageTemplate>
+      </BackgroundSection>
+   )
+}
 
 Page404.propTypes = {
    phrases: PropTypes.arrayOf(

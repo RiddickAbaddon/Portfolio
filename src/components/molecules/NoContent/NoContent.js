@@ -15,7 +15,7 @@ const Wrapper = styled(CardWrapper)`
 `
 
 const NoContent = ({ children }) => (
-   <Wrapper>
+   <Wrapper as="aside">
       <SVG src={emptyIcon} alt="no content" />
       <Divider size="small" />
       <Text>{children}</Text>
