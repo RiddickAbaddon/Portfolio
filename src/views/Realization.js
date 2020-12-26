@@ -57,8 +57,8 @@ class Realization extends React.Component {
       })
 
       filtered.sort((a, b) => {
-         if (a._created > b._created) return 1
-         if (a._created < b._created) return -1
+         if (a._created < b._created) return 1
+         if (a._created > b._created) return -1
          return 0
       })
 

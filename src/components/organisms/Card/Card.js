@@ -1,3 +1,4 @@
+import LinkIcon from '@material-ui/icons/Link'
 import CardWrapper from 'components/atoms/CardWrapper/CardWrapper'
 import Heading from 'components/atoms/Heading/Heading'
 import Text from 'components/atoms/Text/Text'
@@ -29,6 +30,23 @@ const Button = styled.div`
    transition: transform 0.3s ease-out;
 `
 
+const ImageHoverIcon = styled.div`
+   position: absolute;
+   top: 100px;
+   left: 50%;
+   background: ${({ theme }) => theme.transparent.black.hard};
+   width: 64px;
+   height: 64px;
+   border-radius: 50%;
+   will-change: transform;
+   transition: transform 0.3s ease-out, opacity 0.3s linear;
+   transform: translate(-50%, -50%) scale(0);
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   opacity: 0;
+`
+
 const StyledCardWrapper = styled(CardWrapper)`
    color: ${({ theme }) => theme.fontPrimary};
    display: flex;
@@ -36,8 +54,14 @@ const StyledCardWrapper = styled(CardWrapper)`
    overflow: hidden;
    position: relative;
 
-   :hover ${Button} {
-      transform: translateY(0%);
+   :hover {
+      ${Button} {
+         transform: translateY(0%);
+      }
+      ${ImageHoverIcon} {
+         transform: translate(-50%, -50%) scale(1);
+         opacity: 1;
+      }
    }
 `
 
@@ -65,6 +89,12 @@ const StyledImage = styled(Image)`
    flex-shrink: 0;
 `
 
+const StyledLinkIcon = styled(LinkIcon)`
+   color: ${({ theme }) => theme.fontPrimary};
+   font-size: 32px !important;
+   transform: rotate(-45deg);
+`
+
 const StyledLink = styled(Link)`
    color: inherit;
    text-decoration: none;
@@ -77,6 +107,9 @@ const Card = ({ phrases, link, title, image, description, categories, technologi
             <StyledImage src={`${API_URL}${image}`} thumbnail={[300, 200]} alt={title} />
             <StyledHeading size="h3">{title}</StyledHeading>
          </header>
+         <ImageHoverIcon>
+            <StyledLinkIcon />
+         </ImageHoverIcon>
          <StyledText small lineclamp={4}>
             {description
                ? ReactHtmlParser(removeHtmlTags(description))

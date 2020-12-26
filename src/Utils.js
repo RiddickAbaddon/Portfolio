@@ -1,6 +1,6 @@
 export const getDataByIds = (idsCollection, collection) => {
    const result = []
-   if (idsCollection.length) {
+   if (idsCollection.length && collection.length) {
       idsCollection.map(({ _id }) => {
          const finded = collection.find((x) => x._id === _id)
          if (finded) result.push(finded)

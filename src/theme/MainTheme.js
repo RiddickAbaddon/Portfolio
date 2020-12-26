@@ -13,6 +13,9 @@ const MainTheme = {
          soft: 'hsla(0, 0%, 100%, 0.1)',
          mid: 'hsla(0, 0%, 100%, 0.2)',
       },
+      black: {
+         hard: 'hsla(0, 0%, 0%, 0.6)',
+      },
    },
    gradient: {
       accent: 'linear-gradient(125.64deg, hsl(29, 100%, 50%) 22.46%, hsl(338, 100%, 50%) 77.9%)',
