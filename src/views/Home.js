@@ -126,8 +126,8 @@ class Home extends React.Component {
                   <Container>
                      <SVG src={mailIcon} alt="mail" />
                      <Divider size="medium" />
-                     <Button as="a" href="mailto: Marcin36K@outlook.com">
-                        Marcin36K@outlook.com
+                     <Button as="a" href="mailto: contact@marcin-kalinowski.pl">
+                        contact@marcin-kalinowski.pl
                      </Button>
                   </Container>
                </CenterPageTemplate>

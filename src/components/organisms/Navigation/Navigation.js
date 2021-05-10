@@ -120,7 +120,7 @@ const Navigation = ({ language, setLanguage, location, infoMargin }) => {
                   setLanguage(language === LANGUAGES.pl ? LANGUAGES.en : LANGUAGES.pl)
                }}
             />
-            <a href="https://github.com/RiddickAbaddon" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/mkalinowski44" target="_blank" rel="noopener noreferrer">
                <Icon src={iconGithub} />
             </a>
          </NavList>
